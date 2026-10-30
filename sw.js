@@ -1,14 +1,15 @@
 /* Café Príncipe: modo sem rede.
    Depois da primeira visita, o site abre mesmo sem internet.
-   - Páginas: tenta a rede primeiro (para a pessoa ver sempre a versão mais recente) e, se a rede falhar ou demorar, usa a cópia guardada.
-   - Ficheiros do próprio site e letras do Google: usa a cópia guardada e atualiza-a quando houver rede.
+   - Páginas (incluindo /prato/...): tenta a rede primeiro (para a pessoa ver sempre a versão mais recente) e, se a rede falhar ou demorar, usa a cópia guardada do início.
+   - Ficheiros do próprio site (fotos, ícones) e letras do Google: usa a cópia guardada e atualiza-a quando houver rede.
    Para forçar a atualização das cópias antigas, muda o número em VERSAO. */
-const VERSAO = "cafe-principe-v1";
-const INICIO = new URL("./", self.registration.scope).href;
-const PRE = [INICIO, new URL("favicon.svg", INICIO).href, new URL("apple-touch-icon.png", INICIO).href];
+const VERSAO = "cafe-principe-v2";
+const INICIO = new URL("/", self.location.origin).href;
+const PRE = ["/", "/favicon.svg", "/apple-touch-icon.png", "/img/hero.webp", "/img/hero-francesinha-em-pao.webp", "/img/hero-cachorro-especial.webp", "/img/hero-cachorro-na-chapa.webp", "/img/francesinha-especial.webp"].map(u => new URL(u, INICIO).href);
 
 self.addEventListener("install", e => {
-  e.waitUntil(caches.open(VERSAO).then(c => c.addAll(PRE)).then(() => self.skipWaiting()));
+  // as fotos não são essenciais: se alguma falhar, a instalação continua
+  e.waitUntil(caches.open(VERSAO).then(c => Promise.all(PRE.map(u => c.add(u).catch(() => {})))).then(() => self.skipWaiting()));
 });
 self.addEventListener("activate", e => {
   e.waitUntil(caches.keys().then(ks => Promise.all(ks.filter(k => k !== VERSAO).map(k => caches.delete(k)))).then(() => self.clients.claim()));
@@ -26,7 +27,7 @@ self.addEventListener("fetch", e => {
   if(req.mode === "navigate"){
     e.respondWith(
       comTempo(req, 4000)
-        .then(r => { if(r.ok){ const c = r.clone(); caches.open(VERSAO).then(ca => ca.put(INICIO, c)); } return r; })
+        .then(r => { if(r.ok && url.pathname === "/"){ const c = r.clone(); caches.open(VERSAO).then(ca => ca.put(INICIO, c)); } return r; })
         .catch(() => caches.match(INICIO))
     );
     return;

@@ -1,0 +1,248 @@
+{
+ "super-francesinha-especial": {
+  "nome": "Super Francesinha Especial",
+  "desc": "Pão, bife de vitela, salsicha, chouriço, fiambre, queijo, ketchup, mostarda, ovo e molho de francesinha. Com batata.",
+  "preco": 13.5,
+  "img": "/og-image.jpg"
+ },
+ "francesinha-especial": {
+  "nome": "Francesinha Especial",
+  "desc": "Pão, bife de vitela, chouriço, fiambre, queijo, ketchup, mostarda, ovo e molho de francesinha. Com batata.",
+  "preco": 12,
+  "img": "/img/og/francesinha-especial.jpg"
+ },
+ "meia-francesinha-especial": {
+  "nome": "Meia Francesinha Especial",
+  "desc": "Pão, bife de vitela, chouriço, fiambre, queijo, ketchup, mostarda, ovo e molho de francesinha. Com batata.",
+  "preco": 8.75,
+  "img": "/og-image.jpg"
+ },
+ "francesinha-especial-de-frango": {
+  "nome": "Francesinha Especial de Frango",
+  "desc": "Pão, bife de frango, chouriço, fiambre, queijo, ketchup, mostarda, ovo e molho de francesinha. Com batata.",
+  "preco": 10.5,
+  "img": "/og-image.jpg"
+ },
+ "francesinha-especial-de-peru": {
+  "nome": "Francesinha Especial de Peru",
+  "desc": "Pão, bife de peru, chouriço, queijo, bacon, ketchup, mostarda, ovo e molho de francesinha. Com batata.",
+  "preco": 10.5,
+  "img": "/og-image.jpg"
+ },
+ "francesinha-especial-de-camarao": {
+  "nome": "Francesinha Especial de Camarão",
+  "desc": "Pão, bife de vitela, camarão, chouriço, fiambre, queijo, ketchup, mostarda, ovo e molho de francesinha. Com batata.",
+  "preco": 15.5,
+  "img": "/og-image.jpg"
+ },
+ "francesinha-na-chapa": {
+  "nome": "Francesinha na Chapa",
+  "desc": "Pão, bife de vitela, fiambre, queijo, ovo e molho de francesinha. Com batata.",
+  "preco": 11.75,
+  "img": "/og-image.jpg"
+ },
+ "francesinha-em-pao": {
+  "nome": "Francesinha em Pão",
+  "desc": "Pão barrado com molho de francesinha, chouriço, ketchup, mostarda, queijo e fiambre.",
+  "preco": 4.75,
+  "img": "/img/og/francesinha-em-pao.jpg"
+ },
+ "prego-em-pao": {
+  "nome": "Prego em Pão",
+  "desc": "Pão, bife de vitela, fiambre e queijo.",
+  "preco": 5.75,
+  "img": "/og-image.jpg"
+ },
+ "prego-em-pao-c-ovo": {
+  "nome": "Prego em Pão c/ Ovo",
+  "desc": "Pão, bife de vitela, fiambre, queijo e ovo.",
+  "preco": 6.5,
+  "img": "/og-image.jpg"
+ },
+ "prego-em-baguete-c-ovo": {
+  "nome": "Prego em Baguete c/ Ovo",
+  "desc": "Baguete, bife de vitela, fiambre, queijo e ovo.",
+  "preco": 9.5,
+  "img": "/og-image.jpg"
+ },
+ "prego-em-prato": {
+  "nome": "Prego em Prato",
+  "desc": "Bife de vitela, fiambre, queijo, alface, tomate e ovo. Com batata.",
+  "preco": 12.5,
+  "img": "/og-image.jpg"
+ },
+ "bife-de-frango-em-pao": {
+  "nome": "Bife de Frango em Pão",
+  "desc": "Pão, bife de frango, fiambre e queijo.",
+  "preco": 4,
+  "img": "/og-image.jpg"
+ },
+ "bife-de-peru-em-pao": {
+  "nome": "Bife de Peru em Pão",
+  "desc": "Pão, bife de peru, fiambre e queijo.",
+  "preco": 4.5,
+  "img": "/og-image.jpg"
+ },
+ "panado-no-pao": {
+  "nome": "Panado no Pão",
+  "desc": "Pão, panado de porco, fiambre e queijo.",
+  "preco": 2.75,
+  "img": "/og-image.jpg"
+ },
+ "panado-em-prato": {
+  "nome": "Panado em Prato",
+  "desc": "Panado de porco, fiambre, queijo e ovo. Com batata.",
+  "preco": 10,
+  "img": "/og-image.jpg"
+ },
+ "bife-de-frango-c-salada-e-batata": {
+  "nome": "Bife de Frango c/ Salada e Batata",
+  "desc": "Bife de frango, alface, tomate, fiambre, queijo, cenoura e milho.",
+  "preco": 9.25,
+  "img": "/og-image.jpg"
+ },
+ "bife-de-peru-c-salada-e-batata": {
+  "nome": "Bife de Peru c/ Salada e Batata",
+  "desc": "Bife de peru, alface, tomate, fiambre, queijo, cenoura e milho.",
+  "preco": 9.75,
+  "img": "/og-image.jpg"
+ },
+ "cachorro-em-pao": {
+  "nome": "Cachorro em Pão",
+  "desc": "Pão barrado com molho de francesinha, salsicha, fiambre, queijo, ketchup e mostarda.",
+  "preco": 4.75,
+  "img": "/og-image.jpg"
+ },
+ "cachorro-especial": {
+  "nome": "Cachorro Especial",
+  "desc": "Pão, salsicha, fiambre, queijo, ketchup, mostarda e molho de francesinha. Com batata.",
+  "preco": 11,
+  "img": "/img/og/cachorro-especial.jpg"
+ },
+ "cachorro-na-chapa": {
+  "nome": "Cachorro na Chapa",
+  "desc": "Pão, salsicha, fiambre, queijo e molho de francesinha. Com batata.",
+  "preco": 11,
+  "img": "/img/og/cachorro-na-chapa.jpg"
+ },
+ "hamburguer-em-pao": {
+  "nome": "Hambúrguer em Pão",
+  "desc": "Pão, hambúrguer, alface, tomate, queijo, fiambre, ovo, ketchup e mostarda.",
+  "preco": 5.75,
+  "img": "/og-image.jpg"
+ },
+ "hamburguer-especial": {
+  "nome": "Hambúrguer Especial",
+  "desc": "Pão, hambúrguer, fiambre, queijo, alface, tomate, ovo, ketchup, mostarda e molho de francesinha. Com batata.",
+  "preco": 11.5,
+  "img": "/og-image.jpg"
+ },
+ "hamburguer-de-picanha-em-pao": {
+  "nome": "Hambúrguer de Picanha em Pão",
+  "desc": "Pão, hambúrguer, fiambre, queijo cheddar, alface, tomate, bacon e molho Big Burger. Com batata.",
+  "preco": 10.5,
+  "img": "/og-image.jpg"
+ },
+ "baguete-americana": {
+  "nome": "Baguete Americana",
+  "desc": "Baguete, maionese, alface, tomate, fiambre, queijo e ovo.",
+  "preco": 4.75,
+  "img": "/og-image.jpg"
+ },
+ "sandes-de-fiambre": {
+  "nome": "Sandes de Fiambre",
+  "desc": "Pão e fiambre.",
+  "preco": 1.5,
+  "img": "/og-image.jpg"
+ },
+ "sandes-de-queijo": {
+  "nome": "Sandes de Queijo",
+  "desc": "Pão e queijo.",
+  "preco": 1.6,
+  "img": "/og-image.jpg"
+ },
+ "sandes-mista": {
+  "nome": "Sandes Mista",
+  "desc": "Pão, queijo e fiambre.",
+  "preco": 2.5,
+  "img": "/og-image.jpg"
+ },
+ "torrada-em-pao-de-forma": {
+  "nome": "Torrada em Pão de Forma",
+  "desc": "Pão de forma barrado com manteiga.",
+  "preco": 1.3,
+  "img": "/og-image.jpg"
+ },
+ "tosta-mista": {
+  "nome": "Tosta Mista",
+  "desc": "Pão barrado com manteiga, queijo e fiambre.",
+  "preco": 3.5,
+  "img": "/img/og/tosta-mista.jpg"
+ },
+ "omelete-mista": {
+  "nome": "Omelete Mista",
+  "desc": "Ovo, alface, tomate, cenoura, milho, fiambre e queijo. Com batata.",
+  "preco": 9.5,
+  "img": "/og-image.jpg"
+ },
+ "omelete-de-fiambre": {
+  "nome": "Omelete de Fiambre",
+  "desc": "Ovo, alface, tomate, cenoura, milho e fiambre. Com batata.",
+  "preco": 8.75,
+  "img": "/og-image.jpg"
+ },
+ "omelete-de-queijo": {
+  "nome": "Omelete de Queijo",
+  "desc": "Ovo, alface, tomate, cenoura, milho e queijo. Com batata.",
+  "preco": 9,
+  "img": "/og-image.jpg"
+ },
+ "omelete-de-camarao": {
+  "nome": "Omelete de Camarão",
+  "desc": "Ovo, camarão, alface, tomate, cenoura, milho, queijo e fiambre. Com batata.",
+  "preco": 14,
+  "img": "/og-image.jpg"
+ },
+ "salada-mista": {
+  "nome": "Salada Mista",
+  "desc": "Alface, tomate, cenoura, milho, fiambre e queijo.",
+  "preco": 7,
+  "img": "/og-image.jpg"
+ },
+ "picadinho-de-vitela": {
+  "nome": "Picadinho de Vitela",
+  "desc": "Carne de vitela, salsicha, chouriço, pickles, azeitonas e molho de francesinha. Com batata.",
+  "preco": 12,
+  "img": "/og-image.jpg"
+ },
+ "pao-de-alho": {
+  "nome": "Pão de Alho",
+  "desc": "",
+  "preco": 2.75,
+  "img": "/og-image.jpg"
+ },
+ "pao-de-alho-c-bacon": {
+  "nome": "Pão de Alho c/ Bacon",
+  "desc": "Com bacon.",
+  "preco": 4.5,
+  "img": "/og-image.jpg"
+ },
+ "asinhas-de-frango": {
+  "nome": "Asinhas de Frango",
+  "desc": "Asinhas de frango fritas.",
+  "preco": 0,
+  "img": "/og-image.jpg"
+ },
+ "rissois-de-carne": {
+  "nome": "Rissóis de Carne",
+  "desc": "Rissóis de carne.",
+  "preco": 0,
+  "img": "/og-image.jpg"
+ },
+ "bolinhos-de-bacalhau": {
+  "nome": "Bolinhos de Bacalhau",
+  "desc": "Bolinhos de bacalhau.",
+  "preco": 0,
+  "img": "/og-image.jpg"
+ }
+}
