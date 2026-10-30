@@ -3,3 +3,6 @@ wrangler.jsonc
 README.md
 .git
 *.zip
+.wrangler
+node_modules
+worker
