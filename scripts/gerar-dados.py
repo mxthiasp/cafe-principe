@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Café Príncipe: gera worker/pratos.json e sitemap.xml a partir do MENU do index.html.
+"""Café Príncipe: gera worker/pratos.json e sitemap.xml a partir do MENU (js/menu.js).
 Corre sempre que mudares um prato ou um preço:  python scripts/gerar-dados.py
 Avisa se um prato ficar sem tradução ou se um endereço antigo deixar de existir (links já partilhados deixam de funcionar)."""
 import json, re, unicodedata
@@ -7,7 +7,8 @@ from pathlib import Path
 
 RAIZ = Path(__file__).resolve().parent.parent
 html = (RAIZ / "index.html").read_text(encoding="utf8")
-menu = html[html.index("const MENU = {"):html.index("/* ============ UTILITÁRIOS")]
+menu = (RAIZ / "js" / "menu.js").read_text(encoding="utf8")
+menu = menu[menu.index("const MENU = {"):]
 dominio = re.search(r'<link rel="canonical" href="(https://[^"/]+)/">', html)[1]
 
 
@@ -35,7 +36,8 @@ urls = [dominio + "/"] + [f"{dominio}/prato/{s}" for s in pratos]
 print(f"{len(pratos)} pratos gerados.")
 for s in sorted(antigos - set(pratos)):
     print(f"AVISO: o endereço /prato/{s} deixou de existir.")
-traducoes = html[html.index("const MENU_I18N = {"):html.index("const META_DESC = {")]
+trad = (RAIZ / "js" / "traducoes.js").read_text(encoding="utf8")
+traducoes = trad[trad.index("const MENU_I18N = {"):trad.index("const META_DESC = {")]
 for p in pratos.values():
     if json.dumps(p["nome"], ensure_ascii=False) + ":" not in traducoes:
         print(f"AVISO: \"{p['nome']}\" não tem tradução em MENU_I18N.")

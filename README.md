@@ -1,4 +1,32 @@
-# cafe-principe
-atualizado
+# Café Príncipe
 
-Depois de mudar pratos ou preços no `MENU` do `index.html`, corre `python scripts/gerar-dados.py` para atualizar `worker/pratos.json` e `sitemap.xml`.
+Site do Café Príncipe (Brito, Guimarães). HTML, CSS e JavaScript simples, sem instalar nada.
+Publica-se sozinho na Cloudflare sempre que há um commit no ramo `main`.
+
+## Onde mudar cada coisa
+
+| Quero mudar... | Ficheiro |
+|---|---|
+| um preço, o nome ou a descrição de um prato, as fotos dos pratos | `js/menu.js` |
+| o telefone, a morada, o horário, os feriados, o "sobre nós", as perguntas frequentes, a foto da fachada | `js/cafe.js` |
+| a tradução de um prato ou de um texto (inglês, francês, alemão, espanhol) | `js/traducoes.js` |
+| as cores, os tamanhos, o aspeto no telemóvel | `css/estilo.css` |
+| a estrutura da página (secções, textos fixos em português) | `index.html` |
+| a lógica (separadores, pesquisa, páginas de prato, idiomas) | `js/app.js` (normalmente não é preciso mexer) |
+
+### Faixa de aviso e prato do dia (em `js/cafe.js`)
+
+- **Aviso no topo** (`CAFE.aviso`): põe `ativo: true`, escreve o `texto` e, se quiseres, a data `ate` ("2026-12-31"). O cliente pode fechá-lo. O texto pode ser uma frase em português ou um objeto com as várias línguas.
+- **Prato do dia** (`CAFE.pratoDoDia`): põe `ativo: true` e em `prato` o nome EXATO de um prato do menu: o preço, a descrição e as traduções vêm de lá e o cartão abre o prato. Deixa `prato: ""` para escrever um texto livre. `ate` esconde-o sozinho depois dessa data.
+- **O meu pedido**: lista que o cliente prepara no site para depois ligar. Não é uma encomenda nem recebe pagamentos. Fica guardada só no telemóvel dele.
+
+Outras pastas: `img/` (fotos), `fonts/` (letras), `worker/` (pré-visualização de cada prato ao partilhar), `sw.js` (modo sem rede).
+
+## Depois de mudar um prato ou um preço
+
+Corre `python scripts/gerar-dados.py`. Atualiza a pré-visualização de partilha (`worker/pratos.json`) e o `sitemap.xml`.
+Se mudares o **nome** de um prato, muda também a tradução em `js/traducoes.js` (procura `MENU_I18N`), senão as outras línguas ficam desatualizadas.
+
+## Ver o site no computador antes de publicar
+
+Os ficheiros usam caminhos como `/js/app.js`, por isso não abrem com duplo clique. No VS Code, instala a extensão **Live Server** e clica em "Go Live".
