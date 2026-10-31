@@ -8,7 +8,7 @@
 const IDIOMAS = {pt:"Português", en:"English", fr:"Français", de:"Deutsch", es:"Español"};
 /* bandeiras em desenho vetorial (as de emoji não aparecem no Windows) */
 const BANDEIRAS = {
-  pt:'<svg viewBox="0 0 3 2" preserveAspectRatio="none"><rect width="1.2" height="2" fill="#006600"/><rect x="1.2" width="1.8" height="2" fill="#FF0000"/><circle cx="1.2" cy="1" r=".36" fill="#FFE000"/><path d="M1 .8h.4v.32a.2.2 0 0 1-.4 0z" fill="#DA291C"/><path d="M1.08 .88h.24v.22a.12.12 0 0 1-.24 0z" fill="#fff"/></svg>',
+  pt:'<svg viewBox="0 0 30 20" preserveAspectRatio="xMidYMid slice" shape-rendering="geometricPrecision"><rect width="30" height="20" fill="#FF0000"/><rect width="12" height="20" fill="#006600"/><circle cx="12" cy="10" r="3.6" fill="#FFE000"/><path d="M10 8h4v3.2a2 2 0 0 1-4 0z" fill="#DA291C"/><path d="M10.8 8.8h2.4v2.2a1.2 1.2 0 0 1-2.4 0z" fill="#fff"/></svg>',
   en:'<svg viewBox="0 0 60 40" preserveAspectRatio="none"><rect width="60" height="40" fill="#012169"/><path d="M0 0L60 40M60 0L0 40" stroke="#fff" stroke-width="8"/><path d="M0 0L60 40M60 0L0 40" stroke="#C8102E" stroke-width="3"/><path d="M30 0V40M0 20H60" stroke="#fff" stroke-width="13"/><path d="M30 0V40M0 20H60" stroke="#C8102E" stroke-width="8"/></svg>',
   fr:'<svg viewBox="0 0 3 2" preserveAspectRatio="none"><rect width="1" height="2" fill="#0055A4"/><rect x="1" width="1" height="2" fill="#fff"/><rect x="2" width="1" height="2" fill="#EF4135"/></svg>',
   de:'<svg viewBox="0 0 3 2" preserveAspectRatio="none"><rect width="3" height=".67" fill="#000"/><rect y=".67" width="3" height=".67" fill="#DD0000"/><rect y="1.33" width="3" height=".67" fill="#FFCE00"/></svg>',
