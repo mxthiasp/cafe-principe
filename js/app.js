@@ -578,6 +578,21 @@ if(ecras.length >= 2){
     [...pontos.children].forEach((b,i) => b.setAttribute("aria-label", ecras[i].nomePrato ? nomePrato({nome:ecras[i].nomePrato}) : T(ecras[i].titulo)));
     pontos.setAttribute("aria-label", T("Pratos em destaque"));
   };
+  /* o topo fica sempre com a altura do prato que ocupa mais espaço, para a página não "saltar" quando a foto e o texto mudam */
+  const fixarAltura = () => {
+    heroEl.style.minHeight = "";
+    let maior = 0;
+    ecras.forEach(x => { trocarTexto(x, false); maior = Math.max(maior, heroEl.offsetHeight); });
+    trocarTexto(ecras[atual], false);
+    heroEl.style.minHeight = maior + "px";
+  };
+  const topoAtualizarBase = topoAtualizar;
+  topoAtualizar = () => { topoAtualizarBase(); fixarAltura(); };
+  let larguraAntes = innerWidth, tAltura;
+  addEventListener("resize", () => { if(innerWidth === larguraAntes) return; larguraAntes = innerWidth; clearTimeout(tAltura); tAltura = setTimeout(fixarAltura, 200); });
+  addEventListener("load", fixarAltura);
+  if(document.fonts && document.fonts.ready) document.fonts.ready.then(fixarAltura);
+  fixarAltura();
   const ir = i => {
     i = (i + ecras.length) % ecras.length; if(i === atual) return;
     carregar(i); carregar(i + 1);
