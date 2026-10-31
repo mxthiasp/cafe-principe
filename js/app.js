@@ -91,6 +91,12 @@ function atualizarEstado(){
 }
 
 /* ============ UTILITÁRIOS ============ */
+/* preço em "chip": euros grandes, cêntimos e € pequenos (texto completo escondido para os leitores de ecrã) */
+function precoPartes(n){
+  const [i, d] = n.toFixed(2).split(".");
+  return LANG === "en" ? `<span class="pe">€</span><span class="pi">${i}</span><sup class="pd">${d}</sup>` : `<span class="pi">${i}</span><sup class="pd">${d}</sup><span class="pe">€</span>`;
+}
+const chipPreco = n => n > 0 ? `<span class="preco-chip"><span class="sr-so">${euro(n)}</span><span aria-hidden="true" class="pp">${precoPartes(n)}</span></span>` : `<span class="preco-chip preco-chip--vazio">${T("Preço a confirmar")}</span>`;
 const euro = n => LANG === "en" ? "€" + n.toFixed(2) : n.toFixed(2).replace(".", ",") + " €";
 const $ = s => document.querySelector(s);
 const slug = t => t.normalize("NFD").replace(/[\u0300-\u036f]/g,"").toLowerCase().replace(/[^a-z0-9]+/g,"-").replace(/(^-|-$)/g,"");
@@ -107,11 +113,10 @@ function cartaoHTML(p, i){
   const nome = nomePrato(p);
   return `
     <div class="card-wrap" style="--i:${i}"><a class="card novo" style="--i:${i}" href="${urlPrato(p.nome)}" data-nome="${p.nome}">
-      ${p.foto ? `<div class="foto"><img src="${p.foto}" alt="${nome}" loading="lazy" decoding="async"></div>` : `<div class="foto foto--vazia"></div>`}
+      ${p.foto ? `<div class="foto"><img src="${p.foto}" alt="${nome}" loading="lazy" decoding="async">${chipPreco(p.preco)}</div>` : `<div class="foto foto--vazia">${chipPreco(p.preco)}</div>`}
       <h3>${nome}</h3>${p.destaque ? favorito() : ""}
       <p>${descPrato(p)}</p>
       <div class="card-fim">
-        ${p.preco > 0 ? `<span class="preco">${euro(p.preco)}</span>` : `<span class="preco preco--vazio">${T("Preço a confirmar")}</span>`}
         <span class="ver-mais" aria-hidden="true">${T("Ver detalhes")} ›</span>
       </div>
     </a>${botaoJuntar(p)}</div>`;
@@ -232,9 +237,8 @@ function montarMaisPedidos(){
     const nome = nomePrato(p);
     return `
     <a class="card card--destaque novo" style="--i:${k}" href="${urlPrato(p.nome)}" data-cat="${cat}" data-nome="${p.nome}">
-      ${p.foto ? `<div class="foto"><img src="${p.foto}" alt="${nome}" loading="lazy" decoding="async"></div>` : `<div class="foto foto--vazia"></div>`}
+      ${p.foto ? `<div class="foto"><img src="${p.foto}" alt="${nome}" loading="lazy" decoding="async">${chipPreco(p.preco)}</div>` : `<div class="foto foto--vazia">${chipPreco(p.preco)}</div>`}
       <h3>${nome}</h3>
-      <div class="card-fim">${p.preco > 0 ? `<span class="preco">${euro(p.preco)}</span>` : `<span class="preco preco--vazio">${T("Preço a confirmar")}</span>`}</div>
     </a>`; }).join("");
   $("#listaMaisPedidos").querySelectorAll(".card--destaque").forEach(el => {
     el.addEventListener("click", e => { if(cliqueSimples(e)){ e.preventDefault(); abrirPrato(el.dataset.nome); } });
@@ -371,8 +375,7 @@ function montarPrato(){
   const lista = PRATOS.filter(x => x.cat === cat), i = lista.findIndex(x => x.p === p);
   const ant = lista[i - 1], seg = lista[i + 1];
   const rel = [...lista.filter(x => x.p !== p), ...PRATOS.filter(x => x.cat !== cat)].slice(0, 3);
-  const preco = p.preco > 0 ? `<span class="prato-preco">${euro(p.preco)}</span>` : `<span class="prato-preco prato-preco--vazio">${T("Preço a confirmar")}</span>`;
-  const foto = p.foto ? `<div class="prato-foto"><img src="${p.foto}" alt="${nome}" decoding="async"></div>` : `<div class="prato-foto prato-foto--vazia"></div>`;
+  const foto = p.foto ? `<div class="prato-foto"><img src="${p.foto}" alt="${nome}" decoding="async">${chipPreco(p.preco)}</div>` : `<div class="prato-foto prato-foto--vazia">${chipPreco(p.preco)}</div>`;
   const factos = [[T("Categoria"), nomeCat(cat)], p.porcao && [T("Porção"), T(p.porcao)], p.alergenios && [T("Alergénios"), T(p.alergenios)]].filter(Boolean);
   const tel = TELEFONES.encomendas;
   $("#paginaPrato").innerHTML = `<div class="wrap">
@@ -382,7 +385,6 @@ function montarPrato(){
       <div class="prato-info">
         <h1 id="pratoTitulo">${nome}</h1>
         ${p.destaque ? favorito() : ""}
-        ${preco}
         ${d.texto ? `<p class="prato-texto">${d.texto}.</p>` : ""}
         ${p.nota ? `<p class="prato-texto">${T(p.nota)}</p>` : ""}
         ${d.lista.length ? `<h2>${T("Ingredientes")}</h2><div class="chips">${d.lista.map(t => `<span class="chip">${t}</span>`).join("")}</div>` : ""}
@@ -402,9 +404,9 @@ function montarPrato(){
     </div>
     <section class="relacionados"><h2>${T("Também podes gostar")}</h2><div class="relacionados-lista">${rel.map(x => `
       <a class="card" href="${urlPrato(x.p.nome)}" data-prato="${x.p.nome}">
-        <div class="foto${x.p.foto ? "" : " foto--vazia"}">${x.p.foto ? `<img src="${x.p.foto}" alt="${nomePrato(x.p)}" loading="lazy" decoding="async">` : ""}</div>
+        <div class="foto${x.p.foto ? "" : " foto--vazia"}">${x.p.foto ? `<img src="${x.p.foto}" alt="${nomePrato(x.p)}" loading="lazy" decoding="async">` : ""}${chipPreco(x.p.preco)}</div>
         <h3>${nomePrato(x.p)}</h3>
-        <div class="card-fim">${x.p.preco > 0 ? `<span class="preco">${euro(x.p.preco)}</span>` : `<span class="preco preco--vazio">${T("Preço a confirmar")}</span>`}<span class="ver-mais" aria-hidden="true">${T("Ver detalhes")} ›</span></div>
+        <div class="card-fim"><span class="ver-mais" aria-hidden="true">${T("Ver detalhes")} ›</span></div>
       </a>`).join("")}</div></section>
   </div>`;
   document.title = nome + " · Café Príncipe";
@@ -572,7 +574,7 @@ if(ecras.length >= 2){
     const tit = x.nomePrato && !x.frase ? nomePrato({nome:x.nomePrato}) : T(x.titulo);
     escreverTitulo(tit);
     if(x.nomePrato){ heroTexto.innerHTML = `<b class="hero-prato">${nomePrato({nome:x.nomePrato})}</b>${descPrato({nome:x.nomePrato, desc:x.texto})}`; } else { heroTexto.textContent = T(x.texto); }
-    heroExtra.innerHTML = x.preco > 0 ? `<span class="hero-preco">${euro(x.preco)}</span>` : "";
+    heroExtra.innerHTML = x.preco > 0 ? `<span class="hero-preco"><span class="sr-so">${euro(x.preco)}</span><span aria-hidden="true" class="pp">${precoPartes(x.preco)}</span></span>` : "";
     heroBotao.textContent = T(x.botao); heroBotao.dataset.cat = x.cat || ""; heroBotao.dataset.prato = x.prato || "";
     if(animar && !reduz) [heroTexto, heroExtra, heroBotao].forEach(el => el.animate([{opacity:0, transform:"translateY(14px)"}, {opacity:1, transform:"none"}], {duration:600, easing:"cubic-bezier(.2,.8,.2,1)"}));
   };

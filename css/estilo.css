@@ -270,8 +270,6 @@ header.compacto .logo svg{height:clamp(32px,4.5vw,40px)}
 .card.card--destaque::after{content:"";position:absolute;inset:0;z-index:1;background:linear-gradient(180deg,transparent 38%,rgba(0,0,0,.9));pointer-events:none}
 .card.card--destaque h3{position:absolute;z-index:2;left:1rem;right:1rem;bottom:3.9rem;margin:0;font-size:1.9rem;line-height:1}
 .card.card--destaque .card-fim{position:absolute;z-index:2;left:1rem;right:1rem;bottom:.9rem;padding:0}
-.card.card--destaque .preco{display:inline-block;background:var(--lima);color:var(--carvao);padding:.12rem .7rem 0;border-radius:3px;font-size:1.7rem;transform:rotate(-2deg);box-shadow:3px 3px 0 rgba(0,0,0,.6)}
-.card.card--destaque .preco--vazio{background:rgba(0,0,0,.55);color:var(--creme);font-size:1rem;box-shadow:none;transform:none;padding:.25rem .6rem}
 @media (hover:hover){.card.card--destaque:hover{border-color:transparent}}
 /* --- topo com vários pratos --- */
 .hero--slides::before{display:none}
@@ -280,7 +278,6 @@ header.compacto .logo svg{height:clamp(32px,4.5vw,40px)}
 .hero-slide.ativo{opacity:1;animation:zoomlento 24s ease-in-out forwards}
 .hero-extra:empty{display:none}
 .hero-prato{display:block;font-family:var(--destaque);font-weight:700;font-size:1.5rem;text-transform:uppercase;letter-spacing:.05em;color:var(--creme);margin-bottom:.15rem}
-.hero-preco{display:inline-block;background:var(--lima);color:var(--carvao);font-family:var(--destaque);font-weight:700;font-size:2.1rem;line-height:1;padding:.32rem .85rem .2rem;border-radius:3px;transform:rotate(-2deg);box-shadow:3px 3px 0 rgba(0,0,0,.6);margin:0 0 1.2rem}
 .hero-pontos{position:absolute;z-index:3;left:calc((100% - min(1120px,92%))/2);bottom:1.2rem;display:flex;gap:.5rem}
 .hp{background:none;border:0;padding:.8rem 0;cursor:pointer}
 .hp i{display:block;position:relative;overflow:hidden;width:46px;height:5px;border-radius:3px;background:rgba(244,243,234,.35)}
@@ -348,8 +345,6 @@ body.vista-prato .pagina-prato{display:block}
 .prato-foto img{width:100%;height:100%;object-fit:cover;display:block}
 .prato-foto--vazia::before,.foto--vazia::before{content:"";position:absolute;inset:0;background:var(--traco) no-repeat center/72%;opacity:.16}
 .prato-info h1{font-size:clamp(2.2rem,6vw,3.6rem);line-height:1.04;margin:.1rem 0 .8rem;text-shadow:none}
-.prato-preco{display:inline-block;background:var(--lima);color:var(--carvao);font-family:var(--destaque);font-weight:700;font-size:2.1rem;line-height:1;padding:.35rem .9rem .25rem;border-radius:3px;transform:rotate(-2deg);box-shadow:3px 3px 0 rgba(0,0,0,.6);margin-bottom:1.3rem}
-.prato-preco--vazio{background:var(--carvao-3);color:var(--creme);font-size:1.1rem;box-shadow:none;transform:none}
 .prato-texto{color:var(--creme);font-size:1.15rem;margin-bottom:1.2rem}
 .prato-info h2{font-size:1.45rem;letter-spacing:.06em;color:var(--lima);margin:1.4rem 0 .7rem;font-family:var(--destaque);font-weight:700}
 .prato-info h2::after{content:none}
@@ -406,7 +401,6 @@ body.vista-prato .pagina-prato{display:block}
   .hero-entrada>.hero-extra{flex:0 0 auto;order:4}
   .hero-entrada>.btn{flex:0 0 auto;order:5}
   .hero-entrada>.nota{display:none}
-  .hero-preco{font-size:1.7rem;margin:0}
   .hero-prato{font-size:1.25rem}
   .btn--xl{font-size:1.3rem;padding:.7rem 1.5rem}
   .hero-pontos{bottom:.9rem}
@@ -416,7 +410,6 @@ body.vista-prato .pagina-prato{display:block}
   .mais-pedidos .lista::-webkit-scrollbar{display:none}
   .mais-pedidos .card--destaque{flex:0 0 78%;scroll-snap-align:center}
   .prato-grelha{grid-template-columns:1fr}
-  .prato-preco{font-size:1.8rem}
   .prato-acoes .btn{flex:1 1 100%}
   .reservas{padding:1.4rem 1.2rem;gap:1.1rem}
   .reservas .btn--xl{width:100%;justify-content:center;text-align:center;font-size:1.3rem;padding:.8rem 1rem}
@@ -534,3 +527,22 @@ a.prato-dia{color:inherit;text-decoration:none;cursor:pointer}
 .favorito span{display:block}
 .prato-info .favorito{font-size:16px;height:20px;line-height:20px;gap:7px;margin:.2rem 0 .5rem}
 .prato-info .favorito .coroa{width:14px;height:12px}
+
+/* --- preço em "chip" sobre a foto (euros grandes, cêntimos e € pequenos) --- */
+.preco-chip,.hero-preco{display:inline-flex;align-items:flex-start;gap:.06em;background:rgba(13,13,13,.78);-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px);color:var(--creme);border:1px solid rgba(244,243,234,.22);border-radius:999px;padding:.4rem .9rem .32rem;font-family:var(--destaque);font-weight:700;font-size:1.5rem;line-height:1;letter-spacing:.01em}
+.pp{display:inline-flex;align-items:flex-start;gap:.06em}
+.pd,.pe{font-size:.5em;line-height:1.1;margin-top:.14em;position:static;vertical-align:baseline}
+.pe{color:var(--lima)}
+.preco-chip{position:absolute;left:.7rem;bottom:.7rem;z-index:3}
+.preco-chip--vazio{font-family:var(--corpo);font-weight:600;font-size:.82rem;letter-spacing:.02em;line-height:1.2;padding:.4rem .8rem;max-width:calc(100% - 1.4rem)}
+.prato-foto .preco-chip{left:1rem;bottom:1rem;font-size:2rem;padding:.5rem 1.1rem .4rem}
+.prato-foto .preco-chip--vazio{font-size:.95rem}
+.card.card--destaque .preco-chip{left:1rem;bottom:.9rem;font-size:1.7rem}
+.card-wrap .card-fim{min-height:44px}
+.hero-preco{font-size:2rem;padding:.45rem 1rem .36rem;margin-right:.3rem}
+@media (max-width:820px){
+  .hero-preco{font-size:1.6rem;margin:0}
+  .card:not(.card--destaque) .preco-chip{left:.35rem;bottom:.35rem;font-size:1rem;padding:.24rem .55rem .18rem}
+  .card:not(.card--destaque) .preco-chip--vazio{font-size:.62rem;padding:.25rem .45rem;border-radius:10px;max-width:calc(100% - .7rem)}
+  .prato-foto .preco-chip{font-size:1.6rem}
+}
