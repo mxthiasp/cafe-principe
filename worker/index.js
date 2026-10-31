@@ -11,9 +11,9 @@ export default {
     const url = new URL(request.url);
     const m = url.pathname.match(/^\/prato\/([a-z0-9-]+)\/?$/);
     // a página do site é sempre a mesma; o navegador mostra o prato certo a partir do endereço
-    const pagina = await env.ASSETS.fetch(new Request(new URL("/", url).toString()));
     const p = m && PRATOS[m[1]];
-    if (!p) return pagina;
+    if (!p) return env.ASSETS.fetch(request);   // prato que não existe: responde 404 com a página 404.html
+    const pagina = await env.ASSETS.fetch(new Request(new URL("/", url).toString()));
 
     const titulo = p.nome + " · Café Príncipe";
     const desc = (p.desc + (p.preco > 0 ? " " + euro(p.preco) + "." : "")).trim();
@@ -23,6 +23,7 @@ export default {
 
     return new HTMLRewriter()
       .on("title", { element: e => e.setInnerContent(titulo) })
+      .on('link[rel="canonical"]', { element: e => e.setAttribute("href", endereco) })
       .on("meta", meta("property", "og:title", titulo))
       .on("meta", meta("property", "og:description", desc))
       .on("meta", meta("property", "og:image", imagem))

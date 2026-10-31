@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://cafe-principe.mxthiasp.workers.dev/sitemap.xml
