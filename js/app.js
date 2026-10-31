@@ -100,12 +100,15 @@ const cliqueSimples = e => !(e.ctrlKey || e.metaKey || e.shiftKey || e.altKey);
 /* ============ 3. TABS DO MENU ============ */
 const tabs = $("#tabs"), grelha = $("#grelha");
 
+/* "Favorito da casa": coroa (do logótipo) + texto, alinhados ao centro */
+const COROA = '<svg class="coroa" viewBox="0 0 24 20" aria-hidden="true" focusable="false"><path d="M1.5 4.5 7 9l5-7.5L17 9l5.5-4.5L20.4 16.5H3.6z" fill="currentColor"/><rect x="3.6" y="17.8" width="16.8" height="2.2" rx=".6" fill="currentColor"/></svg>';
+const favorito = () => `<span class="favorito">${COROA}<span>${T("Favorito da casa")}</span></span>`;
 function cartaoHTML(p, i){
-  const nome = nomePrato(p), selo = p.destaque ? `<b class="selo">${T("Mais pedido")}</b>` : "";
+  const nome = nomePrato(p);
   return `
     <div class="card-wrap" style="--i:${i}"><a class="card novo" style="--i:${i}" href="${urlPrato(p.nome)}" data-nome="${p.nome}">
-      ${p.foto ? `<div class="foto"><img src="${p.foto}" alt="${nome}" loading="lazy" decoding="async">${selo}</div>` : `<div class="foto foto--vazia">${selo}</div>`}
-      <h3>${nome}</h3>
+      ${p.foto ? `<div class="foto"><img src="${p.foto}" alt="${nome}" loading="lazy" decoding="async"></div>` : `<div class="foto foto--vazia"></div>`}
+      <h3>${nome}</h3>${p.destaque ? favorito() : ""}
       <p>${descPrato(p)}</p>
       <div class="card-fim">
         ${p.preco > 0 ? `<span class="preco">${euro(p.preco)}</span>` : `<span class="preco preco--vazio">${T("Preço a confirmar")}</span>`}
@@ -226,10 +229,10 @@ function montarMaisPedidos(){
   if(!destaques.length) return;
   $("#maisPedidos").hidden = false;
   $("#listaMaisPedidos").innerHTML = destaques.map(({cat,p},k) => {
-    const nome = nomePrato(p), selo = `<b class="selo">${T("Mais pedido")}</b>`;
+    const nome = nomePrato(p);
     return `
     <a class="card card--destaque novo" style="--i:${k}" href="${urlPrato(p.nome)}" data-cat="${cat}" data-nome="${p.nome}">
-      ${p.foto ? `<div class="foto"><img src="${p.foto}" alt="${nome}" loading="lazy" decoding="async">${selo}</div>` : `<div class="foto foto--vazia">${selo}</div>`}
+      ${p.foto ? `<div class="foto"><img src="${p.foto}" alt="${nome}" loading="lazy" decoding="async"></div>` : `<div class="foto foto--vazia"></div>`}
       <h3>${nome}</h3>
       <div class="card-fim">${p.preco > 0 ? `<span class="preco">${euro(p.preco)}</span>` : `<span class="preco preco--vazio">${T("Preço a confirmar")}</span>`}</div>
     </a>`; }).join("");
@@ -369,8 +372,7 @@ function montarPrato(){
   const ant = lista[i - 1], seg = lista[i + 1];
   const rel = [...lista.filter(x => x.p !== p), ...PRATOS.filter(x => x.cat !== cat)].slice(0, 3);
   const preco = p.preco > 0 ? `<span class="prato-preco">${euro(p.preco)}</span>` : `<span class="prato-preco prato-preco--vazio">${T("Preço a confirmar")}</span>`;
-  const selo = p.destaque ? `<b class="selo">${T("Mais pedido")}</b>` : "";
-  const foto = p.foto ? `<div class="prato-foto"><img src="${p.foto}" alt="${nome}" decoding="async">${selo}</div>` : `<div class="prato-foto prato-foto--vazia">${selo}</div>`;
+  const foto = p.foto ? `<div class="prato-foto"><img src="${p.foto}" alt="${nome}" decoding="async"></div>` : `<div class="prato-foto prato-foto--vazia"></div>`;
   const factos = [[T("Categoria"), nomeCat(cat)], p.porcao && [T("Porção"), T(p.porcao)], p.alergenios && [T("Alergénios"), T(p.alergenios)]].filter(Boolean);
   const tel = TELEFONES.encomendas;
   $("#paginaPrato").innerHTML = `<div class="wrap">
@@ -379,6 +381,7 @@ function montarPrato(){
       ${foto}
       <div class="prato-info">
         <h1 id="pratoTitulo">${nome}</h1>
+        ${p.destaque ? favorito() : ""}
         ${preco}
         ${d.texto ? `<p class="prato-texto">${d.texto}.</p>` : ""}
         ${p.nota ? `<p class="prato-texto">${T(p.nota)}</p>` : ""}
