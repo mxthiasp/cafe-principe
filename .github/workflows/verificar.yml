@@ -1,0 +1,29 @@
+# Verificação automática do Café Príncipe.
+# Corre no GitHub a cada push: se algo estiver errado (prato sem tradução, foto em falta, ficheiro com erro de sintaxe,
+# ou te esqueceste de correr "python scripts/gerar-dados.py"), aparece um ✗ vermelho no GitHub (separador Actions).
+# Nota: isto NÃO impede o Cloudflare de publicar; serve de aviso para corrigires logo.
+name: Verificar site
+on: [push, pull_request]
+jobs:
+  verificar:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Dados do menu, traduções e fotos
+        run: python scripts/gerar-dados.py
+      - name: Os ficheiros gerados estão atualizados?
+        run: |
+          git diff --ignore-space-at-eol --exit-code || (echo "::error::Falta correr 'python scripts/gerar-dados.py' e fazer commit do resultado." && exit 1)
+      - name: Erros de sintaxe no JavaScript
+        run: |
+          for f in js/*.js sw.js worker/index.js; do node --check "$f" 2>/dev/null || node --input-type=module --check < "$f" || exit 1; done
+      - name: Erros no HTML
+        run: |
+          sudo apt-get install -y tidy > /dev/null
+          tidy -e -q index.html 404.html 2>&1 | grep -E "Error" && exit 1 || echo "HTML sem erros"

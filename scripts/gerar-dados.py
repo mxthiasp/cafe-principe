@@ -84,7 +84,8 @@ for f in set(re.findall(r'RAIZ \+ "(img/[^"]+)"', menu_txt)):
     if not (RAIZ / f).exists():
         erros.append(f"a foto {f} está em js/menu.js mas o ficheiro não existe.")
 # textos do site sem tradução
-app = ler("js", "app.js")
+UI = ["ui-base", "ui-menu", "ui-pedido", "ui-pesquisa", "ui-topo"]   # ficheiros do funcionamento do site (por esta ordem)
+app = "\n".join(ler("js", n + ".js") for n in UI)
 chaves = set(re.findall(r'\bT\("((?:[^"\\]|\\.)*)"\)', app)) | set(re.findall(r"\bT\('((?:[^'\\]|\\.)*)'\)", app))
 
 
@@ -116,15 +117,40 @@ for t in semtrad[:25]:
 if len(semtrad) > 25:
     avisos.append(f"... e mais {len(semtrad) - 25} textos sem tradução.")
 
+
+# ---------- 2b. menu para o Google (dados estruturados no index.html) ----------
+def menu_ld():
+    seccoes = []
+    partes = re.split(r'^  "([^"]+)": \[\s*$', menu, flags=re.M)
+    for cat, corpo in zip(partes[1::2], partes[2::2]):
+        corpo = corpo.split("\n  ],")[0].split("\n  ]")[0]
+        itens = []
+        for nome, desc, preco in re.findall(r'nome:"([^"]+)", desc:"([^"]*)", preco:([\d.]+)', corpo):
+            it = {"@type": "MenuItem", "name": nome, "url": f"{dominio}/prato/{slug(nome)}"}
+            if desc: it["description"] = desc
+            if float(preco) > 0: it["offers"] = {"@type": "Offer", "price": f"{float(preco):.2f}", "priceCurrency": "EUR"}
+            itens.append(it)
+        if itens: seccoes.append({"@type": "MenuSection", "name": cat, "hasMenuItem": itens})
+    return {"@type": "Menu", "url": dominio + "/#menu", "inLanguage": "pt-PT", "hasMenuSection": seccoes}
+
+
+m_ld = re.search(r'(<script type="application/ld\+json">\n)(.*?)(\n</script>)', html, re.S)
+if m_ld:
+    ld = json.loads(m_ld.group(2)); ld["hasMenu"] = menu_ld()
+    html = html[:m_ld.start(2)] + json.dumps(ld, ensure_ascii=False) + html[m_ld.end(2):]
+    (RAIZ / "index.html").write_text(html, encoding="utf8")
+else:
+    avisos.append("não encontrei o bloco JSON-LD no index.html (o Google não vai ver o menu).")
+
 # ---------- 3. versão nos ficheiros ----------
-FICH = ["css/estilo.css", "js/idiomas.js", "js/traducoes.js", "js/menu.js", "js/cafe.js", "js/app.js"]
+FICH = ["css/estilo.css", "js/idiomas.js", "js/traducoes.js", "js/menu.js", "js/cafe.js"] + [f"js/{n}.js" for n in UI]
 base_html = re.sub(r"\?v=[0-9a-f]{8}", "", html)
 h = hashlib.sha1()
 for f in FICH:
     h.update(ler(*f.split("/")).encode("utf8"))
 h.update(base_html.encode("utf8"))
 versao = h.hexdigest()[:8]
-novo = re.sub(r'((?:/css/estilo\.css|/js/(?:idiomas|menu|cafe|app)\.js))(?:\?v=[0-9a-f]{8})?"', lambda m: f'{m.group(1)}?v={versao}"', base_html)
+novo = re.sub(r'((?:/css/estilo\.css|/js/(?:idiomas|menu|cafe|ui-base|ui-menu|ui-pedido|ui-pesquisa|ui-topo)\.js))(?:\?v=[0-9a-f]{8})?"', lambda m: f'{m.group(1)}?v={versao}"', base_html)
 if novo != html:
     (RAIZ / "index.html").write_text(novo, encoding="utf8")
 sw = ler("sw.js")

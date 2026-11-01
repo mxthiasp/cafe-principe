@@ -50,7 +50,6 @@ section h2::after{content:"";display:block;width:120px;aspect-ratio:1010/235;mar
 .btn:hover{background:#c4d452;transform:translateY(-2px)}
 .btn:active{transform:scale(.97)}
 .btn--xl{font-size:1.6rem;padding:.9rem 2.4rem;box-shadow:0 10px 30px -8px var(--lima)}
-.btn--ok{background:var(--oliva);color:var(--carvao)}
 
 /* Espaço reservado para fotos: substitui por <img src="a-tua-foto.jpg" alt="..."> */
 .foto{aspect-ratio:4/3;border-radius:var(--raio);background:
@@ -132,7 +131,6 @@ a.card{color:inherit;text-decoration:none}
 .estado{display:inline-flex;align-items:center;gap:.55rem;font-size:.95rem;font-weight:700;padding:.4rem .95rem;border-radius:999px;background:var(--carvao-2);border:1px solid var(--carvao-3);margin-bottom:1rem}
 .ponto{width:10px;height:10px;border-radius:50%;background:var(--creme-2)}
 .estado.aberto .ponto{background:var(--lima);box-shadow:0 0 0 4px rgba(176,191,63,.25)}
-.etiqueta--estrela{background:var(--lima);color:var(--carvao)}
 .prato-dia{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:1rem 1.5rem;background:var(--carvao-2);border:1px solid var(--lima);border-radius:var(--raio);padding:1.2rem 1.4rem;margin-bottom:1.2rem}
 .prato-dia[hidden]{display:none}
 .prato-dia h3{font-size:1.3rem;margin:.4rem 0 .2rem}.prato-dia p{color:var(--creme-2)}
@@ -437,7 +435,7 @@ body.vista-prato .pagina-prato{display:block}
   .card .etiqueta{justify-self:start}
   .barra-ligar{display:flex;justify-content:center;align-items:center;position:fixed;left:0;right:0;bottom:0;z-index:60;background:var(--lima);color:var(--carvao);font-family:var(--destaque);font-weight:700;font-size:1.35rem;text-transform:uppercase;letter-spacing:.06em;text-decoration:none;padding:.8rem 1rem calc(.8rem + env(safe-area-inset-bottom,0px))}
 }
-@media (prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important}}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*::before,*::after{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
 /* áreas de toque, botão de ligar e aviso de horário */
 .mapas a,.rodape p a,.rodape-fim a{display:inline-flex;align-items:center;min-height:44px}
 .redes a{width:44px;height:44px}

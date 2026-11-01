@@ -12,7 +12,7 @@ Publica-se sozinho na Cloudflare sempre que há um commit no ramo `main`.
 | a tradução de um prato ou de um texto (inglês, francês, alemão, espanhol) | `js/traducoes.js` (só é descarregado quando alguém escolhe outra língua; a lista de línguas e as bandeiras estão em `js/idiomas.js`) |
 | as cores, os tamanhos, o aspeto no telemóvel | `css/estilo.css` |
 | a estrutura da página (secções, textos fixos em português) | `index.html` |
-| a lógica (separadores, pesquisa, páginas de prato, idiomas) | `js/app.js` (normalmente não é preciso mexer) |
+| a lógica do site (dividida por tema) | `js/ui-base.js` (idiomas), `ui-menu.js` (separadores, página de prato), `ui-pedido.js` ("O meu pedido"), `ui-pesquisa.js`, `ui-topo.js` (topo e privacidade). Normalmente não é preciso mexer |
 
 ### Faixa de aviso e prato do dia (em `js/cafe.js`)
 
@@ -32,7 +32,18 @@ Se mudares o **nome** de um prato, muda também a tradução em `js/traducoes.js
 
 ## Ver o site no computador antes de publicar
 
-Os ficheiros usam caminhos como `/js/app.js`, por isso não abrem com duplo clique. No VS Code, instala a extensão **Live Server** e clica em "Go Live".
+Os ficheiros usam caminhos como `/js/ui-base.js`, por isso não abrem com duplo clique. No VS Code, instala a extensão **Live Server** e clica em "Go Live".
 
 ## Segurança
 O ficheiro `_headers` define os cabeçalhos de segurança (CSP, anti-clickjacking, etc.). Se um dia adicionares um script ou serviço externo (analytics, mapas), tens de o autorizar na linha `Content-Security-Policy` desse ficheiro. Se mexeres no pequeno script que está dentro do `index.html`, o `hash` do CSP muda e tem de ser atualizado.
+
+## Fotos novas
+Põe a foto original (do telemóvel) numa pasta qualquer e corre:
+`python scripts/otimizar-imagens.py "C:\\caminho\\foto.jpg" "Nome do prato"`
+Ele cria a foto leve (WebP) e a imagem de partilha, corrige a rotação e apaga a localização GPS escondida na foto. No fim diz-te a linha a acrescentar em `js/menu.js`. Precisa de `pip install pillow`.
+
+## Verificação automática
+O ficheiro `.github/workflows/verificar.yml` corre no GitHub a cada push (separador **Actions**). Se aparecer um ✗ vermelho, abre-o para ver o que falhou (tradução em falta, foto que não existe, esqueceste de correr `gerar-dados.py`). Não impede o site de ser publicado: serve de aviso.
+
+## Página de erro
+`404.html` é a página que aparece quando o endereço não existe. É independente do resto do site de propósito.
