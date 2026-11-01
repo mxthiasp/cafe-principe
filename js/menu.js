@@ -23,7 +23,7 @@ const FOTOS = {
 
 /* ============ DADOS DO MENU (edita nomes, preços e descrições) ============ */
 const MENU = {
-  /* Preços e descrições conforme o menu do café. preco:0 = ainda sem preço. Campos opcionais: foto:"fotos/x.webp", destaque:true (selo "Mais pedido") */
+  /* Preços e descrições conforme o menu do café. preco:0 = ainda sem preço. Campos opcionais: foto:FOTOS.nome, destaque:true ("Favorito da casa") */
   "Francesinhas": [
     {nome:"Super Francesinha Especial", desc:"Pão, bife de vitela, salsicha, chouriço, fiambre, queijo, ketchup, mostarda, ovo e molho de francesinha. Com batata.", preco:13.5},
     {nome:"Francesinha Especial", desc:"Pão, bife de vitela, chouriço, fiambre, queijo, ketchup, mostarda, ovo e molho de francesinha. Com batata.", preco:12.0, destaque:true, foto:FOTOS.especial, nota:"O nosso prato estrela, feito com a nossa salsa caseira."},

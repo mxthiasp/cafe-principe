@@ -9,7 +9,7 @@ Publica-se sozinho na Cloudflare sempre que há um commit no ramo `main`.
 |---|---|
 | um preço, o nome ou a descrição de um prato, as fotos dos pratos | `js/menu.js` |
 | o telefone, a morada, o horário, os feriados, o "sobre nós", as perguntas frequentes, a foto da fachada | `js/cafe.js` |
-| a tradução de um prato ou de um texto (inglês, francês, alemão, espanhol) | `js/traducoes.js` |
+| a tradução de um prato ou de um texto (inglês, francês, alemão, espanhol) | `js/traducoes.js` (só é descarregado quando alguém escolhe outra língua; a lista de línguas e as bandeiras estão em `js/idiomas.js`) |
 | as cores, os tamanhos, o aspeto no telemóvel | `css/estilo.css` |
 | a estrutura da página (secções, textos fixos em português) | `index.html` |
 | a lógica (separadores, pesquisa, páginas de prato, idiomas) | `js/app.js` (normalmente não é preciso mexer) |
@@ -24,9 +24,15 @@ Outras pastas: `img/` (fotos), `fonts/` (letras), `worker/` (pré-visualização
 
 ## Depois de mudar um prato ou um preço
 
-Corre `python scripts/gerar-dados.py`. Atualiza a pré-visualização de partilha (`worker/pratos.json`) e o `sitemap.xml`.
+**Antes de cada commit** corre `python scripts/gerar-dados.py`. Ele:
+- atualiza a pré-visualização de partilha (`worker/pratos.json`) e o `sitemap.xml`;
+- **verifica** o menu: pratos sem tradução, fotos que não existem, nomes repetidos, textos do site sem tradução (escreve ERRO ou AVISO);
+- escreve um número de versão nos links do `index.html` (`?v=...`) e no `sw.js`, para os telemóveis nunca ficarem com ficheiros velhos.
 Se mudares o **nome** de um prato, muda também a tradução em `js/traducoes.js` (procura `MENU_I18N`), senão as outras línguas ficam desatualizadas.
 
 ## Ver o site no computador antes de publicar
 
 Os ficheiros usam caminhos como `/js/app.js`, por isso não abrem com duplo clique. No VS Code, instala a extensão **Live Server** e clica em "Go Live".
+
+## Segurança
+O ficheiro `_headers` define os cabeçalhos de segurança (CSP, anti-clickjacking, etc.). Se um dia adicionares um script ou serviço externo (analytics, mapas), tens de o autorizar na linha `Content-Security-Policy` desse ficheiro. Se mexeres no pequeno script que está dentro do `index.html`, o `hash` do CSP muda e tem de ser atualizado.

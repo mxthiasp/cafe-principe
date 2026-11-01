@@ -15,7 +15,21 @@ document.querySelectorAll("[data-tel]").forEach(a => {
 
 
 /* ============ IDIOMAS (PT, EN, FR, DE, ES) ============ */
-const T = pt => { const e = DICT[pt]; return (LANG === "pt" || !e) ? pt : (e[IDX[LANG]] || pt); };
+const T = pt => { if(LANG === "pt") return pt; const e = DICT[pt]; return e ? (e[IDX[LANG]] || pt) : pt; };
+/* as traduções (js/traducoes.js) só são descarregadas quando alguém escolhe outra língua que não o português */
+const _VQ = document.currentScript && document.currentScript.src.includes("?") ? "?" + document.currentScript.src.split("?")[1] : "";
+let _promTrad = null;
+function carregarTraducoes(){
+  if(Object.keys(DICT).length) return Promise.resolve();
+  if(!_promTrad) _promTrad = new Promise((ok, falhou) => {
+    const s = document.createElement("script"); s.src = "/js/traducoes.js" + _VQ;
+    s.onload = ok; s.onerror = () => { _promTrad = null; s.remove(); falhou(new Error("traducoes")); };
+    document.head.appendChild(s);
+  });
+  return _promTrad;
+}
+/* muda de língua, descarregando antes as traduções se for preciso (se falhar, o site fica em português) */
+const mudarLang = (l, guardar = true) => l === "pt" ? setLang(l, guardar) : carregarTraducoes().then(() => setLang(l, guardar), () => {});
 const nomeCat = c => LANG === "pt" ? c : (((CAT_I18N[c] || [])[IDX[LANG]]) || c);
 const nomePrato = p => LANG === "pt" ? p.nome : ((((MENU_I18N[p.nome] || {}).n || [])[IDX[LANG]]) || p.nome);
 const descPrato = p => LANG === "pt" ? p.desc : (((MENU_I18N[p.nome] || {}).d || [])[IDX[LANG]] ?? p.desc);
@@ -707,6 +721,7 @@ function setLang(l, guardar = true){
   const md = document.querySelector('meta[name="description"]'); if(md && !pratoAtual) md.content = META_DESC[l];
   ajustarNav();
 }
+btnIdioma.addEventListener("click", () => { carregarTraducoes().catch(() => {}); });   // aproveita o tempo em que a pessoa escolhe para já ir buscar as traduções
 btnIdioma.addEventListener("click", e => { e.stopPropagation(); const abrir = listaIdiomas.hidden; listaIdiomas.hidden = !abrir; btnIdioma.setAttribute("aria-expanded", String(abrir)); if(abrir){ const sel = listaIdiomas.querySelector('[aria-selected="true"]'); if(sel) sel.focus(); } });
 btnIdioma.addEventListener("keydown", e => { if(e.key === "ArrowDown" && listaIdiomas.hidden){ e.preventDefault(); btnIdioma.click(); } });
 listaIdiomas.addEventListener("keydown", e => {
@@ -717,15 +732,15 @@ listaIdiomas.addEventListener("keydown", e => {
   else if(e.key === "End"){ e.preventDefault(); lis[lis.length - 1].focus(); }
   else if(e.key === "Escape"){ fecharIdiomas(); btnIdioma.focus(); }
 });
-listaIdiomas.addEventListener("click", e => { const li = e.target.closest("li"); if(li){ setLang(li.dataset.l); fecharIdiomas(); } });
-listaIdiomas.addEventListener("keydown", e => { if((e.key === "Enter" || e.key === " ") && e.target.dataset.l){ e.preventDefault(); setLang(e.target.dataset.l); fecharIdiomas(); btnIdioma.focus(); } });
+listaIdiomas.addEventListener("click", e => { const li = e.target.closest("li"); if(li){ mudarLang(li.dataset.l); fecharIdiomas(); } });
+listaIdiomas.addEventListener("keydown", e => { if((e.key === "Enter" || e.key === " ") && e.target.dataset.l){ e.preventDefault(); mudarLang(e.target.dataset.l); fecharIdiomas(); btnIdioma.focus(); } });
 document.addEventListener("click", fecharIdiomas);
 addEventListener("keydown", e => { if(e.key === "Escape") fecharIdiomas(); });
 /* idioma inicial: o que a pessoa escolheu da última vez, ou o do telemóvel (se for um dos 5) */
 let idiomaInicial = ""; try{ idiomaInicial = localStorage.getItem("idioma") || ""; }catch(e){}
 if(!IDIOMAS[idiomaInicial]){ const n = (navigator.language || "pt").slice(0,2).toLowerCase(); idiomaInicial = IDIOMAS[n] ? n : "pt"; }
 $("#idiomaBandeira").innerHTML = BANDEIRAS.pt;
-if(idiomaInicial !== "pt") setLang(idiomaInicial, false); else { montarPriv(); atualizarPausa(); ajustarNav(); }
+if(idiomaInicial !== "pt") mudarLang(idiomaInicial, false); else { montarPriv(); atualizarPausa(); ajustarNav(); }
 rota();
 /* menu disponível sem rede: guarda uma cópia do site depois da primeira visita (precisa do ficheiro sw.js ao lado do index.html) */
 if("serviceWorker" in navigator && /^https?:$/.test(location.protocol)) addEventListener("load", () => { navigator.serviceWorker.register("/sw.js").catch(() => {}); });
