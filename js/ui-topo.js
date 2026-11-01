@@ -54,7 +54,11 @@ if(ecras.length >= 2){
   let larguraAntes = innerWidth, tAltura;
   addEventListener("resize", () => { if(innerWidth === larguraAntes) return; larguraAntes = innerWidth; clearTimeout(tAltura); tAltura = setTimeout(fixarAltura, 200); });
   addEventListener("load", fixarAltura);
-  if(document.fonts && document.fonts.ready) document.fonts.ready.then(fixarAltura);
+  /* "pronto": enquanto o topo não tem a altura certa e as letras não chegaram, o resto da página não é mostrado (ver css: html.js:not(.pronto)).
+     Assim nada "salta" depois de aparecer. Há um limite de 0,8 s para nunca atrasar a página. */
+  const liberar = () => document.documentElement.classList.add("pronto");
+  if(document.fonts && document.fonts.ready) document.fonts.ready.then(() => { fixarAltura(); liberar(); }); else liberar();
+  setTimeout(liberar, 800);
   fixarAltura();
   const ir = i => {
     i = (i + ecras.length) % ecras.length; if(i === atual) return;
