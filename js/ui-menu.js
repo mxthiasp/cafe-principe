@@ -43,7 +43,11 @@ function mostrarCategoria(cat, dir = 0){
 Object.keys(MENU).forEach(cat => {
   const b = document.createElement("button");
   b.className = "tab"; b.id = "tab-" + slug(cat); b.setAttribute("role", "tab"); b.setAttribute("aria-controls", "grelha"); b.dataset.cat = cat; b.textContent = nomeCat(cat);
-  b.onclick = () => { if(tabs.dataset.moveu === "1") return; const cats = Object.keys(MENU); mostrarCategoria(cat, Math.sign(cats.indexOf(cat) - cats.indexOf(catAtual)));  const m=$("#menu"); if(m.getBoundingClientRect().top < 0) m.scrollIntoView({behavior:SUAVE}); };
+  b.onclick = () => { if(tabs.dataset.moveu === "1") return; const cats = Object.keys(MENU); mostrarCategoria(cat, Math.sign(cats.indexOf(cat) - cats.indexOf(catAtual)));  
+    // Só reposiciona se os cartões ficaram escondidos atrás da barra fixa: assim a página não salta para o topo das categorias
+    const folga = $("#barraTabs").getBoundingClientRect().bottom + 12, topo = grelha.getBoundingClientRect().top;
+    if(topo < folga) scrollBy({top: topo - folga, behavior:SUAVE});
+  };
   tabs.appendChild(b);
 });
 
