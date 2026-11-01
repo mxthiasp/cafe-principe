@@ -51,3 +51,4 @@ O ficheiro `.github/workflows/verificar.yml` corre no GitHub a cada push (separa
 ## Notas técnicas
 - **Sem "saltos" ao carregar**: enquanto o topo não tem a altura certa e as letras não chegaram, o CSS esconde tudo menos o cabeçalho (`html.js:not(.pronto)`). O `ui-topo.js` junta a classe `pronto` quando está tudo preparado (máximo 0,8 s). Se um dia mudares o pequeno script do `index.html`, atualiza o `hash` no `_headers`.
 - Os cabeçalhos `Strict-Transport-Security` e `Cross-Origin-Opener-Policy` estão no `_headers`.
+- Para quem usa o telemóvel noutra língua (inglês, francês, alemão, espanhol), o `index.html` começa a descarregar as traduções logo no cabeçalho (`<meta name="versao">` é carimbado pelo `gerar-dados.py`).

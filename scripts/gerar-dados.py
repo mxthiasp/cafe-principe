@@ -144,13 +144,14 @@ else:
 
 # ---------- 3. versão nos ficheiros ----------
 FICH = ["css/estilo.css", "js/idiomas.js", "js/traducoes.js", "js/menu.js", "js/cafe.js"] + [f"js/{n}.js" for n in UI]
-base_html = re.sub(r"\?v=[0-9a-f]{8}", "", html)
+base_html = re.sub(r'<meta name="versao" content="[0-9a-f]{8}">', '<meta name="versao" content="00000000">', re.sub(r"\?v=[0-9a-f]{8}", "", html))
 h = hashlib.sha1()
 for f in FICH:
     h.update(ler(*f.split("/")).encode("utf8"))
 h.update(base_html.encode("utf8"))
 versao = h.hexdigest()[:8]
 novo = re.sub(r'((?:/css/estilo\.css|/js/(?:idiomas|menu|cafe|ui-base|ui-menu|ui-pedido|ui-pesquisa|ui-topo)\.js))(?:\?v=[0-9a-f]{8})?"', lambda m: f'{m.group(1)}?v={versao}"', base_html)
+novo = re.sub(r'(<meta name="versao" content=")[0-9a-f]{8}(")', lambda m: m.group(1) + versao + m.group(2), novo)
 if novo != html:
     (RAIZ / "index.html").write_text(novo, encoding="utf8")
 sw = ler("sw.js")

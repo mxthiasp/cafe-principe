@@ -3,6 +3,7 @@
    O funcionamento do site está dividido em ficheiros por tema (ui-base, ui-menu, ui-pedido, ui-pesquisa, ui-topo).
    Carregam por esta ordem e partilham as mesmas variáveis. Os dados estão em js/cafe.js, js/menu.js, js/idiomas.js e js/traducoes.js.
    ============================================================ */
+let aoEstarPronto = null;   // definido mais abaixo, no bloco do topo
 /* ============ TOPO COM VÁRIOS PRATOS ============ */
 const heroBotao = $("#heroBotao"), heroTexto = $("#heroTexto"), heroExtra = $("#heroExtra");
 const principal = {titulo:h1.getAttribute("aria-label"), texto:heroTexto.textContent, botao:heroBotao.textContent, foto:CAFE.fotoHero};
@@ -55,10 +56,10 @@ if(ecras.length >= 2){
   addEventListener("resize", () => { if(innerWidth === larguraAntes) return; larguraAntes = innerWidth; clearTimeout(tAltura); tAltura = setTimeout(fixarAltura, 200); });
   addEventListener("load", fixarAltura);
   /* "pronto": enquanto o topo não tem a altura certa e as letras não chegaram, o resto da página não é mostrado (ver css: html.js:not(.pronto)).
-     Assim nada "salta" depois de aparecer. Há um limite de 0,8 s para nunca atrasar a página. */
+     Assim nada "salta" depois de aparecer. Há um limite de 1 s para nunca atrasar a página. */
   const liberar = () => document.documentElement.classList.add("pronto");
-  if(document.fonts && document.fonts.ready) document.fonts.ready.then(() => { fixarAltura(); liberar(); }); else liberar();
-  setTimeout(liberar, 800);
+  aoEstarPronto = () => { fixarAltura(); liberar(); };   // chamado no fim deste ficheiro, quando as letras e a língua já chegaram
+  setTimeout(liberar, 1000);
   fixarAltura();
   const ir = i => {
     i = (i + ecras.length) % ecras.length; if(i === atual) return;
@@ -188,8 +189,11 @@ addEventListener("keydown", e => { if(e.key === "Escape") fecharIdiomas(); });
 let idiomaInicial = ""; try{ idiomaInicial = localStorage.getItem("idioma") || ""; }catch(e){}
 if(!IDIOMAS[idiomaInicial]){ const n = (navigator.language || "pt").slice(0,2).toLowerCase(); idiomaInicial = IDIOMAS[n] ? n : "pt"; }
 $("#idiomaBandeira").innerHTML = BANDEIRAS.pt;
-if(idiomaInicial !== "pt") mudarLang(idiomaInicial, false); else { montarPriv(); atualizarPausa(); ajustarNav(); }
+const tradInicial = idiomaInicial !== "pt" ? mudarLang(idiomaInicial, false) : null;
+if(!tradInicial){ montarPriv(); atualizarPausa(); ajustarNav(); }
 rota();
+/* o resto da página só aparece quando as letras e a tradução (se houver) já chegaram: assim o texto não muda de tamanho depois de visível */
+Promise.all([document.fonts ? document.fonts.ready : 0, tradInicial]).then(() => aoEstarPronto && aoEstarPronto(), () => aoEstarPronto && aoEstarPronto());
 /* menu disponível sem rede: guarda uma cópia do site depois da primeira visita (precisa do ficheiro sw.js ao lado do index.html) */
 if("serviceWorker" in navigator && /^https?:$/.test(location.protocol)) addEventListener("load", () => { navigator.serviceWorker.register("/sw.js").catch(() => {}); });
 atualizarJSONLD(); montarPedido();
