@@ -28,8 +28,7 @@ const MENU = {
     {nome:"Super Francesinha Especial", desc:"Pão, bife de vitela, salsicha, chouriço, fiambre, queijo, ketchup, mostarda, ovo e molho de francesinha. Com batata.", preco:13.5},
     {nome:"Francesinha Especial", desc:"Pão, bife de vitela, chouriço, fiambre, queijo, ketchup, mostarda, ovo e molho de francesinha. Com batata.", preco:12.0, destaque:true, foto:FOTOS.especial, nota:"O nosso prato estrela, feito com a nossa salsa caseira."},
     {nome:"Meia Francesinha Especial", desc:"Pão, bife de vitela, chouriço, fiambre, queijo, ketchup, mostarda, ovo e molho de francesinha. Com batata.", preco:8.75},
-    {nome:"Francesinha Especial de Frango", desc:"Pão, bife de frango, chouriço, fiambre, queijo, ketchup, mostarda, ovo e molho de francesinha. Com batata.", preco:10.5},
-    {nome:"Francesinha Especial de Peru", desc:"Pão, bife de peru, chouriço, queijo, bacon, ketchup, mostarda, ovo e molho de francesinha. Com batata.", preco:10.5},
+    {nome:"Francesinha Especial de Frango", desc:"Pão, bife de frango, chouriço, fiambre, queijo, ketchup, mostarda, ovo e molho de francesinha. Com batata.", preco:10.5, foto:FOTOS.especial},
     {nome:"Francesinha Especial de Camarão", desc:"Pão, bife de vitela, camarão, chouriço, fiambre, queijo, ketchup, mostarda, ovo e molho de francesinha. Com batata.", preco:15.5},
     {nome:"Francesinha na Chapa", desc:"Pão, bife de vitela, fiambre, queijo, ovo e molho de francesinha. Com batata.", preco:11.75},
     {nome:"Francesinha em Pão", desc:"Pão barrado com molho de francesinha, chouriço, ketchup, mostarda, queijo e fiambre.", preco:4.75, destaque:true, foto:FOTOS.francesinhaPao}
@@ -42,11 +41,8 @@ const MENU = {
   ],
   "Bifes e Panados": [
     {nome:"Bife de Frango em Pão", desc:"Pão, bife de frango, fiambre e queijo.", preco:4.0},
-    {nome:"Bife de Peru em Pão", desc:"Pão, bife de peru, fiambre e queijo.", preco:4.5},
     {nome:"Panado no Pão", desc:"Pão, panado de porco, fiambre e queijo.", preco:2.75},
-    {nome:"Panado em Prato", desc:"Panado de porco, fiambre, queijo e ovo. Com batata.", preco:10.0},
-    {nome:"Bife de Frango c/ Salada e Batata", desc:"Bife de frango, alface, tomate, fiambre, queijo, cenoura e milho.", preco:9.25},
-    {nome:"Bife de Peru c/ Salada e Batata", desc:"Bife de peru, alface, tomate, fiambre, queijo, cenoura e milho.", preco:9.75}
+    {nome:"Panado em Prato", desc:"Panado de porco, fiambre, queijo e ovo. Com batata.", preco:10.0}
   ],
   "Cachorros": [
     {nome:"Cachorro em Pão", desc:"Pão barrado com molho de francesinha, salsicha, fiambre, queijo, ketchup e mostarda.", preco:4.75},
@@ -75,7 +71,8 @@ const MENU = {
     {nome:"Omelete de Camarão", desc:"Ovo, camarão, alface, tomate, cenoura, milho, queijo e fiambre. Com batata.", preco:14.0}
   ],
   "Saladas": [
-    {nome:"Salada Mista", desc:"Alface, tomate, cenoura, milho, fiambre e queijo.", preco:7.0}
+    {nome:"Salada Mista", desc:"Alface, tomate, cenoura, milho, fiambre e queijo.", preco:7.0},
+    {nome:"Bife de Frango c/ Salada e Batata", desc:"Bife de frango, alface, tomate, fiambre, queijo, cenoura e milho.", preco:9.25}
   ],
   "Picadinhos": [
     {nome:"Picadinho de Vitela", desc:"Carne de vitela, salsicha, chouriço, pickles, azeitonas e molho de francesinha. Com batata.", preco:12.0}

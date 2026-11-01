@@ -21,13 +21,7 @@
   "nome": "Francesinha Especial de Frango",
   "desc": "Pão, bife de frango, chouriço, fiambre, queijo, ketchup, mostarda, ovo e molho de francesinha. Com batata.",
   "preco": 10.5,
-  "img": "/og-image.jpg"
- },
- "francesinha-especial-de-peru": {
-  "nome": "Francesinha Especial de Peru",
-  "desc": "Pão, bife de peru, chouriço, queijo, bacon, ketchup, mostarda, ovo e molho de francesinha. Com batata.",
-  "preco": 10.5,
-  "img": "/og-image.jpg"
+  "img": "/img/og/francesinha-especial-de-frango.jpg"
  },
  "francesinha-especial-de-camarao": {
   "nome": "Francesinha Especial de Camarão",
@@ -77,12 +71,6 @@
   "preco": 4,
   "img": "/og-image.jpg"
  },
- "bife-de-peru-em-pao": {
-  "nome": "Bife de Peru em Pão",
-  "desc": "Pão, bife de peru, fiambre e queijo.",
-  "preco": 4.5,
-  "img": "/og-image.jpg"
- },
  "panado-no-pao": {
   "nome": "Panado no Pão",
   "desc": "Pão, panado de porco, fiambre e queijo.",
@@ -93,18 +81,6 @@
   "nome": "Panado em Prato",
   "desc": "Panado de porco, fiambre, queijo e ovo. Com batata.",
   "preco": 10,
-  "img": "/og-image.jpg"
- },
- "bife-de-frango-c-salada-e-batata": {
-  "nome": "Bife de Frango c/ Salada e Batata",
-  "desc": "Bife de frango, alface, tomate, fiambre, queijo, cenoura e milho.",
-  "preco": 9.25,
-  "img": "/og-image.jpg"
- },
- "bife-de-peru-c-salada-e-batata": {
-  "nome": "Bife de Peru c/ Salada e Batata",
-  "desc": "Bife de peru, alface, tomate, fiambre, queijo, cenoura e milho.",
-  "preco": 9.75,
   "img": "/og-image.jpg"
  },
  "cachorro-em-pao": {
@@ -207,6 +183,12 @@
   "nome": "Salada Mista",
   "desc": "Alface, tomate, cenoura, milho, fiambre e queijo.",
   "preco": 7,
+  "img": "/og-image.jpg"
+ },
+ "bife-de-frango-c-salada-e-batata": {
+  "nome": "Bife de Frango c/ Salada e Batata",
+  "desc": "Bife de frango, alface, tomate, fiambre, queijo, cenoura e milho.",
+  "preco": 9.25,
   "img": "/og-image.jpg"
  },
  "picadinho-de-vitela": {
