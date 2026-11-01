@@ -53,12 +53,6 @@
   "preco": 6.5,
   "img": "/og-image.jpg"
  },
- "prego-em-baguete-c-ovo": {
-  "nome": "Prego em Baguete c/ Ovo",
-  "desc": "Baguete, bife de vitela, fiambre, queijo e ovo.",
-  "preco": 9.5,
-  "img": "/og-image.jpg"
- },
  "prego-em-prato": {
   "nome": "Prego em Prato",
   "desc": "Bife de vitela, fiambre, queijo, alface, tomate e ovo. Com batata.",
@@ -117,6 +111,18 @@
   "nome": "Hambúrguer de Picanha em Pão",
   "desc": "Pão, hambúrguer, fiambre, queijo cheddar, alface, tomate, bacon e molho Big Burger. Com batata.",
   "preco": 10.5,
+  "img": "/og-image.jpg"
+ },
+ "prego-em-baguete-c-ovo": {
+  "nome": "Prego em Baguete c/ Ovo",
+  "desc": "Baguete, bife de vitela, fiambre, queijo e ovo.",
+  "preco": 9.5,
+  "img": "/og-image.jpg"
+ },
+ "baguete-de-atum": {
+  "nome": "Baguete de Atum",
+  "desc": "Baguete e atum.",
+  "preco": 0,
   "img": "/og-image.jpg"
  },
  "baguete-americana": {
@@ -183,6 +189,12 @@
   "nome": "Salada Mista",
   "desc": "Alface, tomate, cenoura, milho, fiambre e queijo.",
   "preco": 7,
+  "img": "/og-image.jpg"
+ },
+ "salada-de-atum": {
+  "nome": "Salada de Atum",
+  "desc": "Alface, tomate, cenoura, milho e atum.",
+  "preco": 0,
   "img": "/og-image.jpg"
  },
  "bife-de-frango-c-salada-e-batata": {

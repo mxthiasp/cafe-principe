@@ -36,7 +36,6 @@ const MENU = {
   "Pregos": [
     {nome:"Prego em Pão", desc:"Pão, bife de vitela, fiambre e queijo.", preco:5.75},
     {nome:"Prego em Pão c/ Ovo", desc:"Pão, bife de vitela, fiambre, queijo e ovo.", preco:6.5},
-    {nome:"Prego em Baguete c/ Ovo", desc:"Baguete, bife de vitela, fiambre, queijo e ovo.", preco:9.5},
     {nome:"Prego em Prato", desc:"Bife de vitela, fiambre, queijo, alface, tomate e ovo. Com batata.", preco:12.5, destaque:true}
   ],
   "Bifes e Panados": [
@@ -55,6 +54,8 @@ const MENU = {
     {nome:"Hambúrguer de Picanha em Pão", desc:"Pão, hambúrguer, fiambre, queijo cheddar, alface, tomate, bacon e molho Big Burger. Com batata.", preco:10.5}
   ],
   "Baguetes": [
+    {nome:"Prego em Baguete c/ Ovo", desc:"Baguete, bife de vitela, fiambre, queijo e ovo.", preco:9.5},
+    {nome:"Baguete de Atum", desc:"Baguete e atum.", preco:0},
     {nome:"Baguete Americana", desc:"Baguete, maionese, alface, tomate, fiambre, queijo e ovo.", preco:4.75}
   ],
   "Sandes e Tostas": [
@@ -72,6 +73,7 @@ const MENU = {
   ],
   "Saladas": [
     {nome:"Salada Mista", desc:"Alface, tomate, cenoura, milho, fiambre e queijo.", preco:7.0},
+    {nome:"Salada de Atum", desc:"Alface, tomate, cenoura, milho e atum.", preco:0},
     {nome:"Bife de Frango c/ Salada e Batata", desc:"Bife de frango, alface, tomate, fiambre, queijo, cenoura e milho.", preco:9.25}
   ],
   "Picadinhos": [
