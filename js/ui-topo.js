@@ -11,7 +11,7 @@ let topoAtualizar = () => { escreverTitulo(T(principal.titulo)); heroTexto.textC
 const outros = (CAFE.slides || []).map(sl => {
   for(const [cat, itens] of Object.entries(MENU)){
     const p = itens.find(x => x.nome === sl.prato);
-    if(p) return {titulo:sl.frase || p.nome, frase:sl.frase, texto:p.desc, nomePrato:p.nome, preco:p.preco, botao:"Ver prato", cat, prato:p.nome, foto:sl.foto};
+    if(p) return {titulo:sl.frase || p.nome, frase:sl.frase, texto:p.desc, nomePrato:p.nome, preco:p.preco, botao:principal.botao, cat:"", prato:"", foto:sl.foto};
   }
   return null;
 }).filter(Boolean);

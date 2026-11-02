@@ -608,3 +608,6 @@ html.js:not(.pronto) body > :not(header):not(script):not(link):not(style){visibi
 .btn--xl{box-shadow:none}
 .hero-entrada>.btn{animation:entra .4s cubic-bezier(.2,.8,.2,1) .1s backwards}
 .btn::after{display:none}
+
+/* sem botão de pausa na foto do topo (em nenhum ecrã) */
+.pausa{display:none!important}
