@@ -602,3 +602,9 @@ html.js:not(.pronto) body > :not(header):not(script):not(link):not(style){visibi
 /* os cartões entram vindos do lado: cortar o que sai do ecrã para o telemóvel não alargar a página (e fazer zoom) durante a animação */
 #menu{overflow-x:clip}
 #grelha{overflow-x:clip;overflow-clip-margin:0}
+
+/* botões e separadores com cantos retos e sem brilho (sem sombra verde nem pulsar) */
+.btn,.btn--xl,.btn-sec,.tab,.juntar,.cart-btn,.idioma-btn,.pesquisa input,.chip,.pedido-flutuante{border-radius:4px}
+.btn--xl{box-shadow:none}
+.hero-entrada>.btn{animation:entra .4s cubic-bezier(.2,.8,.2,1) .1s backwards}
+.btn::after{display:none}
