@@ -591,3 +591,10 @@ html.js:not(.pronto) body > :not(header):not(script):not(link):not(style){visibi
   #grelha .card-wrap:nth-child(even) .card .preco-chip{left:auto;right:.6rem}
   #grelha .card:not(.card--destaque) .preco-chip{font-size:1.15rem}
 }
+
+/* telemóvel: sem botão de pausa na foto do topo (toca-se na foto ou desliza-se para mudar de prato) */
+@media (max-width:820px){.pausa{display:none}}
+
+/* a entrada anima o conjunto (cartão + botão "+") para não ficarem desencontrados enquanto os cartões deslizam */
+.card-wrap:has(>.card.novo){animation:entraLado .45s cubic-bezier(.2,.8,.2,1) backwards;animation-delay:calc(var(--i)*60ms)}
+.card-wrap>.card.novo{animation:none}

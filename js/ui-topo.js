@@ -69,10 +69,9 @@ if(ecras.length >= 2){
     trocarTexto(ecras[i]);
   };
   pontos.addEventListener("click", e => { const b = e.target.closest(".hp"); if(b) ir(+b.dataset.i); });
-  /* no computador, clicar na foto passa para o prato seguinte (no telemóvel há deslizar com o dedo) */
-  const comRato = matchMedia("(hover:hover) and (pointer:fine) and (min-width:821px)");
+  /* clicar (ou tocar) na foto passa para o prato seguinte; no telemóvel também se pode deslizar com o dedo */
   heroEl.addEventListener("click", e => {
-    if(!comRato.matches || e.detail > 1) return;                         // só no computador; duplo clique (selecionar texto) não conta
+    if(e.detail > 1) return;                                              // duplo clique (selecionar texto) não conta
     if(e.target.closest("a, button, .pontos, h1, p, small, .estado")) return;   // botões, ligações e texto têm o seu próprio comportamento
     if(String(getSelection()).trim()) return;
     ir(atual + 1);
