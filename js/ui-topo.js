@@ -170,7 +170,7 @@ function setLang(l, guardar = true){
   traduzirDOM(); montarPriv(); montarPratoDia(); montarAviso(); atualizarPausa(); rotularTabs(); montarFaixa(); montarSobre(); montarAvaliacoes(); montarFaq(); 
   if(consulta) pesquisar(consulta); else mostrarCategoria(catAtual || "Francesinhas");
   if(pratoAtual){ montarPrato(); }
-  atualizarEstado(); atualizarJSONLD(); $("#horarioTxt").innerHTML = horarioTexto(); $("#rodHorario").innerHTML = horarioTexto();
+  atualizarEstado(); atualizarJSONLD(); $("#rodHorario").innerHTML = horarioTexto();
   topoAtualizar();
   $("#idiomaAtual").textContent = l.toUpperCase(); $("#idiomaBandeira").innerHTML = BANDEIRAS[l];
   listaIdiomas.querySelectorAll("li").forEach(li => li.setAttribute("aria-selected", li.dataset.l === l));

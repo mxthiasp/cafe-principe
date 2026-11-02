@@ -70,9 +70,8 @@ $("#gmaps").href = "https://www.google.com/maps/dir/?api=1&destination=" + _dest
 $("#waze").href = "https://waze.com/ul?navigate=yes&q=" + _destino;
 $("#apple").href = "https://maps.apple.com/?daddr=" + _destino + "&dirflg=d";
 const _apple = /iPhone|iPad|iPod/.test(navigator.userAgent) || /Mac/.test(navigator.platform || "") || (navigator.maxTouchPoints > 1 && /Mac/.test(navigator.userAgent));
-if(_apple){ $("#apple").hidden = false; $("#gmaps").classList.remove("btn-sec--cta"); } else { $("#gmaps").classList.add("btn-sec--cta"); }
+if(_apple) $("#apple").hidden = false;
 if(CAFE.fotoFachada){ const f = $("#chegarFoto"); f.innerHTML = `<img src="${CAFE.fotoFachada}" alt="${T("Entrada do Café Príncipe")}" loading="lazy" decoding="async">`; f.hidden = false; $("#chegar").classList.add("com-foto"); }
-$("#horarioTxt").innerHTML = horarioTexto();
 if(CAFE.tempoPreparacao) $("#tempoPrep").textContent = CAFE.tempoPreparacao;
 if(CAFE.fotoHero){ const h=document.querySelector(".hero"); h.classList.add("hero--foto"); h.style.setProperty("--hero-foto",`url("${CAFE.fotoHero}")`); }   // foto como fundo do hero
 $("#rodHorario").innerHTML = horarioTexto(); $("#rodMorada").textContent = CAFE.morada;
@@ -87,19 +86,10 @@ addEventListener("scroll", () => {
 function montarSobre(){
   const c = CAFE.sobreNos;
   $("#sobreTitulo").textContent = T(c.titulo);
-  const texto = c.texto.map(t => `<p>${T(t)}</p>`).join("");
-  const factos = `<div class="factos">
-    <div class="facto"><strong>${T("Salsa caseira")}</strong><span>${T("A salsa das francesinhas é feita por nós.")}</span></div>
-    <div class="facto"><strong>${T("No café ou para levar")}</strong><span>${T("Come cá, ou encomenda e levanta.")}</span></div>
-    <div class="facto"><strong>${T("Reservas de mesa")}</strong><span>${T("Reserva por telefone.")}</span></div></div>`;
-  const corpo = $("#sobreCorpo");
-  if(c.foto){
-    corpo.className = "sobre sobre--foto";
-    corpo.innerHTML = `<div class="foto"><img src="${c.foto}" alt="Café Príncipe" loading="lazy" decoding="async"></div><div>${texto}${factos}</div>`;
-  } else {
-    corpo.className = "sobre";
-    corpo.innerHTML = `<div>${texto}</div>${factos}`;
-  }
+  $("#sobreCorpo").innerHTML = c.texto.map(t => `<p>${T(t)}</p>`).join("");
+  const f = $("#sobreFoto"); f.hidden = !c.foto;
+  f.innerHTML = c.foto ? `<img src="${c.foto}" alt="Café Príncipe" loading="lazy" decoding="async">` : "";
+  $("#sobreEd").classList.toggle("com-foto", !!c.foto);
 }
 function montarAvaliacoes(){
   const a = CAFE.avaliacoes, sec = $("#avaliacoes");
@@ -115,8 +105,8 @@ function montarAvaliacoes(){
 }
 function montarFaq(){
   const tel = n => `<a href="tel:${n.replace(/\s/g,"")}">${n}</a>`, ambos = tel(TELEFONES.encomendas) + " / " + tel(TELEFONES.reservas);
-  $("#faqLista").innerHTML = FAQ.map(([q,r]) => `<details><summary>${T(q)}</summary><p>${
-    T(r).replace("{tel_reservas}", ambos).replace("{tel}", ambos).replace("{feriado}", hh(FERIADO.abreApartir)).replace("{morada}", CAFE.morada)}</p></details>`).join("");
+  $("#faqLista").innerHTML = FAQ.map(([q,r]) => `<div><h3>${T(q)}</h3><p>${
+    T(r).replace("{tel_reservas}", ambos).replace("{tel}", ambos).replace("{feriado}", hh(FERIADO.abreApartir)).replace("{morada}", CAFE.morada)}</p></div>`).join("");
 }
 montarSobre(); montarAvaliacoes(); montarFaq();
 

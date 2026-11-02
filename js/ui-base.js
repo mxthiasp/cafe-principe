@@ -97,10 +97,25 @@ function horarioTexto(){
   });
   return grupos.map(g => `${D[g.ini]}${g.ini!==g.fim?L.a+D[g.fim]:""}: ${g.txt}`).join("<br>") + "<br>" + fmt(L.fer, {h:`${hh(FERIADO.abreApartir)} – ${hh(FERIADO.fechaAs)}`}) + "<br>" + L.fec;
 }
+/* horário em tabela (secção "Visita-nos"): o dia de hoje fica destacado */
+function montarHorario(){
+  const tab = $("#horarioTab"); if(!tab) return;
+  const L = L_TXT[LANG], D = DIAS[LANG], hoje = agoraLisboa().getDay(), grupos = [];
+  [1,2,3,4,5,6,0].forEach(dia => {
+    const txt = (HORARIO[dia]||[]).map(([a,b]) => `${hh(a)}–${hh(b)}`).join(" · ") || L.fechado, g = grupos[grupos.length-1];
+    if(g && g.txt === txt){ g.fim = dia; g.dias.push(dia); } else grupos.push({ini:dia, fim:dia, txt, dias:[dia]});
+  });
+  const fer = fmt(L.fer, {h:`${hh(FERIADO.abreApartir)}–${hh(FERIADO.fechaAs)}`}), i = fer.indexOf(":");
+  tab.innerHTML = grupos.map(g => `<div${g.dias.includes(hoje) ? ' class="hoje"' : ""}><dt>${D[g.ini]}${g.ini !== g.fim ? L.a + D[g.fim] : ""}</dt><b></b><dd>${g.txt}</dd></div>`).join("")
+    + `<div><dt>${fer.slice(0,i)}</dt><b></b><dd>${fer.slice(i+1).trim()}</dd></div>`;
+  $("#horarioFecho").textContent = L.fec + ".";
+}
 function atualizarEstado(){
   const e = estadoAbertura();
   $("#estado").className = "estado" + (e.aberto ? " aberto" : "");
   $("#estado").innerHTML = `<i class="ponto"></i>${e.texto}`;
+  const v = $("#visitaEstado"); if(v){ v.className = "visita-estado" + (e.aberto ? " aberto" : ""); v.innerHTML = `<i></i>${e.texto}`; }
+  montarHorario();
   /* com o café fechado, a barra de ligar avisa quando abre */
   const barra = $(".barra-ligar"), aviso = barra.querySelector("small") || barra.appendChild(document.createElement("small"));
   aviso.textContent = e.aberto ? "" : e.texto;

@@ -63,12 +63,9 @@ const DIAS_FECHADOS = ["12-25", "01-01"];                       // dias em que o
 /* perguntas frequentes (só respostas confirmadas; os {números} entram sozinhos) */
 const FAQ = [
   ["Fazem entregas ao domicílio?", "Não fazemos entregas. As encomendas são para levantar no café."],
-  ["Como faço uma encomenda?", "Por telefone: liga para {tel}, diz-nos o que queres e levanta no café."],
-  ["Aceitam reservas de mesa?", "Sim. Reservamos mesa por telefone: liga para {tel_reservas} e diz-nos o dia, a hora e quantas pessoas são."],
-  ["Qual é o horário? E nos feriados?", "O nosso horário está na secção Contactos. Nos feriados, só abrimos a partir das {feriado}. Fechamos a 25 de dezembro e a 1 de janeiro."],
-  ["Onde fica o café?", "{morada}"],
   ["Que formas de pagamento aceitam?", "Aceitamos dinheiro, Multibanco e MB WAY."],
-  ["Há estacionamento?", "Sim, há onde estacionar."]
+  ["Há estacionamento?", "Sim, há onde estacionar."],
+  ["Tenho uma alergia ou intolerância.", "Fala connosco por telefone antes de encomendar."]
 ];
 
 /* ordem dos "Mais pedidos" no início do site */

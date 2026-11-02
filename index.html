@@ -31,8 +31,8 @@
 <link rel="preload" as="font" type="font/woff2" href="/fonts/barlow-500-latin.woff2" crossorigin>
 <link rel="preload" as="font" type="font/woff2" href="/fonts/barlow-600-latin.woff2" crossorigin>
 <link rel="preload" as="font" type="font/woff2" href="/fonts/barlow-condensed-600-latin.woff2" crossorigin>
-<link rel="stylesheet" href="/css/estilo.css?v=d2e9535d">
-<meta name="versao" content="d2e9535d">
+<link rel="stylesheet" href="/css/estilo.css?v=c8e4fbe5">
+<meta name="versao" content="c8e4fbe5">
 <script>document.documentElement.classList.add("js");setTimeout(function(){document.documentElement.classList.add("pronto")},1500);try{var l=(localStorage.getItem("idioma")||navigator.language||"pt").slice(0,2).toLowerCase();if(/^(en|fr|de|es)$/.test(l)){var k=document.createElement("link");k.rel="preload";k.as="script";k.href="/js/traducoes.js?v="+document.querySelector("meta[name=versao]").content;document.head.appendChild(k)}}catch(e){}</script>
 </head>
 <body>
@@ -73,8 +73,7 @@
       <li><a href="#menu">Menu</a></li>
       <li><a href="#salsa">A nossa Salsa</a></li>
       <li><a href="#sobre">Sobre nós</a></li>
-      <li><a href="#reservas">Reservas</a></li>
-      <li><a href="#contactos">Contactos</a></li>
+      <li><a href="#contactos">Visita-nos</a></li>
     </ul></nav>
     <div class="nav-dir">
       <div class="idioma" id="idioma">
@@ -147,8 +146,15 @@
 
 <section id="sobre">
   <div class="wrap">
-    <h2 id="sobreTitulo">Sobre nós</h2>
-    <div class="sobre" id="sobreCorpo"></div>
+    <div class="sobre-ed" id="sobreEd">
+      <div class="sobre-foto" id="sobreFoto" hidden></div>
+      <div class="sobre-txt">
+        <p class="eyebrow" id="sobreTitulo">Sobre nós</p>
+        <h2>Francesinhas feitas em Brito.</h2>
+        <div id="sobreCorpo"></div>
+        <p class="sobre-dest">A salsa das francesinhas é feita por nós.</p>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -160,41 +166,39 @@
   </div>
 </section>
 
+<section id="contactos">
+  <div class="wrap visita">
+    <h2>Visita-nos</h2>
+    <div class="visita-grelha">
+      <div class="visita-hor">
+        <p class="visita-estado" id="visitaEstado"></p>
+        <dl class="hor-tab" id="horarioTab"></dl>
+        <p class="peq" id="horarioFecho"></p>
+      </div>
+      <div class="visita-onde">
+        <div class="chegar" id="chegar"><figure class="chegar-foto" id="chegarFoto" hidden></figure></div>
+        <p class="lab">Morada</p>
+        <p class="visita-morada" id="moradaTxt"></p>
+        <p class="mapas-logos">
+          <a id="gmaps" class="mapa-logo" target="_blank" rel="noopener" aria-label="Abrir no Google Maps"><svg viewBox="0 0 48 48" aria-hidden="true" focusable="false"><defs><clipPath id="gpin"><path d="M24 7c-6 0-11 4.7-11 10.7 0 7.8 11 21.3 11 21.3s11-13.500 11-21.300C35 11.700 30 7 24 7z"/></clipPath></defs><rect width="48" height="48" rx="11" fill="#fff"/><g clip-path="url(#gpin)"><rect x="12" y="6" width="23" height="34" fill="#EA4335"/><polygon points="12,6 21,6 12,28" fill="#4285F4"/><polygon points="35,14 35,30 26,40 26,22" fill="#FBBC04"/><polygon points="12,28 26,40 20,40 12,30" fill="#34A853"/></g><circle cx="24" cy="17.500" r="4" fill="#fff"/></svg></a>
+          <a id="waze" class="mapa-logo" target="_blank" rel="noopener" aria-label="Abrir no Waze"><svg viewBox="0 0 48 48" aria-hidden="true" focusable="false"><rect width="48" height="48" rx="11" fill="#33CCFF"/><path d="M24 9.500c-8.300 0-14.500 5.700-14.500 12.800 0 3.300 1.400 6.200 3.800 8.400l-.6 5 5.100-2.600c1.900.6 3.900.9 6.200.9 8.300 0 14.500-5.700 14.500-12.800S32.300 9.500 24 9.500z" fill="#fff" stroke="#1c3a4a" stroke-width="1.800" stroke-linejoin="round"/><circle cx="19.500" cy="20" r="1.900" fill="#1c3a4a"/><circle cx="28.500" cy="20" r="1.900" fill="#1c3a4a"/><path d="M18.500 25c2.800 3 8.200 3 11 0" fill="none" stroke="#1c3a4a" stroke-width="1.800" stroke-linecap="round"/><circle cx="17" cy="35.500" r="2.800" fill="#1c3a4a"/><circle cx="31" cy="35.500" r="2.800" fill="#1c3a4a"/></svg></a>
+          <a id="apple" class="mapa-logo" target="_blank" rel="noopener" aria-label="Abrir no Apple Maps" hidden><svg viewBox="0 0 48 48" aria-hidden="true" focusable="false"><defs><clipPath id="amap"><rect width="48" height="48" rx="11"/></clipPath></defs><g clip-path="url(#amap)"><rect width="48" height="48" fill="#f1ede3"/><polygon points="0,0 22,0 0,24" fill="#bfe3a4"/><polygon points="48,26 48,48 24,48" fill="#a9d8f0"/><polygon points="9,48 20,48 48,16 48,5" fill="#fff"/><polygon points="9,48 12,48 48,10 48,6" fill="#f7c948" opacity=".9"/><polygon points="23.500,11 32,34 24,29.500 16,34" fill="#0A84FF" stroke="#fff" stroke-width="2" stroke-linejoin="round"/></g></svg></a>
+        </p>
+        <p class="lab">Encomendas e reservas de mesa</p>
+        <p class="visita-tel"><a data-tel="encomendas"></a><a data-tel="reservas"></a></p>
+        <p class="peq">Reservamos mesa por telefone. Diz-nos o dia, a hora e quantas pessoas são.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
 <section id="faq">
-  <div class="wrap">
-    <h2>Perguntas frequentes</h2>
+  <div class="wrap faq-ed">
+    <h2>Antes de vires</h2>
     <div class="faq" id="faqLista"></div>
   </div>
 </section>
 
-<section id="reservas">
-  <div class="wrap reservas">
-    <div>
-      <h2>Reservas de mesa</h2>
-      <p>Queres comer no café? Reservamos mesa por telefone. Liga e diz-nos o dia, a hora e quantas pessoas são.</p>
-      <p class="nota"><a data-tel="encomendas"></a> / <a data-tel="reservas"></a></p>
-    </div>
-    <a class="btn btn--xl" data-tel="reservas" data-rotulo="Ligar para reservar"></a>
-  </div>
-</section>
-
-<section id="contactos">
-  <div class="wrap">
-    <h2>Contactos</h2>
-    <div class="contactos">
-      <div class="chegar" id="chegar">
-        <figure class="chegar-foto" id="chegarFoto" hidden></figure>
-        <article class="chegar-txt">
-          <h3>Como chegar</h3>
-          <p id="moradaTxt"></p>
-          <p class="mapas"><a id="apple" class="btn-sec btn-sec--cta" target="_blank" rel="noopener" hidden>Abrir no Apple Maps</a><a id="gmaps" class="btn-sec" target="_blank" rel="noopener">Abrir no Google Maps</a><a id="waze" class="btn-sec" target="_blank" rel="noopener">Abrir no Waze</a></p>
-        </article>
-      </div>
-      <div><h3>Horário</h3><p id="horarioTxt"></p></div>
-      <div><h3>Encomendas para levantar</h3><p>Por telefone: <a data-tel="encomendas"></a> / <a data-tel="reservas"></a></p></div>
-    </div>
-  </div>
-</section>
 </div>
 <div id="paginaPrato" class="pagina-prato" tabindex="-1"></div>
 </main>
@@ -219,13 +223,13 @@
 
 <a class="barra-ligar" data-tel="encomendas" data-rotulo="Ligar para encomendar"></a>
 
-<script defer src="/js/idiomas.js?v=d2e9535d"></script>
-<script defer src="/js/menu.js?v=d2e9535d"></script>
-<script defer src="/js/cafe.js?v=d2e9535d"></script>
-<script defer src="/js/ui-base.js?v=d2e9535d"></script>
-<script defer src="/js/ui-menu.js?v=d2e9535d"></script>
-<script defer src="/js/ui-pedido.js?v=d2e9535d"></script>
-<script defer src="/js/ui-pesquisa.js?v=d2e9535d"></script>
-<script defer src="/js/ui-topo.js?v=d2e9535d"></script>
+<script defer src="/js/idiomas.js?v=c8e4fbe5"></script>
+<script defer src="/js/menu.js?v=c8e4fbe5"></script>
+<script defer src="/js/cafe.js?v=c8e4fbe5"></script>
+<script defer src="/js/ui-base.js?v=c8e4fbe5"></script>
+<script defer src="/js/ui-menu.js?v=c8e4fbe5"></script>
+<script defer src="/js/ui-pedido.js?v=c8e4fbe5"></script>
+<script defer src="/js/ui-pesquisa.js?v=c8e4fbe5"></script>
+<script defer src="/js/ui-topo.js?v=c8e4fbe5"></script>
 </body>
 </html>
