@@ -16,9 +16,7 @@ const outros = (CAFE.slides || []).map(sl => {
   return null;
 }).filter(Boolean);
 const ecras = [principal, ...outros].filter(x => x.foto);
-/* no telemóvel o topo fica quieto (só a foto principal, sem rotação nem barra de níveis): mais limpo, e os outros pratos estão logo abaixo em "Os mais pedidos" */
-const topoQuieto = matchMedia("(max-width:820px)").matches;
-if(ecras.length >= 2 && !topoQuieto){
+if(ecras.length >= 2){
   heroEl.classList.add("hero--slides");
   heroEl.setAttribute("aria-roledescription", "carrossel");
   const camada = document.createElement("div"); camada.className = "hero-slides";

@@ -278,6 +278,8 @@ header.compacto .logo svg{height:clamp(32px,4.5vw,40px)}
 .hero-extra:empty{display:none}
 .hero-prato{display:block;font-family:var(--destaque);font-weight:700;font-size:1.5rem;text-transform:uppercase;letter-spacing:.05em;color:var(--creme);margin-bottom:.15rem}
 .hero-pontos{position:absolute;z-index:3;left:calc((100% - min(1120px,92%))/2);bottom:1.2rem;display:flex;gap:.5rem}
+.hero-pontos{opacity:0;pointer-events:none}   /* sem barra à vista: só marca o tempo de cada prato e aparece quando se navega com o teclado */
+.hero-pontos:focus-within{opacity:1;pointer-events:auto}
 .hp{background:none;border:0;padding:.8rem 0;cursor:pointer}
 .hp i{display:block;position:relative;overflow:hidden;width:46px;height:5px;border-radius:3px;background:rgba(244,243,234,.35)}
 .hp i::after{content:"";position:absolute;inset:0;background:var(--lima);transform:scaleX(0);transform-origin:left}
@@ -513,13 +515,13 @@ a.prato-dia{color:inherit;text-decoration:none;cursor:pointer}
 @media (max-width:820px){
   /* a foto fica numa faixa em cima, no tamanho em que foi tirada (nítida, sem ampliar), e esbate-se no fundo escuro onde está o texto.
      Para a faixa maior/menor, muda --foto-h; para o enquadramento, muda background-position em .hero-slide */
-  .hero--foto{--foto-h:clamp(300px,46svh,420px);min-height:calc(100svh - 150px);padding-top:0;padding-bottom:1.6rem;align-items:flex-end}
-  /* tudo quieto no telemóvel: sem zoom lento, sem barra de níveis, sem botão de pausa (já não há nada a pausar) */
-  .hero--foto::before{animation:none}
-  .hero-pontos,.pausa{display:none}
-  .faixa{overflow-x:auto;scrollbar-width:none}
-  .faixa::-webkit-scrollbar{display:none}
-  .faixa-pista{animation:none}
+  .hero--foto{--foto-h:clamp(300px,46svh,420px);min-height:calc(100svh - 190px);padding-top:0;padding-bottom:1.6rem;align-items:flex-end}
+  /* botão de pausa pequeno, no canto de cima da foto */
+  .pausa{top:.8rem;bottom:auto;right:.9rem;width:40px;height:40px;background:rgba(13,13,13,.5)}
+  /* a faixa das categorias não se junta à barra verde "Ligar para encomendar": fica escura, fina, só com letras */
+  .faixa{background:var(--carvao-2,#161616);color:var(--lima);border-top:1px solid rgba(244,243,234,.1)}
+  .faixa span{font-size:.85rem;padding:.55rem 0 .55rem 2rem}
+  .faixa span::after{background:var(--lima);margin-left:2rem}
   .hero-entrada>.nota{display:none}   /* o telefone já está na barra verde de baixo */
   .hero-entrada .btn{width:100%;justify-content:center}
   .hero-slides{inset:0 0 auto 0;height:var(--foto-h)}
