@@ -31,8 +31,8 @@
 <link rel="preload" as="font" type="font/woff2" href="/fonts/barlow-500-latin.woff2" crossorigin>
 <link rel="preload" as="font" type="font/woff2" href="/fonts/barlow-600-latin.woff2" crossorigin>
 <link rel="preload" as="font" type="font/woff2" href="/fonts/barlow-condensed-600-latin.woff2" crossorigin>
-<link rel="stylesheet" href="/css/estilo.css?v=7081f694">
-<meta name="versao" content="7081f694">
+<link rel="stylesheet" href="/css/estilo.css?v=d2e9535d">
+<meta name="versao" content="d2e9535d">
 <script>document.documentElement.classList.add("js");setTimeout(function(){document.documentElement.classList.add("pronto")},1500);try{var l=(localStorage.getItem("idioma")||navigator.language||"pt").slice(0,2).toLowerCase();if(/^(en|fr|de|es)$/.test(l)){var k=document.createElement("link");k.rel="preload";k.as="script";k.href="/js/traducoes.js?v="+document.querySelector("meta[name=versao]").content;document.head.appendChild(k)}}catch(e){}</script>
 </head>
 <body>
@@ -45,21 +45,6 @@
 
 <div id="menuImpressao" aria-hidden="true"></div>
 
-<!-- O meu pedido: lista para preparar a chamada (não é uma encomenda) -->
-<dialog id="dlgPedido" aria-labelledby="pedidoTitulo">
-  <button type="button" class="dlg-fechar" id="fecharPedido" aria-label="Fechar">×</button>
-  <h2 id="pedidoTitulo">O meu pedido</h2>
-  <p class="pedido-aviso">Esta lista é só para te ajudar a preparar a chamada. A encomenda faz-se por telefone.</p>
-  <ul class="pedido-lista" id="pedidoLista"></ul>
-  <p class="pedido-vazio" id="pedidoVazio">A tua lista está vazia. Junta pratos a partir do menu.</p>
-  <p class="pedido-total" id="pedidoTotal"></p>
-  <div class="pedido-acoes" id="pedidoAcoes">
-    <a class="btn" id="pedidoLigar" data-tel="encomendas" data-rotulo="Ligar para encomendar"></a>
-    <button type="button" class="btn-sec" id="pedidoCopiar">Copiar lista</button>
-    <button type="button" class="btn-sec" id="pedidoLimpar">Limpar lista</button>
-  </div>
-  <p class="sr-so" id="pedidoLive" role="status" aria-live="polite"></p>
-</dialog>
 
 <!-- Logótipo vetorial do Café Príncipe (definido uma vez, usado com <use>) -->
 <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
@@ -234,14 +219,13 @@
 
 <a class="barra-ligar" data-tel="encomendas" data-rotulo="Ligar para encomendar"></a>
 
-<button type="button" class="pedido-flutuante" id="pedidoBtn" hidden aria-haspopup="dialog"><span class="pedido-ic" aria-hidden="true">🧾</span><span id="pedidoBtnTxt">O meu pedido</span> <b id="pedidoBtnN">0</b></button>
-<script defer src="/js/idiomas.js?v=7081f694"></script>
-<script defer src="/js/menu.js?v=7081f694"></script>
-<script defer src="/js/cafe.js?v=7081f694"></script>
-<script defer src="/js/ui-base.js?v=7081f694"></script>
-<script defer src="/js/ui-menu.js?v=7081f694"></script>
-<script defer src="/js/ui-pedido.js?v=7081f694"></script>
-<script defer src="/js/ui-pesquisa.js?v=7081f694"></script>
-<script defer src="/js/ui-topo.js?v=7081f694"></script>
+<script defer src="/js/idiomas.js?v=d2e9535d"></script>
+<script defer src="/js/menu.js?v=d2e9535d"></script>
+<script defer src="/js/cafe.js?v=d2e9535d"></script>
+<script defer src="/js/ui-base.js?v=d2e9535d"></script>
+<script defer src="/js/ui-menu.js?v=d2e9535d"></script>
+<script defer src="/js/ui-pedido.js?v=d2e9535d"></script>
+<script defer src="/js/ui-pesquisa.js?v=d2e9535d"></script>
+<script defer src="/js/ui-topo.js?v=d2e9535d"></script>
 </body>
 </html>

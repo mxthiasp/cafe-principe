@@ -167,7 +167,7 @@ function setLang(l, guardar = true){
   LANG = l;
   document.documentElement.lang = {pt:"pt-PT", en:"en", fr:"fr", de:"de", es:"es"}[l];
   if(guardar){ try{ localStorage.setItem("idioma", l); }catch(e){} }
-  traduzirDOM(); montarPriv(); montarPratoDia(); montarAviso(); montarPedido(); atualizarPausa(); rotularTabs(); montarFaixa(); montarSobre(); montarAvaliacoes(); montarFaq(); 
+  traduzirDOM(); montarPriv(); montarPratoDia(); montarAviso(); atualizarPausa(); rotularTabs(); montarFaixa(); montarSobre(); montarAvaliacoes(); montarFaq(); 
   if(consulta) pesquisar(consulta); else mostrarCategoria(catAtual || "Francesinhas");
   if(pratoAtual){ montarPrato(); }
   atualizarEstado(); atualizarJSONLD(); $("#horarioTxt").innerHTML = horarioTexto(); $("#rodHorario").innerHTML = horarioTexto();
@@ -203,4 +203,4 @@ rota();
 Promise.all([document.fonts ? document.fonts.ready : 0, tradInicial]).then(() => aoEstarPronto && aoEstarPronto(), () => aoEstarPronto && aoEstarPronto());
 /* menu disponível sem rede: guarda uma cópia do site depois da primeira visita (precisa do ficheiro sw.js ao lado do index.html) */
 if("serviceWorker" in navigator && /^https?:$/.test(location.protocol)) addEventListener("load", () => { navigator.serviceWorker.register("/sw.js").catch(() => {}); });
-atualizarJSONLD(); montarPedido();
+atualizarJSONLD();

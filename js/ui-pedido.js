@@ -1,60 +1,8 @@
 /* ============================================================
-   "O meu pedido", rotas das páginas de prato e dados do Google (js/ui-pedido.js)
+   Rotas das páginas de prato e dados do Google (js/ui-pedido.js)
    O funcionamento do site está dividido em ficheiros por tema (ui-base, ui-menu, ui-pedido, ui-pesquisa, ui-topo).
    Carregam por esta ordem e partilham as mesmas variáveis. Os dados estão em js/cafe.js, js/menu.js, js/idiomas.js e js/traducoes.js.
    ============================================================ */
-/* ============ O MEU PEDIDO (lista para preparar a chamada; não é uma encomenda) ============ */
-let PEDIDO = {};   // { "Nome do prato": quantidade }
-try{ PEDIDO = JSON.parse(localStorage.getItem("pedido") || "{}") || {}; }catch(e){ PEDIDO = {}; }
-/* só ficam pratos que ainda existem no menu */
-Object.keys(PEDIDO).forEach(n => { if(!PRATOS.some(x => x.p.nome === n) || !(PEDIDO[n] > 0)) delete PEDIDO[n]; });
-const qtdPedido = nome => PEDIDO[nome] || 0;
-const totalItens = () => Object.values(PEDIDO).reduce((s, q) => s + q, 0);
-function guardarPedido(){ try{ localStorage.setItem("pedido", JSON.stringify(PEDIDO)); }catch(e){} }
-function botaoJuntar(p){
-  const n = qtdPedido(p.nome), nome = nomePrato(p);
-  return `<button type="button" class="juntar" data-juntar="${p.nome}" data-n="${n}" aria-label="${T("Juntar {nome} à lista").replace("{nome}", nome)}"><span class="mais" aria-hidden="true">${n > 0 ? "✓" : "+"}</span><span class="juntar-txt" aria-hidden="true">${n > 0 ? n : T("Juntar à lista")}</span></button>`;
-}
-function mudarPedido(nome, delta){
-  const q = Math.max(0, qtdPedido(nome) + delta);
-  if(q) PEDIDO[nome] = q; else delete PEDIDO[nome];
-  guardarPedido(); montarPedido(true);
-  const x = PRATOS.find(y => y.p.nome === nome);
-  if(x) $("#pedidoLive").textContent = `${nomePrato(x.p)}: ${q}`;
-}
-function montarPedido(manter){
-  const itens = Object.entries(PEDIDO).map(([n, q]) => ({x: PRATOS.find(y => y.p.nome === n), q})).filter(i => i.x);
-  const total = totalItens(), btn = $("#pedidoBtn");
-  btn.hidden = total === 0; $("#pedidoBtnN").textContent = total;
-  btn.setAttribute("aria-label", `${T("O meu pedido")}: ${total}`);
-  const dlg = $("#dlgPedido"); dlg.dataset.vazio = String(total === 0);
-  $("#pedidoLista").innerHTML = itens.map(({x, q}) => `<li><span class="pedido-nome">${nomePrato(x.p)}</span>
-    <span class="qtd"><button type="button" data-menos="${x.p.nome}" aria-label="${T("Tirar {nome} da lista").replace("{nome}", nomePrato(x.p))}">−</button><output aria-live="polite">${q}</output><button type="button" data-mais="${x.p.nome}" aria-label="${T("Juntar {nome} à lista").replace("{nome}", nomePrato(x.p))}">+</button></span></li>`).join("");
-  $("#pedidoTotal").textContent = total ? T("O preço final é confirmado por telefone. Embalagens (sacos, tupperwares, caixas) e outros extras podem ter um custo adicional.") : "";
-  /* atualiza os botões dos cartões e da página do prato sem os reconstruir */
-  document.querySelectorAll(".juntar").forEach(b => { const n = qtdPedido(b.dataset.juntar); b.dataset.n = n; b.querySelector(".mais").textContent = n > 0 ? "✓" : "+"; b.querySelector(".juntar-txt").textContent = n > 0 ? n : T("Juntar à lista"); });
-  const jp = $("#juntarPrato"); if(jp){ const n = qtdPedido(jp.dataset.juntar); jp.setAttribute("aria-pressed", String(n > 0)); jp.textContent = n > 0 ? `✓ ${T("Na lista")} (${n})` : `+ ${T("Juntar à lista")}`; }
-  if(total === 0 && dlg.open && manter) dlg.dataset.vazio = "true";
-}
-document.addEventListener("click", e => {
-  const j = e.target.closest("[data-juntar]"); if(j){ e.preventDefault(); e.stopPropagation(); mudarPedido(j.dataset.juntar, 1); return; }
-  const m = e.target.closest("[data-mais]"); if(m){ mudarPedido(m.dataset.mais, 1); const b = document.querySelector(`[data-mais="${CSS.escape(m.dataset.mais)}"]`); if(b) b.focus(); return; }
-  const l = e.target.closest("[data-menos]"); if(l){ mudarPedido(l.dataset.menos, -1); const b = document.querySelector(`[data-menos="${CSS.escape(l.dataset.menos)}"]`) || $("#fecharPedido"); b.focus(); return; }
-}, true);
-$("#pedidoBtn").addEventListener("click", () => { montarPedido(); $("#dlgPedido").showModal(); });
-$("#fecharPedido").addEventListener("click", () => $("#dlgPedido").close());
-$("#dlgPedido").addEventListener("click", e => { if(e.target === $("#dlgPedido")) $("#dlgPedido").close(); });
-$("#pedidoLimpar").addEventListener("click", () => { PEDIDO = {}; guardarPedido(); montarPedido(); $("#dlgPedido").close(); });
-$("#pedidoCopiar").addEventListener("click", async () => {
-  /* o texto copiado fica em português (os nomes do menu do café) */
-  const linhas = Object.entries(PEDIDO).map(([n, q]) => `${q}x ${n}`);
-  const txt = "Olá, quero encomendar:\n" + linhas.join("\n");
-  const b = $("#pedidoCopiar"), no = b.firstChild;
-  try{ await navigator.clipboard.writeText(txt); }catch(e){ try{ const ta = document.createElement("textarea"); ta.value = txt; document.body.appendChild(ta); ta.select(); document.execCommand("copy"); ta.remove(); }catch(_){} }
-  no.nodeValue = T("Copiado!");
-  setTimeout(() => { no.nodeValue = T("Copiar lista"); }, 1800);
-});
-
 /* ============ DADOS PARA O GOOGLE: horário gerado a partir do HORARIO ============ */
 function atualizarJSONLD(){
   const el = document.querySelector('script[type="application/ld+json"]'); if(!el) return;
@@ -113,7 +61,6 @@ function montarPrato(){
         ${p.alergenios ? "" : `<p class="nota-alergenios">${T("Tens alguma alergia ou intolerância? Fala connosco antes de encomendar:")} <a href="tel:${tel.replace(/\s/g,"")}">${tel}</a></p>`}
         <div class="prato-acoes">
           <a class="btn btn--xl" href="tel:${tel.replace(/\s/g,"")}">${T("Ligar para encomendar")}</a>
-          <button type="button" class="btn-sec" id="juntarPrato" data-juntar="${p.nome}" aria-pressed="${qtdPedido(p.nome) > 0}">${qtdPedido(p.nome) > 0 ? "✓ " + T("Na lista") + " (" + qtdPedido(p.nome) + ")" : "+ " + T("Juntar à lista")}</button>
           <button type="button" class="btn-sec" id="partilharPrato">${T("Partilhar este prato")}</button>
         </div>
       </div>

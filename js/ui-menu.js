@@ -19,7 +19,7 @@ function cartaoHTML(p, i){
       <div class="card-fim">
         <span class="ver-mais" aria-hidden="true">${T("Ver detalhes")} ›</span>
       </div>
-    </a>${botaoJuntar(p)}</div>`;
+    </a></div>`;
 }
 const ROTAS_LIMPAS = CAFE.enderecosLimpos !== false && /^https?:$/.test(location.protocol);   // /prato/nome; em ficheiro local usa #/prato/nome
 const urlPrato = nome => (ROTAS_LIMPAS ? "/prato/" : "#/prato/") + slug(nome);
