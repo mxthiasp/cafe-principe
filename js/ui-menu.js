@@ -120,10 +120,7 @@ function montarFaq(){
 }
 montarSobre(); montarAvaliacoes(); montarFaq();
 
-/* ============ OS MAIS PEDIDOS ============ */
-const destaques = [];
-Object.entries(MENU).forEach(([cat, itens]) => itens.forEach(p => { if(p.destaque) destaques.push({cat, p}); }));
-destaques.sort((a,b) => { const i = ORDEM_DESTAQUES.indexOf(a.p.nome), j = ORDEM_DESTAQUES.indexOf(b.p.nome); return (i<0?99:i) - (j<0?99:j); });
+/* ============ IR PARA UM PRATO NA LISTA ============ */
 function irParaPrato(cat, nome){
   const cats = Object.keys(MENU);
   mostrarCategoria(cat, Math.sign(cats.indexOf(cat) - cats.indexOf(catAtual)));
@@ -134,21 +131,6 @@ function irParaPrato(cat, nome){
     alvo.classList.add("realce"); setTimeout(() => alvo.classList.remove("realce"), 2400);
   }, 150);
 }
-function montarMaisPedidos(){
-  if(!destaques.length) return;
-  $("#maisPedidos").hidden = false;
-  $("#listaMaisPedidos").innerHTML = destaques.map(({cat,p},k) => {
-    const nome = nomePrato(p);
-    return `
-    <a class="card card--destaque novo" style="--i:${k}" href="${urlPrato(p.nome)}" data-cat="${cat}" data-nome="${p.nome}">
-      ${p.foto ? `<div class="foto"><img src="${p.foto}" alt="${nome}" loading="lazy" decoding="async">${chipPreco(p.preco)}</div>` : `<div class="foto foto--vazia">${chipPreco(p.preco)}</div>`}
-      <h3>${nome}</h3>
-    </a>`; }).join("");
-  $("#listaMaisPedidos").querySelectorAll(".card--destaque").forEach(el => {
-    el.addEventListener("click", e => { if(cliqueSimples(e)){ e.preventDefault(); abrirPrato(el.dataset.nome); } });
-  });
-}
-montarMaisPedidos();
 
 /* ============ PÁGINA DE CADA PRATO (endereço: #/prato/nome-do-prato) ============ */
 const PRATOS = []; Object.entries(MENU).forEach(([cat, itens]) => itens.forEach(p => PRATOS.push({p, cat, slug:slug(p.nome)})));

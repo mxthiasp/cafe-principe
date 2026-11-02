@@ -167,7 +167,7 @@ function setLang(l, guardar = true){
   LANG = l;
   document.documentElement.lang = {pt:"pt-PT", en:"en", fr:"fr", de:"de", es:"es"}[l];
   if(guardar){ try{ localStorage.setItem("idioma", l); }catch(e){} }
-  traduzirDOM(); montarPriv(); montarPratoDia(); montarAviso(); montarPedido(); atualizarPausa(); rotularTabs(); montarFaixa(); montarSobre(); montarAvaliacoes(); montarFaq(); montarMaisPedidos();
+  traduzirDOM(); montarPriv(); montarPratoDia(); montarAviso(); montarPedido(); atualizarPausa(); rotularTabs(); montarFaixa(); montarSobre(); montarAvaliacoes(); montarFaq(); 
   if(consulta) pesquisar(consulta); else mostrarCategoria(catAtual || "Francesinhas");
   if(pratoAtual){ montarPrato(); }
   atualizarEstado(); atualizarJSONLD(); $("#horarioTxt").innerHTML = horarioTexto(); $("#rodHorario").innerHTML = horarioTexto();
