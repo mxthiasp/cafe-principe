@@ -598,3 +598,7 @@ html.js:not(.pronto) body > :not(header):not(script):not(link):not(style){visibi
 /* a entrada anima o conjunto (cartão + botão "+") para não ficarem desencontrados enquanto os cartões deslizam */
 .card-wrap:has(>.card.novo){animation:entraLado .45s cubic-bezier(.2,.8,.2,1) backwards;animation-delay:calc(var(--i)*60ms)}
 .card-wrap>.card.novo{animation:none}
+
+/* os cartões entram vindos do lado: cortar o que sai do ecrã para o telemóvel não alargar a página (e fazer zoom) durante a animação */
+#menu{overflow-x:clip}
+#grelha{overflow-x:clip;overflow-clip-margin:0}
