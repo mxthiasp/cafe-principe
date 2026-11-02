@@ -33,7 +33,7 @@ if(ecras.length >= 2){
     const tit = x.nomePrato && !x.frase ? nomePrato({nome:x.nomePrato}) : T(x.titulo);
     escreverTitulo(tit);
     if(x.nomePrato){ heroTexto.innerHTML = `<b class="hero-prato">${nomePrato({nome:x.nomePrato})}</b>${descPrato({nome:x.nomePrato, desc:x.texto})}`; } else { heroTexto.textContent = T(x.texto); }
-    heroExtra.innerHTML = x.preco > 0 ? `<span class="hero-preco"><span class="sr-so">${euro(x.preco)}</span><span aria-hidden="true" class="pp">${precoPartes(x.preco)}</span></span>` : "";
+    heroExtra.innerHTML = "";
     heroBotao.textContent = T(x.botao); heroBotao.dataset.cat = x.cat || ""; heroBotao.dataset.prato = x.prato || "";
     if(animar && !reduz) [heroTexto, heroExtra, heroBotao].forEach(el => el.animate([{opacity:0, transform:"translateY(14px)"}, {opacity:1, transform:"none"}], {duration:600, easing:"cubic-bezier(.2,.8,.2,1)"}));
   };

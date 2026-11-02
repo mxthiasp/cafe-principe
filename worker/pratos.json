@@ -3,7 +3,7 @@
   "nome": "Super Francesinha Especial",
   "desc": "Pão, bife de vitela, salsicha, chouriço, fiambre, queijo, ketchup, mostarda, ovo e molho de francesinha. Com batata.",
   "preco": 13.5,
-  "img": "/og-image.jpg"
+  "img": "/img/og/super-francesinha-especial.jpg"
  },
  "francesinha-especial": {
   "nome": "Francesinha Especial",
@@ -15,7 +15,7 @@
   "nome": "Meia Francesinha Especial",
   "desc": "Pão, bife de vitela, chouriço, fiambre, queijo, ketchup, mostarda, ovo e molho de francesinha. Com batata.",
   "preco": 8.75,
-  "img": "/og-image.jpg"
+  "img": "/img/og/meia-francesinha-especial.jpg"
  },
  "francesinha-especial-de-frango": {
   "nome": "Francesinha Especial de Frango",
@@ -99,13 +99,13 @@
   "nome": "Hambúrguer em Pão",
   "desc": "Pão, hambúrguer, alface, tomate, queijo, fiambre, ovo, ketchup e mostarda.",
   "preco": 5.75,
-  "img": "/og-image.jpg"
+  "img": "/img/og/hamburguer-em-pao.jpg"
  },
  "hamburguer-especial": {
   "nome": "Hambúrguer Especial",
   "desc": "Pão, hambúrguer, fiambre, queijo, alface, tomate, ovo, ketchup, mostarda e molho de francesinha. Com batata.",
   "preco": 11.5,
-  "img": "/og-image.jpg"
+  "img": "/img/og/hamburguer-especial.jpg"
  },
  "hamburguer-de-picanha-em-pao": {
   "nome": "Hambúrguer de Picanha em Pão",
@@ -121,9 +121,9 @@
  },
  "baguete-de-atum": {
   "nome": "Baguete de Atum",
-  "desc": "Baguete e atum.",
+  "desc": "Baguete, maionese, alface, tomate, fiambre, queijo, atum e ovo.",
   "preco": 0,
-  "img": "/og-image.jpg"
+  "img": "/img/og/baguete-de-atum.jpg"
  },
  "baguete-americana": {
   "nome": "Baguete Americana",
@@ -163,43 +163,43 @@
  },
  "omelete-mista": {
   "nome": "Omelete Mista",
-  "desc": "Ovo, alface, tomate, cenoura, milho, fiambre e queijo. Com batata.",
+  "desc": "Ovo, alface, tomate, cenoura, milho, fiambre e queijo. Com batata. Molho à escolha: iogurte ou azeite e vinagre.",
   "preco": 9.5,
   "img": "/og-image.jpg"
  },
  "omelete-de-fiambre": {
   "nome": "Omelete de Fiambre",
-  "desc": "Ovo, alface, tomate, cenoura, milho e fiambre. Com batata.",
+  "desc": "Ovo, alface, tomate, cenoura, milho e fiambre. Com batata. Molho à escolha: iogurte ou azeite e vinagre.",
   "preco": 8.75,
   "img": "/og-image.jpg"
  },
  "omelete-de-queijo": {
   "nome": "Omelete de Queijo",
-  "desc": "Ovo, alface, tomate, cenoura, milho e queijo. Com batata.",
+  "desc": "Ovo, alface, tomate, cenoura, milho e queijo. Com batata. Molho à escolha: iogurte ou azeite e vinagre.",
   "preco": 9,
   "img": "/og-image.jpg"
  },
  "omelete-de-camarao": {
   "nome": "Omelete de Camarão",
-  "desc": "Ovo, camarão, alface, tomate, cenoura, milho, queijo e fiambre. Com batata.",
+  "desc": "Ovo, camarão, alface, tomate, cenoura, milho, queijo e fiambre. Com batata. Molho à escolha: iogurte ou azeite e vinagre.",
   "preco": 14,
-  "img": "/og-image.jpg"
+  "img": "/img/og/omelete-de-camarao.jpg"
  },
  "salada-mista": {
   "nome": "Salada Mista",
-  "desc": "Alface, tomate, cenoura, milho, fiambre e queijo.",
+  "desc": "Alface, tomate, cenoura, milho, fiambre e queijo. Molho à escolha: iogurte ou azeite e vinagre.",
   "preco": 7,
   "img": "/og-image.jpg"
  },
  "salada-de-atum": {
   "nome": "Salada de Atum",
-  "desc": "Alface, tomate, cenoura, milho e atum.",
+  "desc": "Alface, tomate, cenoura, milho e atum. Com batata. Molho à escolha: iogurte ou azeite e vinagre.",
   "preco": 0,
   "img": "/og-image.jpg"
  },
  "bife-de-frango-c-salada-e-batata": {
   "nome": "Bife de Frango c/ Salada e Batata",
-  "desc": "Bife de frango, alface, tomate, fiambre, queijo, cenoura e milho.",
+  "desc": "Bife de frango, alface, tomate, fiambre, queijo, cenoura e milho. Com batata. Molho à escolha: iogurte ou azeite e vinagre.",
   "preco": 9.25,
   "img": "/og-image.jpg"
  },
@@ -207,6 +207,12 @@
   "nome": "Picadinho de Vitela",
   "desc": "Carne de vitela, salsicha, chouriço, pickles, azeitonas e molho de francesinha. Com batata.",
   "preco": 12,
+  "img": "/og-image.jpg"
+ },
+ "meio-picadinho-de-vitela": {
+  "nome": "Meio Picadinho de Vitela",
+  "desc": "Carne de vitela, salsicha, chouriço, pickles, azeitonas e molho de francesinha. Com batata.",
+  "preco": 0,
   "img": "/og-image.jpg"
  },
  "pao-de-alho": {
@@ -236,6 +242,30 @@
  "bolinhos-de-bacalhau": {
   "nome": "Bolinhos de Bacalhau",
   "desc": "Bolinhos de bacalhau.",
+  "preco": 0,
+  "img": "/og-image.jpg"
+ },
+ "mini-prego-de-vitela-com-ovo": {
+  "nome": "Mini Prego de Vitela com Ovo",
+  "desc": "Mini prego de vitela com ovo.",
+  "preco": 0,
+  "img": "/og-image.jpg"
+ },
+ "bife-de-frango-com-batata": {
+  "nome": "Bife de Frango com Batata",
+  "desc": "Bife de frango com batata.",
+  "preco": 0,
+  "img": "/og-image.jpg"
+ },
+ "2-salsichas-com-batata": {
+  "nome": "2 Salsichas com Batata",
+  "desc": "Duas salsichas com batata.",
+  "preco": 0,
+  "img": "/og-image.jpg"
+ },
+ "hamburguer-com-ovo-e-batata": {
+  "nome": "Hambúrguer com Ovo e Batata",
+  "desc": "Hambúrguer com ovo e batata.",
   "preco": 0,
   "img": "/og-image.jpg"
  }

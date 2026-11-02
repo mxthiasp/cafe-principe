@@ -37,7 +37,7 @@ function mostrarCategoria(cat, dir = 0){
   // os cartões entram do lado para onde se desliza (sem direção: de baixo)
   grelha.style.setProperty("--dx", dir * 46 + "px"); grelha.style.setProperty("--dy", dir ? "0px" : "24px");
   // Redesenha os cartões (a classe "novo" dispara a animação)
-  grelha.innerHTML = MENU[cat].map(cartaoHTML).join("");
+  grelha.innerHTML = MENU[cat].length ? MENU[cat].map(cartaoHTML).join("") : `<p class="vazio-cat">${T("Em breve.")}</p>`;
 }
 
 Object.keys(MENU).forEach(cat => {

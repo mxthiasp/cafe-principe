@@ -20,7 +20,7 @@ const CAFE = {
     {prato: "Cachorro Especial",   frase: "O cachorro com molho de francesinha.",           foto: FOTOS.heroCachorroEspecial},
     {prato: "Cachorro na Chapa",   frase: "Feito na chapa, com molho de francesinha.",     foto: FOTOS.heroCachorroChapa},
     {prato: "Prego em Prato",      frase: "Bife de vitela, queijo e ovo.",                  foto: ""},      // acrescenta a foto quando a tiveres
-    {prato: "Hambúrguer Especial", frase: "O hambúrguer que também leva molho de francesinha.", foto: ""}
+    {prato: "Hambúrguer Especial", frase: "O hambúrguer que também leva molho de francesinha.", foto: FOTOS.heroHamburguerEspecial}
   ],
   redes: { instagram: "", facebook: "" },   // links completos; vazio = não aparece
   sobreNos: {

@@ -95,6 +95,7 @@ section{padding:clamp(3rem,7vw,5rem) 0}
 .tab{flex:none;background:var(--carvao-2);border:2px solid var(--carvao-3);padding:.5rem 1.3rem;border-radius:999px;font-family:var(--destaque);font-weight:700;font-size:1.15rem;text-transform:uppercase;letter-spacing:.05em;transition:.2s}
 .tab:hover{border-color:var(--lima)}
 .tab[aria-selected="true"]{background:var(--lima);border-color:var(--lima);color:var(--carvao)}
+.vazio-cat{grid-column:1/-1;padding:2.5rem 1rem;text-align:center;opacity:.7;font-size:1.1rem}
 .grelha{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:1.4rem}
 
 /* ============ CARTÃO DE PRODUTO ============ */
