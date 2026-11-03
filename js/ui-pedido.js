@@ -8,7 +8,7 @@ function atualizarJSONLD(){
   const el = document.querySelector('script[type="application/ld+json"]'); if(!el) return;
   try{
     const d = JSON.parse(el.textContent), nomes = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"], spec = [];
-    const fim = h => h === "24:00" ? "23:59" : h;
+    const fim = h => { const m = minutos(h) % 1440; return m === 0 ? "23:59" : String(Math.floor(m/60)).padStart(2,"0") + ":" + String(m%60).padStart(2,"0"); };
     Object.entries(HORARIO).forEach(([dia, ints]) => ints.forEach(([ab, fe]) => spec.push({"@type":"OpeningHoursSpecification", dayOfWeek: nomes[dia], opens: ab, closes: fim(fe)})));
     d.openingHoursSpecification = spec; el.textContent = JSON.stringify(d);
   }catch(e){}

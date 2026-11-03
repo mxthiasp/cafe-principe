@@ -21,6 +21,6 @@ const MENU_I18N = {};
 const META_DESC = {"pt":"Café Príncipe, em Brito (Guimarães): francesinhas, pregos, panados, hambúrgueres e muito mais. Encomendas por telefone para levantar no café e reservas de mesa."};
 /* hora de abertura, estado e dias da semana (português; as outras línguas vêm de js/traducoes.js) */
 const L_TXT = {
-  pt:{"aberto":"Aberto agora, fecha às {h}","hoje":"Fechado agora, abre hoje às {h}","amanha":"Fechado agora, abre amanhã às {h}","dia":"Fechado agora, abre {d} às {h}","fechado":"Fechado","e":" e ","a":" a ","fer":"Feriados: {h}","fec":"Fechado a 25 de dezembro e 1 de janeiro"}
+  pt:{"aberto":"Aberto agora, fecha às {h}","hoje":"Fechado agora, abre hoje às {h}","amanha":"Fechado agora, abre amanhã às {h}","dia":"Fechado agora, abre {d} às {h}","fechado":"Fechado","e":" e ","a":" a ","fer":"Feriados: {h}","fec":"Fechado a 25 de dezembro e 1 de janeiro","caf":"Café","coz":"Refeições","cozA":"Refeições até às {h}","cozF":"Refeições a partir das {h}","cozM":"Refeições a partir das {h} de amanhã","menu":"Preço de menu de segunda a sexta até às {h}: inclui bebida e café."}
 };
 const DIAS = {"pt":["Dom","Seg","Ter","Qua","Qui","Sex","Sáb"]};

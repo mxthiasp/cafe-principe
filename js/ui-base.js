@@ -69,18 +69,24 @@ function eFeriado(d){
 /* Hora de Portugal, mesmo que o cliente tenha o telemóvel noutro fuso */
 const agoraLisboa = () => new Date(new Date().toLocaleString("en-US",{timeZone:"Europe/Lisbon"}));
 const minutos = h => +h.slice(0,2)*60 + +h.slice(3);
-const hh = h => { if(h === "24:00") h = "00:00"; return LANG === "pt" ? h.replace(":","h") : h; };
+const hh = h => { const m = minutos(h) % 1440; h = String(Math.floor(m/60)).padStart(2,"0") + ":" + String(m%60).padStart(2,"0"); return LANG === "pt" ? h.replace(":","h") : h; };
 const fmt = (tpl, o) => tpl.replace("{h}", o.h || "").replace("{d}", o.d || "");
-/* intervalos de abertura de um dia concreto, já com feriados e dias de fecho */
-function intervalosDoDia(d){
+/* intervalos de abertura de um dia concreto, já com feriados e dias de fecho (tab = HORARIO do café ou COZINHA das refeições) */
+function intervalosDoDia(d, tab = HORARIO){
   const mmdd = chaveData(d);
   if(DIAS_FECHADOS.includes(d.getFullYear() + "-" + mmdd) || DIAS_FECHADOS.includes(mmdd)) return [];
-  const iv = HORARIO[d.getDay()] || [];
-  return eFeriado(d) ? [[FERIADO.abreApartir, FERIADO.fechaAs]] : iv;
+  return eFeriado(d) ? [[FERIADO.abreApartir, FERIADO.fechaAs]] : (tab[d.getDay()] || []);
+}
+/* está aberto agora? Conta também o que vem do dia anterior depois da meia-noite (ex.: sexta 07:00–26:00 vale até às 2h de sábado). Devolve a hora de fecho ou null */
+function fechoAtual(d, tab){
+  const m = d.getHours()*60 + d.getMinutes(), ontem = new Date(d.getFullYear(), d.getMonth(), d.getDate()-1);
+  for(const [a,b] of intervalosDoDia(d, tab)) if(m >= minutos(a) && m < minutos(b)) return b;
+  for(const [a,b] of intervalosDoDia(ontem, tab)) if(minutos(b) > 1440 && m + 1440 < minutos(b)) return b;
+  return null;
 }
 function estadoAbertura(d = agoraLisboa()){
-  const L = L_TXT[LANG], m = d.getHours()*60 + d.getMinutes();
-  for(const [a,b] of intervalosDoDia(d)) if(m >= minutos(a) && m < minutos(b)) return {aberto:true, texto:fmt(L.aberto,{h:hh(b)})};
+  const L = L_TXT[LANG], m = d.getHours()*60 + d.getMinutes(), fecho = fechoAtual(d, HORARIO);
+  if(fecho) return {aberto:true, texto:fmt(L.aberto,{h:hh(fecho)})};
   for(let k=0;k<9;k++){
     const dd = new Date(d.getFullYear(), d.getMonth(), d.getDate()+k);
     for(const [a] of intervalosDoDia(dd)) if(k>0 || minutos(a) > m)
@@ -88,33 +94,46 @@ function estadoAbertura(d = agoraLisboa()){
   }
   return {aberto:false, texto:L.fechado};
 }
-function horarioTexto(){
-  const L = L_TXT[LANG], D = DIAS[LANG], ordem=[1,2,3,4,5,6,0], grupos=[];
-  ordem.forEach(dia => {
-    const txt=(HORARIO[dia]||[]).map(([a,b])=>`${hh(a)} – ${hh(b)}`).join(L.e) || L.fechado;
-    const g=grupos[grupos.length-1];
-    if(g && g.txt===txt) g.fim=dia; else grupos.push({ini:dia,fim:dia,txt});
+/* nota sobre as refeições enquanto o café está aberto: "Refeições até às 15h" / "Refeições a partir das 18h" */
+function estadoRefeicoes(d = agoraLisboa()){
+  const L = L_TXT[LANG], m = d.getHours()*60 + d.getMinutes(), fecho = fechoAtual(d, COZINHA);
+  if(fecho) return fmt(L.cozA, {h:hh(fecho)});
+  const proximo = intervalosDoDia(d, COZINHA).find(([a]) => minutos(a) > m);
+  if(proximo) return fmt(L.cozF, {h:hh(proximo[0])});
+  const amanha = intervalosDoDia(new Date(d.getFullYear(), d.getMonth(), d.getDate()+1), COZINHA)[0];
+  return amanha ? fmt(L.cozM, {h:hh(amanha[0])}) : "";
+}
+/* linhas do horário agrupadas por dias iguais: [{ini, fim, dias, linhas:[[etiqueta, "07h–00h"], ...]}]. Se café e refeições coincidem, fica uma linha só */
+function gruposHorario(sep){
+  const L = L_TXT[LANG], fx = tab => (tab||[]).map(([a,b]) => `${hh(a)}–${hh(b)}`).join(sep) || L.fechado, grupos = [];
+  [1,2,3,4,5,6,0].forEach(dia => {
+    const caf = fx(HORARIO[dia]), coz = fx(COZINHA[dia]), chave = caf + "|" + coz, g = grupos[grupos.length-1];
+    if(g && g.chave === chave){ g.fim = dia; g.dias.push(dia); }
+    else grupos.push({ini:dia, fim:dia, dias:[dia], chave, linhas: caf === coz ? [["", caf]] : [[L.caf, caf], [L.coz, coz]]});
   });
-  return grupos.map(g => `${D[g.ini]}${g.ini!==g.fim?L.a+D[g.fim]:""}: ${g.txt}`).join("<br>") + "<br>" + fmt(L.fer, {h:`${hh(FERIADO.abreApartir)} – ${hh(FERIADO.fechaAs)}`}) + "<br>" + L.fec;
+  return grupos;
+}
+function horarioTexto(){
+  const L = L_TXT[LANG], D = DIAS[LANG], fer = fmt(L.fer, {h:`${hh(FERIADO.abreApartir)} – ${hh(FERIADO.fechaAs)}`});
+  return gruposHorario(L.e).map(g => `${D[g.ini]}${g.ini!==g.fim?L.a+D[g.fim]:""}: ` + g.linhas.map(([et,t]) => (et ? et + " " : "") + t.replace(/–/g," – ")).join(" · ")).join("<br>") + "<br>" + fer + "<br>" + L.fec
+    + (MENU_ATE ? "<br>" + fmt(L.menu, {h:hh(MENU_ATE)}) : "");
 }
 /* horário em tabela (secção "Visita-nos"): o dia de hoje fica destacado */
 function montarHorario(){
   const tab = $("#horarioTab"); if(!tab) return;
-  const L = L_TXT[LANG], D = DIAS[LANG], hoje = agoraLisboa().getDay(), grupos = [];
-  [1,2,3,4,5,6,0].forEach(dia => {
-    const txt = (HORARIO[dia]||[]).map(([a,b]) => `${hh(a)}–${hh(b)}`).join(" · ") || L.fechado, g = grupos[grupos.length-1];
-    if(g && g.txt === txt){ g.fim = dia; g.dias.push(dia); } else grupos.push({ini:dia, fim:dia, txt, dias:[dia]});
-  });
+  const L = L_TXT[LANG], D = DIAS[LANG], hoje = agoraLisboa().getDay();
   const fer = fmt(L.fer, {h:`${hh(FERIADO.abreApartir)}–${hh(FERIADO.fechaAs)}`}), i = fer.indexOf(":");
-  tab.innerHTML = grupos.map(g => `<div${g.dias.includes(hoje) ? ' class="hoje"' : ""}><dt>${D[g.ini]}${g.ini !== g.fim ? L.a + D[g.fim] : ""}</dt><b></b><dd>${g.txt}</dd></div>`).join("")
-    + `<div><dt>${fer.slice(0,i)}</dt><b></b><dd>${fer.slice(i+1).trim()}</dd></div>`;
+  tab.innerHTML = gruposHorario(" · ").map(g => `<div${g.dias.includes(hoje) ? ' class="hoje"' : ""}><dt>${D[g.ini]}${g.ini !== g.fim ? L.a + D[g.fim] : ""}</dt><b></b><dd>${g.linhas.map(([et,t]) => et ? `<span><em>${et}</em> ${t}</span>` : `<span>${t}</span>`).join("")}</dd></div>`).join("")
+    + `<div><dt>${fer.slice(0,i)}</dt><b></b><dd><span>${fer.slice(i+1).trim()}</span></dd></div>`;
   $("#horarioFecho").textContent = L.fec + ".";
+  const nm = $("#horarioMenu"); if(nm){ nm.textContent = MENU_ATE ? fmt(L.menu, {h:hh(MENU_ATE)}) : ""; nm.hidden = !MENU_ATE; }
 }
 function atualizarEstado(){
   const e = estadoAbertura();
   $("#estado").className = "estado" + (e.aberto ? " aberto" : "");
   $("#estado").innerHTML = `<i class="ponto"></i>${e.texto}`;
   const v = $("#visitaEstado"); if(v){ v.className = "visita-estado" + (e.aberto ? " aberto" : ""); v.innerHTML = `<i></i>${e.texto}`; }
+  const vc = $("#visitaCozinha"); if(vc) vc.textContent = e.aberto ? estadoRefeicoes() : "";
   montarHorario();
   /* com o café fechado, a barra de ligar avisa quando abre */
   const barra = $(".barra-ligar"), aviso = barra.querySelector("small") || barra.appendChild(document.createElement("small"));

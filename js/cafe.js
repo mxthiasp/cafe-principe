@@ -50,11 +50,21 @@ const CAFE = {
      (se faltar uma língua, aparece o português). "ate" = último dia em que aparece, AAAA-MM-DD. Vazio = até desligares. */
   aviso: { ativo: false, texto: "", ate: "" }
 };
-/* Horário por dia da semana (0 = Domingo ... 6 = Sábado). Podes pôr vários intervalos; [] = fechado. Fecho à meia-noite escreve-se "24:00". */
+/* HORÁRIO DO CAFÉ (aberto ao público), por dia da semana (0 = Domingo ... 6 = Sábado). [] = fechado.
+   Fecho à meia-noite escreve-se "24:00". Depois da meia-noite continua a contar: 2h da manhã seguinte escreve-se "26:00". */
 const HORARIO = {
-  0:[["18:00","24:00"]], 1:[["12:00","15:00"],["18:00","23:00"]], 2:[["12:00","15:00"],["18:00","23:00"]], 3:[["12:00","15:00"],["18:00","23:00"]],
-  4:[["12:00","15:00"],["18:00","23:00"]], 5:[["12:00","15:00"],["18:00","23:00"]], 6:[["12:00","15:00"],["18:00","24:00"]]
+  0:[["18:00","24:00"]],
+  1:[["07:00","24:00"]], 2:[["07:00","24:00"]], 3:[["07:00","24:00"]], 4:[["07:00","24:00"]],
+  5:[["07:00","26:00"]], 6:[["07:00","26:00"]]
 };
+/* HORÁRIO DAS REFEIÇÕES (cozinha: francesinhas, pregos, etc.), mesma regra. Fora destas horas servem-se snacks e café. */
+const COZINHA = {
+  0:[["18:00","24:00"]],
+  1:[["12:00","15:00"],["18:00","24:00"]], 2:[["12:00","15:00"],["18:00","24:00"]], 3:[["12:00","15:00"],["18:00","24:00"]], 4:[["12:00","15:00"],["18:00","24:00"]],
+  5:[["12:00","15:00"],["18:00","24:00"]], 6:[["12:00","15:00"],["18:00","24:00"]]
+};
+/* PREÇO DE MENU: de segunda a sexta, até a esta hora, o preço da refeição inclui bebida e café (algumas bebidas têm acréscimo). Põe "" para desligar a nota. */
+const MENU_ATE = "15:00";
 /* ============ DIAS ESPECIAIS (feriados e dias de fecho) ============ */
 const FERIADO = { abreApartir: "18:00", fechaAs: "24:00" };      // horário de todos os feriados
 const FERIADOS_LOCAIS = ["06-24"];              // feriado municipal de Guimarães (24 de junho, Batalha de São Mamede). Apaga se o café abrir normalmente nesse dia
