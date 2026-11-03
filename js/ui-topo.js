@@ -125,7 +125,7 @@ const IC = {
 $("#redes").innerHTML = Object.entries(CAFE.redes).filter(([,u]) => u).map(([n,u]) => `<a href="${u}" target="_blank" rel="noopener" aria-label="${n}">${IC[n]}</a>`).join("");
 montarPratoDia(); montarAviso();
 mostrarCategoria("Francesinhas");
-$("#salsaFoto").innerHTML = `<img src="${FOTOS.especial}" alt="Francesinha com a nossa salsa" loading="lazy" decoding="async">`;
+$("#salsaFoto").innerHTML = `<img src="${FOTOS.especial}" alt="Francesinha com o nosso molho" loading="lazy" decoding="async">`;
 $("#ano").textContent = new Date().getFullYear();
 /* estatísticas de visitas sem cookies (Cloudflare Web Analytics): só se houver token */
 if(CAFE.analitica && CAFE.analitica.cloudflareToken){
@@ -226,7 +226,7 @@ atualizarJSONLD();
   const fig = document.createElement("figure"); fig.className = "salsa-video";
   const vid = document.createElement("video");
   vid.muted = true; vid.defaultMuted = true; vid.loop = true; vid.playsInline = true; vid.preload = poupar ? "none" : "metadata";
-  vid.setAttribute("muted", ""); vid.setAttribute("playsinline", ""); vid.setAttribute("aria-label", T("Vídeo da nossa salsa a ser deitada numa francesinha"));
+  vid.setAttribute("muted", ""); vid.setAttribute("playsinline", ""); vid.setAttribute("aria-label", T("Vídeo do nosso molho a ser deitado numa francesinha"));
   if(v.poster) vid.poster = v.poster;
   if(poupar) vid.controls = true;
   const src = document.createElement("source"); src.src = v.src; src.type = /\.webm$/i.test(v.src) ? "video/webm" : "video/mp4"; vid.appendChild(src);

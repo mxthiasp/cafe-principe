@@ -122,7 +122,7 @@
  "baguete-de-atum": {
   "nome": "Baguete de Atum",
   "desc": "Baguete, maionese, alface, tomate, fiambre, queijo, atum e ovo.",
-  "preco": 0,
+  "preco": 5,
   "img": "/img/og/baguete-de-atum.jpg"
  },
  "baguete-americana": {
@@ -194,7 +194,7 @@
  "salada-de-atum": {
   "nome": "Salada de Atum",
   "desc": "Alface, tomate, cenoura, milho e atum. Com batata. Molho à escolha: iogurte ou azeite e vinagre.",
-  "preco": 0,
+  "preco": 7.5,
   "img": "/og-image.jpg"
  },
  "bife-de-frango-c-salada-e-batata": {
@@ -230,19 +230,19 @@
  "asinhas-de-frango": {
   "nome": "Asinhas de Frango",
   "desc": "Asinhas de frango fritas.",
-  "preco": 0,
+  "preco": 4.5,
   "img": "/og-image.jpg"
  },
  "rissois-de-carne": {
   "nome": "Rissóis de Carne",
-  "desc": "Rissóis de carne.",
-  "preco": 0,
+  "desc": "6 rissóis de carne.",
+  "preco": 4.2,
   "img": "/og-image.jpg"
  },
  "bolinhos-de-bacalhau": {
   "nome": "Bolinhos de Bacalhau",
-  "desc": "Bolinhos de bacalhau.",
-  "preco": 0,
+  "desc": "6 bolinhos de bacalhau.",
+  "preco": 4.8,
   "img": "/og-image.jpg"
  },
  "mini-prego-de-vitela-com-ovo": {
