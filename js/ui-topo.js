@@ -222,20 +222,23 @@ atualizarJSONLD();
   const v = CAFE.salsaVideo; if(!v || !v.src) return;
   const sec = $("#salsa"), wrap = sec && sec.querySelector(".wrap"), txt = wrap && wrap.firstElementChild; if(!txt) return;
   const h2 = txt.querySelector("h2"), p = txt.querySelector("p");
-  const poupar = matchMedia("(prefers-reduced-motion: reduce)").matches || (navigator.connection && navigator.connection.saveData);   // sem animação ou com poupança de dados: só a capa, com controlos
+  const poupar = false;   // o vídeo corre sempre sozinho (sem controlos), em PC e telemóvel
   const fig = document.createElement("figure"); fig.className = "salsa-video";
   const vid = document.createElement("video");
-  vid.muted = true; vid.defaultMuted = true; vid.loop = true; vid.playsInline = true; vid.preload = poupar ? "none" : "metadata";
+  vid.muted = true; vid.defaultMuted = true; vid.loop = true; vid.playsInline = true; vid.preload = "auto"; vid.autoplay = true; vid.disablePictureInPicture = true; vid.controls = false;
   vid.setAttribute("muted", ""); vid.setAttribute("playsinline", ""); vid.setAttribute("aria-label", T("Vídeo do nosso molho a ser deitado numa francesinha"));
   if(v.poster) vid.poster = v.poster;
-  if(poupar) vid.controls = true;
   const src = document.createElement("source"); src.src = v.src; src.type = /\.webm$/i.test(v.src) ? "video/webm" : "video/mp4"; vid.appendChild(src);
   fig.appendChild(vid);
   wrap.classList.remove("salsa"); wrap.replaceChildren(h2);
   const info = document.createElement("div"); info.className = "wrap salsa-info"; info.appendChild(p);
   sec.replaceChildren(wrap, fig, info); sec.classList.add("com-video");
   /* só corre quando está à vista (poupa bateria e dados) */
-  if(!poupar && "IntersectionObserver" in window) new IntersectionObserver(es => es.forEach(e => {
-    if(e.isIntersecting){ const r = vid.play(); if(r && r.catch) r.catch(() => {}); } else vid.pause();
+  const tocar = () => { const r = vid.play(); if(r && r.catch) r.catch(() => {}); };
+  vid.addEventListener("pause", () => { if(!vid.ended && vid.dataset.vista === "1") setTimeout(tocar, 200); });   // se o navegador o pausar sozinho, volta a andar
+  document.addEventListener("pointerdown", () => { if(vid.paused && vid.dataset.vista === "1") tocar(); }, {passive:true, once:true});
+  if("IntersectionObserver" in window) new IntersectionObserver(es => es.forEach(e => {
+    vid.dataset.vista = e.isIntersecting ? "1" : "0";
+    if(e.isIntersecting) tocar(); else vid.pause();
   }), {threshold:.25}).observe(vid);
 })();
