@@ -216,3 +216,26 @@ atualizarJSONLD();
   }), {rootMargin:"-45% 0px -50% 0px"});
   mapa.forEach((_, sec) => obs.observe(sec));
 })();
+
+/* ============ VÍDEO DA SALSA: em ciclo, sem som, de ponta a ponta do ecrã, com o texto por baixo ============ */
+(function montarSalsaVideo(){
+  const v = CAFE.salsaVideo; if(!v || !v.src) return;
+  const sec = $("#salsa"), wrap = sec && sec.querySelector(".wrap"), txt = wrap && wrap.firstElementChild; if(!txt) return;
+  const h2 = txt.querySelector("h2"), p = txt.querySelector("p");
+  const poupar = matchMedia("(prefers-reduced-motion: reduce)").matches || (navigator.connection && navigator.connection.saveData);   // sem animação ou com poupança de dados: só a capa, com controlos
+  const fig = document.createElement("figure"); fig.className = "salsa-video";
+  const vid = document.createElement("video");
+  vid.muted = true; vid.defaultMuted = true; vid.loop = true; vid.playsInline = true; vid.preload = poupar ? "none" : "metadata";
+  vid.setAttribute("muted", ""); vid.setAttribute("playsinline", ""); vid.setAttribute("aria-label", T("Vídeo da nossa salsa a ser deitada numa francesinha"));
+  if(v.poster) vid.poster = v.poster;
+  if(poupar) vid.controls = true;
+  const src = document.createElement("source"); src.src = v.src; src.type = /\.webm$/i.test(v.src) ? "video/webm" : "video/mp4"; vid.appendChild(src);
+  fig.appendChild(vid);
+  wrap.classList.remove("salsa"); wrap.replaceChildren(h2);
+  const info = document.createElement("div"); info.className = "wrap salsa-info"; info.appendChild(p);
+  sec.replaceChildren(wrap, fig, info); sec.classList.add("com-video");
+  /* só corre quando está à vista (poupa bateria e dados) */
+  if(!poupar && "IntersectionObserver" in window) new IntersectionObserver(es => es.forEach(e => {
+    if(e.isIntersecting){ const r = vid.play(); if(r && r.catch) r.catch(() => {}); } else vid.pause();
+  }), {threshold:.25}).observe(vid);
+})();

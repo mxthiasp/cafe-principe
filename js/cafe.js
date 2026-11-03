@@ -32,6 +32,9 @@ const CAFE = {
     foto: "",                   // ex.: "fotos/fachada.webp" (foto da fachada, do espaço ou da equipa)
     fotoProvisoria: true        // enquanto "foto" estiver vazio, mostra uma caixa com o texto "Fachada do café". Põe false para esconder
   },
+  /* VÍDEO DA SALSA ("A nossa Salsa"): corre sozinho, sem som e em ciclo, de ponta a ponta do ecrã. Vazio = a secção fica como está.
+     src: ficheiro MP4 (ou WebM) dentro do site, ex.: "img/salsa.mp4" (horizontal, 10 a 15 segundos, menos de 8 MB). poster: imagem de capa, ex.: "img/salsa-capa.webp" (opcional) */
+  salsaVideo: { src: "", poster: "" },
   avaliacoes: {
     itens: [],                  // só avaliações reais, com autorização. Ex.: {nome:"Ana S.", texto:"Excelente francesinha!", estrelas:5}
     linkGoogle: "",             // link das avaliações do vosso Google (opcional)

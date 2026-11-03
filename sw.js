@@ -4,7 +4,7 @@
    - Código (js e css): tenta a rede primeiro, com a cópia guardada como reserva.
    - Fotos, ícones e letras: usa a cópia guardada e atualiza-a quando houver rede.
    O número em VERSAO é escrito sozinho por scripts/gerar-dados.py (muda sempre que o código muda). */
-const VERSAO = "cafe-principe-260519e5";
+const VERSAO = "cafe-principe-4915c84d";
 const INICIO = new URL("/", self.location.origin).href;
 const PRE = ["/", "/css/estilo.css", "/js/idiomas.js", "/js/traducoes.js", "/js/menu.js", "/js/cafe.js", "/js/ui-base.js", "/js/ui-menu.js", "/js/ui-pedido.js", "/js/ui-pesquisa.js", "/js/ui-topo.js", "/favicon.svg", "/apple-touch-icon.png", "/img/francesinha-especial.webp"].map(u => new URL(u, INICIO).href);
 
@@ -33,6 +33,8 @@ self.addEventListener("fetch", e => {
     );
     return;
   }
+  /* vídeos: vão sempre à rede (são grandes e chegam por partes) */
+  if(/\.(mp4|webm)$/i.test(url.pathname)) return;
   /* código (.js e .css): rede primeiro, para um preço ou texto novo aparecer logo; sem rede, usa a cópia guardada */
   if(url.origin === self.location.origin && /\.(js|css)$/.test(url.pathname)){
     e.respondWith(comTempo(req, 4000).then(r => { if(r && r.ok){ const c = r.clone(); caches.open(VERSAO).then(ca => ca.put(req, c)); } return r; }).catch(() => caches.match(req, {ignoreSearch: true})));
