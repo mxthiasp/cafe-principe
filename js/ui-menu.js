@@ -6,15 +6,12 @@
 /* ============ 3. TABS DO MENU ============ */
 const tabs = $("#tabs"), grelha = $("#grelha");
 
-/* "Favorito da casa": coroa (do logótipo) + texto, alinhados ao centro */
-const COROA = '<svg class="coroa" viewBox="0 0 24 20" aria-hidden="true" focusable="false"><path d="M1.5 4.5 7 9l5-7.5L17 9l5.5-4.5L20.4 16.5H3.6z" fill="currentColor"/><rect x="3.6" y="17.8" width="16.8" height="2.2" rx=".6" fill="currentColor"/></svg>';
-const favorito = () => `<span class="favorito">${COROA}<span>${T("Favorito da casa")}</span></span>`;
 function cartaoHTML(p, i){
   const nome = nomePrato(p);
   return `
     <div class="card-wrap" style="--i:${i}"><a class="card novo" style="--i:${i}" href="${urlPrato(p.nome)}" data-nome="${p.nome}">
       ${p.foto ? `<div class="foto"><img src="${p.foto}" alt="${nome}" loading="lazy" decoding="async">${chipPreco(p.preco)}</div>` : `<div class="foto foto--vazia">${chipPreco(p.preco)}</div>`}
-      <h3>${nome}</h3>${p.destaque ? favorito() : ""}
+      <h3>${nome}</h3>
       <p>${descPrato(p)}</p>
       <div class="card-fim">
         <span class="ver-mais" aria-hidden="true">${T("Ver detalhes")} ›</span>
@@ -87,9 +84,9 @@ function montarSobre(){
   const c = CAFE.sobreNos;
   $("#sobreTitulo").textContent = T(c.titulo);
   $("#sobreCorpo").innerHTML = c.texto.map(t => `<p>${T(t)}</p>`).join("");
-  const f = $("#sobreFoto"); f.hidden = !c.foto;
-  f.innerHTML = c.foto ? `<img src="${c.foto}" alt="Café Príncipe" loading="lazy" decoding="async">` : "";
-  $("#sobreEd").classList.toggle("com-foto", !!c.foto);
+  const prov = !c.foto && c.fotoProvisoria, f = $("#sobreFoto"); f.hidden = !c.foto && !prov;
+  f.innerHTML = c.foto ? `<img src="${c.foto}" alt="Café Príncipe" loading="lazy" decoding="async">` : prov ? `<div class="sobre-prov"><span>${T("Fachada do café")}</span></div>` : "";
+  $("#sobreEd").classList.toggle("com-foto", !!c.foto || prov);
 }
 function montarAvaliacoes(){
   const a = CAFE.avaliacoes, sec = $("#avaliacoes");

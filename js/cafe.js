@@ -29,7 +29,8 @@ const CAFE = {
       "No Café Príncipe servimos francesinhas, pregos, hambúrgueres, tostas, saladas e muito mais.",
       "A nossa estrela é a Francesinha Especial, com salsa caseira. Podes comer no café, com reserva de mesa, ou encomendar por telefone para levantar."
     ],
-    foto: ""                    // ex.: "fotos/cafe.webp" (foto do espaço ou da equipa; vazio = sem foto)
+    foto: "",                   // ex.: "fotos/fachada.webp" (foto da fachada, do espaço ou da equipa)
+    fotoProvisoria: true        // enquanto "foto" estiver vazio, mostra uma caixa com o texto "Fachada do café". Põe false para esconder
   },
   avaliacoes: {
     itens: [],                  // só avaliações reais, com autorização. Ex.: {nome:"Ana S.", texto:"Excelente francesinha!", estrelas:5}

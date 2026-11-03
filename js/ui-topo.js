@@ -204,3 +204,15 @@ Promise.all([document.fonts ? document.fonts.ready : 0, tradInicial]).then(() =>
 /* menu disponível sem rede: guarda uma cópia do site depois da primeira visita (precisa do ficheiro sw.js ao lado do index.html) */
 if("serviceWorker" in navigator && /^https?:$/.test(location.protocol)) addEventListener("load", () => { navigator.serviceWorker.register("/sw.js").catch(() => {}); });
 atualizarJSONLD();
+
+/* menu do topo: a secção que está à vista fica a verde */
+(() => {
+  const ligs = [...document.querySelectorAll(".links a[href^='#']")], mapa = new Map();
+  ligs.forEach(a => { const sec = document.getElementById(a.getAttribute("href").slice(1)); if(sec) mapa.set(sec, a); });
+  if(!mapa.size || !("IntersectionObserver" in window)) return;
+  const obs = new IntersectionObserver(es => es.forEach(e => {
+    const a = mapa.get(e.target); if(!a) return;
+    a.classList.toggle("ativo", e.isIntersecting); if(e.isIntersecting) a.setAttribute("aria-current", "true"); else a.removeAttribute("aria-current");
+  }), {rootMargin:"-45% 0px -50% 0px"});
+  mapa.forEach((_, sec) => obs.observe(sec));
+})();

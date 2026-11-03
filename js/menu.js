@@ -30,20 +30,20 @@ const FOTOS = {
 
 /* ============ DADOS DO MENU (edita nomes, preços e descrições) ============ */
 const MENU = {
-  /* Preços e descrições conforme o menu do café. preco:0 = ainda sem preço. Campos opcionais: foto:FOTOS.nome, destaque:true ("Favorito da casa") */
+  /* Preços e descrições conforme o menu do café. preco:0 = ainda sem preço. Campos opcionais: foto:FOTOS.nome */
   "Francesinhas": [
     {nome:"Super Francesinha Especial", desc:"Pão, bife de vitela, salsicha, chouriço, fiambre, queijo, ketchup, mostarda, ovo e molho de francesinha. Com batata.", preco:13.5, foto:FOTOS.superEspecial},
-    {nome:"Francesinha Especial", desc:"Pão, bife de vitela, chouriço, fiambre, queijo, ketchup, mostarda, ovo e molho de francesinha. Com batata.", preco:12.0, destaque:true, foto:FOTOS.especial, nota:"O nosso prato estrela, feito com a nossa salsa caseira."},
+    {nome:"Francesinha Especial", desc:"Pão, bife de vitela, chouriço, fiambre, queijo, ketchup, mostarda, ovo e molho de francesinha. Com batata.", preco:12.0, foto:FOTOS.especial, nota:"O nosso prato estrela, feito com a nossa salsa caseira."},
     {nome:"Meia Francesinha Especial", desc:"Pão, bife de vitela, chouriço, fiambre, queijo, ketchup, mostarda, ovo e molho de francesinha. Com batata.", preco:8.75, foto:FOTOS.meiaEspecial},
     {nome:"Francesinha Especial de Frango", desc:"Pão, bife de frango, chouriço, fiambre, queijo, ketchup, mostarda, ovo e molho de francesinha. Com batata.", preco:10.5, foto:FOTOS.especial},
     {nome:"Francesinha Especial de Camarão", desc:"Pão, bife de vitela, camarão, chouriço, fiambre, queijo, ketchup, mostarda, ovo e molho de francesinha. Com batata.", preco:15.5},
     {nome:"Francesinha na Chapa", desc:"Pão, bife de vitela, fiambre, queijo, ovo e molho de francesinha. Com batata.", preco:11.75},
-    {nome:"Francesinha em Pão", desc:"Pão barrado com molho de francesinha, chouriço, ketchup, mostarda, queijo e fiambre.", preco:4.75, destaque:true, foto:FOTOS.francesinhaPao}
+    {nome:"Francesinha em Pão", desc:"Pão barrado com molho de francesinha, chouriço, ketchup, mostarda, queijo e fiambre.", preco:4.75, foto:FOTOS.francesinhaPao}
   ],
   "Pregos": [
     {nome:"Prego em Pão", desc:"Pão, bife de vitela, fiambre e queijo.", preco:5.75},
     {nome:"Prego em Pão c/ Ovo", desc:"Pão, bife de vitela, fiambre, queijo e ovo.", preco:6.5},
-    {nome:"Prego em Prato", desc:"Bife de vitela, fiambre, queijo, alface, tomate e ovo. Com batata.", preco:12.5, destaque:true}
+    {nome:"Prego em Prato", desc:"Bife de vitela, fiambre, queijo, alface, tomate e ovo. Com batata.", preco:12.5}
   ],
   "Bifes e Panados": [
     {nome:"Bife de Frango em Pão", desc:"Pão, bife de frango, fiambre e queijo.", preco:4.0},

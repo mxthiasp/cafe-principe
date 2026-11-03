@@ -52,7 +52,6 @@ function montarPrato(){
       ${foto}
       <div class="prato-info">
         <h1 id="pratoTitulo">${nome}</h1>
-        ${p.destaque ? favorito() : ""}
         ${d.texto ? `<p class="prato-texto">${d.texto}.</p>` : ""}
         ${p.nota ? `<p class="prato-texto">${T(p.nota)}</p>` : ""}
         ${d.lista.length ? `<h2>${T("Ingredientes")}</h2><div class="chips">${d.lista.map(t => `<span class="chip">${t}</span>`).join("")}</div>` : ""}
