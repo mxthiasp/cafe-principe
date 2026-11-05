@@ -59,6 +59,12 @@
   "preco": 12.5,
   "img": "/og-image.jpg"
  },
+ "prego-em-prato-de-frango": {
+  "nome": "Prego em Prato de Frango",
+  "desc": "Bife de frango, fiambre, queijo, alface, tomate e ovo. Com batata.",
+  "preco": 0,
+  "img": "/og-image.jpg"
+ },
  "bife-de-frango-em-pao": {
   "nome": "Bife de Frango em Pão",
   "desc": "Pão, bife de frango, fiambre e queijo.",

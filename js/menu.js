@@ -15,7 +15,7 @@ const FOTOS = {
   heroMCachorroEspecial: RAIZ + "img/hero-v-cachorro-especial.webp",
   heroMCachorroChapa: RAIZ + "img/hero-v-cachorro-na-chapa.webp",
   heroMPrego: RAIZ + "img/hero-v-prego-em-prato.webp",
-  heroMHamburguer: RAIZ + "img/hero-v-hamburguer-especial.webp",
+  heroMHamburguer: RAIZ + "img/hero-v-hamburguer-especial-2.webp",
   tosta: RAIZ + "img/tosta-mista.webp",
   cachorroChapa: RAIZ + "img/cachorro-na-chapa.webp",
   francesinhaPao: RAIZ + "img/francesinha-em-pao.webp",
@@ -34,7 +34,7 @@ const FOTOS = {
   sandesFiambre: RAIZ + "img/sandes-de-fiambre.webp",
   sandesQueijo: RAIZ + "img/sandes-de-queijo.webp",
   sandesMista: RAIZ + "img/sandes-mista.webp",
-  bifeFrangoSalada: RAIZ + "img/bife-de-frango-com-salada.webp",
+  pregoPratoFrango: RAIZ + "img/prego-em-prato-de-frango.webp",
   baguetaAtum: RAIZ + "img/baguete-de-atum.webp",
   omeleteCamarao: RAIZ + "img/omelete-de-camarao.webp"
 };
@@ -54,7 +54,8 @@ const MENU = {
   "Pregos": [
     {nome:"Prego em Pão", desc:"Pão, bife de vitela, fiambre e queijo.", preco:5.75},
     {nome:"Prego em Pão c/ Ovo", desc:"Pão, bife de vitela, fiambre, queijo e ovo.", preco:6.5},
-    {nome:"Prego em Prato", desc:"Bife de vitela, fiambre, queijo, alface, tomate e ovo. Com batata.", preco:12.5, foto:FOTOS.pregoPrato}
+    {nome:"Prego em Prato", desc:"Bife de vitela, fiambre, queijo, alface, tomate e ovo. Com batata.", preco:12.5, foto:FOTOS.pregoPrato},
+    {nome:"Prego em Prato de Frango", desc:"Bife de frango, fiambre, queijo, alface, tomate e ovo. Com batata.", preco:0, foto:FOTOS.pregoPratoFrango}
   ],
   "Bifes e Panados": [
     {nome:"Bife de Frango em Pão", desc:"Pão, bife de frango, fiambre e queijo.", preco:4.0},
@@ -92,7 +93,7 @@ const MENU = {
   "Saladas": [
     {nome:"Salada Mista", desc:"Alface, tomate, cenoura, milho, fiambre e queijo. Molho à escolha: iogurte ou azeite e vinagre.", preco:7.0},
     {nome:"Salada de Atum", desc:"Alface, tomate, cenoura, milho e atum. Com batata. Molho à escolha: iogurte ou azeite e vinagre.", preco:7.5},
-    {nome:"Bife de Frango c/ Salada e Batata", desc:"Bife de frango, alface, tomate, fiambre, queijo, cenoura e milho. Com batata. Molho à escolha: iogurte ou azeite e vinagre.", preco:9.25, foto:FOTOS.bifeFrangoSalada}
+    {nome:"Bife de Frango c/ Salada e Batata", desc:"Bife de frango, alface, tomate, fiambre, queijo, cenoura e milho. Com batata. Molho à escolha: iogurte ou azeite e vinagre.", preco:9.25}
   ],
   "Picadinhos": [
     {nome:"Picadinho de Vitela", desc:"Carne de vitela, salsicha, chouriço, pickles, azeitonas e molho de francesinha. Com batata.", preco:12.0},
