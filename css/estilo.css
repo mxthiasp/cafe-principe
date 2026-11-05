@@ -669,3 +669,44 @@ section h2{font-size:clamp(2.6rem,7.5vw,4.2rem)}
 }
 
 .rodape-legal{font-size:.82rem;color:var(--creme-2);margin-top:1.2rem;padding-top:1rem;border-top:1px solid var(--carvao-3)}
+
+.pesq-sug{background:none;border:0;padding:0;margin:0;font:inherit;font-weight:700;color:var(--lima);text-decoration:underline;cursor:pointer}
+
+/* ============ POLIMENTO VISUAL (v2) ============ */
+/* espaçamento mais regular entre secções */
+section{padding:clamp(2.4rem,5.5vw,4rem) 0}
+/* letra um pouco maior e mais clara nos textos secundários */
+.card p{color:#C2C3B5;font-size:1rem;line-height:1.45}
+.peq,.hor-tab dd,.nota-alergenios,.pesq-info{font-size:1rem}
+.hor-tab dd em{opacity:.85;font-size:.9em}
+.rodape{font-size:1rem}
+.rodape-fim{font-size:.95rem}
+.rodape-legal{font-size:.9rem}
+@media (min-width:821px){.rodape-grelha{grid-template-columns:1.3fr 1fr 1fr}}
+.rodape p+p{margin-top:.6rem}
+/* grelha do menu: os cartões esticam para preencher a linha, sem ficar demasiado largos */
+.grelha{grid-template-columns:repeat(auto-fit,minmax(260px,1fr))}
+.grelha .card-wrap{max-width:480px}
+/* topo no computador: foto mais clara e aviso de encomendas separado */
+@media (min-width:821px){
+  .hero--foto::after{background:linear-gradient(90deg,rgba(13,13,13,.8) 0%,rgba(13,13,13,.38) 42%,rgba(13,13,13,0) 78%)}
+  .hero--foto::before{filter:brightness(1.12) saturate(1.05)}
+  .hero .btn{font-size:1.25rem;padding-block:1.1rem}
+  .hero .nota{margin-top:1.6rem;padding-top:1rem;border-top:1px solid rgba(244,243,234,.2);max-width:44ch;font-size:.98rem;color:#D8D8CC}
+}
+/* telemóvel: foto 50% / texto 50%, descrição legível; pratos sem foto ocupam menos */
+@media (max-width:820px){
+  #grelha .card:not(.card--destaque){grid-template-columns:50% 1fr;min-height:176px}
+  #grelha .card-wrap:nth-child(even) .card:not(.card--destaque){grid-template-columns:1fr 50%}
+  #grelha .card:not(.card--destaque) h3{font-size:1.2rem;margin:.8rem 0 .35rem}
+  #grelha .card:not(.card--destaque) p{font-size:.84rem;line-height:1.35;color:#C2C3B5}
+  #grelha .card:not(.card--destaque) .ver-mais{font-size:.9rem}
+  #grelha .card:not(.card--destaque):has(.foto--vazia){grid-template-columns:34% 1fr;min-height:140px}
+  #grelha .card-wrap:nth-child(even) .card:not(.card--destaque):has(.foto--vazia){grid-template-columns:1fr 34%}
+  .hor-tab dd{font-size:1rem}
+}
+/* foco visível em qualquer fundo (teclado) */
+.btn:focus-visible,.cart-btn:focus-visible,.barra-ligar:focus-visible,.tab:focus-visible{outline:3px solid var(--creme);outline-offset:3px;box-shadow:0 0 0 6px var(--carvao)}
+.banda-cta :focus-visible{outline-color:var(--carvao);box-shadow:none}
+.card:focus-visible{outline:3px solid var(--lima);outline-offset:4px}
+input:focus-visible{outline-offset:2px}

@@ -74,7 +74,8 @@ const fmt = (tpl, o) => tpl.replace("{h}", o.h || "").replace("{d}", o.d || "");
 /* intervalos de abertura de um dia concreto, já com feriados e dias de fecho (tab = HORARIO do café ou COZINHA das refeições) */
 function intervalosDoDia(d, tab = HORARIO){
   const mmdd = chaveData(d);
-  if(DIAS_FECHADOS.includes(d.getFullYear() + "-" + mmdd) || DIAS_FECHADOS.includes(mmdd)) return [];
+  const p = pascoa(d.getFullYear());   // domingo de Páscoa: fechado
+  if(DIAS_FECHADOS.includes(d.getFullYear() + "-" + mmdd) || DIAS_FECHADOS.includes(mmdd) || mmdd === chaveData(p)) return [];
   return eFeriado(d) ? [[FERIADO.abreApartir, FERIADO.fechaAs]] : (tab[d.getDay()] || []);
 }
 /* está aberto agora? Conta também o que vem do dia anterior depois da meia-noite (ex.: sexta 07:00–26:00 vale até às 2h de sábado). Devolve a hora de fecho ou null */

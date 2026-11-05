@@ -5,18 +5,59 @@
    ============================================================ */
 /* ============ PESQUISA NO MENU ============ */
 const norm = t => (t || "").normalize("NFD").replace(/[\u0300-\u036f]/g,"").toLowerCase();
+/* "Quiseste dizer…?": se alguma palavra não existir no menu, procura a mais parecida (tolera 1 erro em palavras de 4–6 letras e 2 em palavras maiores, incluindo letras trocadas) */
+const distancia = (a, b) => {
+  const m = a.length, n = b.length, d = Array.from({length:m+1}, (_, i) => [i, ...Array(n).fill(0)]);
+  for(let j = 1; j <= n; j++) d[0][j] = j;
+  for(let i = 1; i <= m; i++) for(let j = 1; j <= n; j++){
+    d[i][j] = Math.min(d[i-1][j] + 1, d[i][j-1] + 1, d[i-1][j-1] + (a[i-1] === b[j-1] ? 0 : 1));
+    if(i > 1 && j > 1 && a[i-1] === b[j-2] && a[i-2] === b[j-1]) d[i][j] = Math.min(d[i][j], d[i-2][j-2] + 1);   // duas letras trocadas
+  }
+  return d[m][n];
+};
+let vocab = null, vocabLang = "";
+function vocabulario(){   // palavras do menu no idioma atual: normalizada → forma com acentos
+  if(vocab && vocabLang === LANG) return vocab;
+  vocab = new Map(); vocabLang = LANG;
+  PRATOS.forEach(x => [nomePrato(x.p), descPrato(x.p), nomeCat(x.cat)].join(" ").split(/[^\p{L}\p{N}]+/u).forEach(w => { const n = norm(w); if(n.length > 2 && !vocab.has(n)) vocab.set(n, w.toLowerCase()); }));
+  return vocab;
+}
+function corrigir(tokens, orig){
+  const V = vocabulario(); let mudou = false;
+  const certo = tokens.map((t, i) => {
+    if([...V.keys()].some(w => w.includes(t))) return {n:t, o:orig[i]};
+    const lim = t.length < 4 ? 0 : t.length < 7 ? 1 : 2; if(!lim) return {n:t, o:orig[i]};
+    let melhor = null, md = lim + 1;
+    V.forEach((o, w) => { const d = Math.min(distancia(t, w), distancia(t, w.slice(0, t.length))); if(d < md || (d === md && melhor && w.length < melhor.n.length)){ md = d; melhor = {n:w, o}; } });
+    if(melhor && md <= lim){ mudou = true; return melhor; }
+    return {n:t, o:orig[i]};
+  });
+  return mudou ? certo : null;
+}
 function pesquisar(q){
   consulta = q.trim();
   const barra = $("#barraTabs"), info = $("#pesqInfo");
   $("#pesqLimpar").hidden = !consulta;
   if(!consulta){ barra.classList.remove("a-pesquisar"); info.textContent = ""; mostrarCategoria(catAtual || "Francesinhas"); return; }
   const tokens = norm(consulta).split(/\s+/).filter(Boolean);
-  const res = PRATOS.filter(x => { const alvo = norm([nomePrato(x.p), descPrato(x.p), nomeCat(x.cat), x.p.nome, x.p.desc].join(" ")); return tokens.every(t => alvo.includes(t)); });
+  const procura = ts => PRATOS.filter(x => { const alvo = norm([nomePrato(x.p), descPrato(x.p), nomeCat(x.cat), x.p.nome, x.p.desc].join(" ")); return ts.every(t => alvo.includes(t)); });
+  let res = procura(tokens), sugestao = "";
+  if(!res.length){   // sem resultados: tenta corrigir erros de escrita
+    const c = corrigir(tokens, consulta.split(/\s+/).filter(Boolean)), r2 = c && procura(c.map(x => x.n));
+    if(r2 && r2.length){ res = r2; sugestao = c.map(x => x.o).join(" "); }
+  }
   barra.classList.add("a-pesquisar"); tabs.querySelectorAll(".tab").forEach(t => t.setAttribute("aria-selected", "false"));
   grelha.style.setProperty("--dx", "0px"); grelha.style.setProperty("--dy", "24px");
   if(res.length) grelha.innerHTML = res.map((x,i) => cartaoHTML(x.p, i)).join("");
   else { grelha.innerHTML = ""; const m = document.createElement("p"); m.className = "sem-resultados"; m.textContent = T("Sem resultados para") + " “" + consulta + "”."; grelha.appendChild(m); }
-  info.textContent = res.length === 1 ? T("1 prato") : res.length ? T("{n} pratos").replace("{n}", res.length) : "";
+  const n = res.length === 1 ? T("1 prato") : res.length ? T("{n} pratos").replace("{n}", res.length) : "";
+  info.textContent = "";
+  if(sugestao){   // "Quiseste dizer: francesinha?" — clicar aplica a correção
+    info.append(T("Quiseste dizer") + " ");
+    const b = document.createElement("button"); b.type = "button"; b.className = "pesq-sug"; b.textContent = sugestao;
+    b.onclick = () => { $("#pesq").value = sugestao; pesquisar(sugestao); $("#pesq").focus(); };
+    info.append(b, "? · " + n);
+  } else info.textContent = n;
 }
 $("#pesq").addEventListener("input", e => pesquisar(e.target.value));
 $("#pesq").addEventListener("keydown", e => { if(e.key === "Escape"){ e.target.value = ""; pesquisar(""); } });
