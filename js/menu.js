@@ -17,6 +17,7 @@ const FOTOS = {
   cachorroEspecial: RAIZ + "img/cachorro-especial.webp",
   heroPao: RAIZ + "img/hero-francesinha-em-pao-2.webp",
   heroCachorroEspecial: RAIZ + "img/hero-cachorro-especial-2.webp",
+  heroPrego: RAIZ + "img/hero-prego-em-prato-2.webp",
   heroCachorroChapa: RAIZ + "img/hero-cachorro-na-chapa-2.webp",
   especial: RAIZ + "img/francesinha-especial.webp",
   superEspecial: RAIZ + "img/super-francesinha-especial.webp",

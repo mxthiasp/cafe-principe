@@ -28,12 +28,16 @@ if(ecras.length >= 2){
   const pontos = document.createElement("div"); pontos.className = "hero-pontos"; pontos.setAttribute("role", "group"); pontos.setAttribute("aria-label", "Pratos em destaque");
   pontos.innerHTML = ecras.map((x,i) => `<button type="button" class="hp${i === 0 ? " ativo" : ""}" data-i="${i}" aria-label="${x.nomePrato || x.titulo}"><i></i></button>`).join("");
   heroEl.appendChild(pontos);
+  const contador = document.createElement("div"); contador.className = "hero-cont"; contador.setAttribute("aria-hidden", "true");   // "01 / 05" (só no telemóvel)
+  const numero = i => `<b>${String(i + 1).padStart(2, "0")}</b> / ${String(ecras.length).padStart(2, "0")}`;
+  contador.innerHTML = numero(0); heroEl.appendChild(contador);
   let atual = 0;
   const trocarTexto = (x, animar = true) => {
     const tit = x.nomePrato && !x.frase ? nomePrato({nome:x.nomePrato}) : T(x.titulo);
     escreverTitulo(tit);
-    if(x.nomePrato){ heroTexto.innerHTML = `<b class="hero-prato">${nomePrato({nome:x.nomePrato})}</b>${descPrato({nome:x.nomePrato, desc:x.texto})}`; } else { heroTexto.textContent = T(x.texto); }
-    heroExtra.innerHTML = "";
+    heroEl.classList.toggle("hero--prato", !!x.nomePrato);   // no telemóvel o nome do prato passa a ser o título grande
+    if(x.nomePrato){ heroTexto.innerHTML = `<b class="hero-prato">${nomePrato({nome:x.nomePrato})}</b><span class="hero-desc">${descPrato({nome:x.nomePrato, desc:x.texto})}</span>`; } else { heroTexto.textContent = T(x.texto); }
+    heroExtra.innerHTML = x.nomePrato && x.preco > 0 ? `<span class="hero-pr"><span class="sr-so">${euro(x.preco)}</span><span aria-hidden="true" class="pp">${precoPartes(x.preco)}</span></span>` : "";   // preço (só aparece no telemóvel)
     heroBotao.textContent = T(x.botao); heroBotao.dataset.cat = x.cat || ""; heroBotao.dataset.prato = x.prato || "";
     if(animar && !reduz) [heroTexto, heroExtra, heroBotao].forEach(el => el.animate([{opacity:0, transform:"translateY(14px)"}, {opacity:1, transform:"none"}], {duration:600, easing:"cubic-bezier(.2,.8,.2,1)"}));
   };
@@ -66,7 +70,7 @@ if(ecras.length >= 2){
     carregar(i); carregar(i + 1);
     ecras[atual].el.classList.remove("ativo"); pontos.children[atual].classList.remove("ativo");
     atual = i; ecras[i].el.classList.add("ativo"); pontos.children[i].classList.add("ativo");
-    trocarTexto(ecras[i]);
+    trocarTexto(ecras[i]); contador.innerHTML = numero(i);
   };
   pontos.addEventListener("click", e => { const b = e.target.closest(".hp"); if(b) ir(+b.dataset.i); });
   /* clicar (ou tocar) na foto passa para o prato seguinte; no telemóvel também se pode deslizar com o dedo */
