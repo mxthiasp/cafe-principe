@@ -132,8 +132,8 @@ function montarHorario(){
 function atualizarEstado(){
   const e = estadoAbertura();
   $("#estado").className = "estado" + (e.aberto ? " aberto" : "");
-  $("#estado").innerHTML = `<i class="ponto"></i>${e.texto}`;
-  const v = $("#visitaEstado"); if(v){ v.className = "visita-estado" + (e.aberto ? " aberto" : ""); v.innerHTML = `<i></i>${e.texto}`; }
+  $("#estado").textContent = e.texto;
+  const v = $("#visitaEstado"); if(v){ v.className = "visita-estado" + (e.aberto ? " aberto" : ""); v.textContent = e.texto; }
   const vc = $("#visitaCozinha"); if(vc) vc.textContent = e.aberto ? estadoRefeicoes() : "";
   montarHorario();
   /* com o café fechado, a barra de ligar avisa quando abre */

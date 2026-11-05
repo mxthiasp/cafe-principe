@@ -13,9 +13,6 @@ function cartaoHTML(p, i){
       ${p.foto ? `<div class="foto"><img src="${p.foto}" alt="${nome}" loading="lazy" decoding="async">${chipPreco(p.preco)}</div>` : `<div class="foto foto--vazia">${chipPreco(p.preco)}</div>`}
       <h3>${nome}</h3>
       <p>${descPrato(p)}</p>
-      <div class="card-fim">
-        <span class="ver-mais" aria-hidden="true">${T("Ver detalhes")} ›</span>
-      </div>
     </a></div>`;
 }
 const ROTAS_LIMPAS = CAFE.enderecosLimpos !== false && /^https?:$/.test(location.protocol);   // /prato/nome; em ficheiro local usa #/prato/nome

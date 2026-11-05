@@ -746,3 +746,11 @@ input:focus-visible{outline-offset:2px}
 body.vista-prato .pagina-prato{animation:paginaEntra .3s ease-out}
 @keyframes paginaEntra{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
 @media (prefers-reduced-motion:reduce){body.vista-prato .pagina-prato{animation:none}.foto img,.prato-foto img{transition:none}}
+
+/* sem bolinha ao lado de "Aberto agora": a cor do texto diz se está aberto */
+.estado.aberto,.visita-estado.aberto{color:var(--lima)}
+@media (max-width:820px){.visita-estado{gap:0}}
+
+/* cartões sem "Ver detalhes": o cartão todo é o botão; um pouco de ar por baixo do texto */
+.card:not(.card--destaque) p{padding-bottom:.9rem}
+@media (max-width:820px){#grelha .card:not(.card--destaque) p{padding-bottom:.8rem}}

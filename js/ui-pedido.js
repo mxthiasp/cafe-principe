@@ -72,7 +72,6 @@ function montarPrato(){
       <a class="card" href="${urlPrato(x.p.nome)}" data-prato="${x.p.nome}">
         <div class="foto${x.p.foto ? "" : " foto--vazia"}">${x.p.foto ? `<img src="${x.p.foto}" alt="${nomePrato(x.p)}" loading="lazy" decoding="async">` : ""}${chipPreco(x.p.preco)}</div>
         <h3>${nomePrato(x.p)}</h3>
-        <div class="card-fim"><span class="ver-mais" aria-hidden="true">${T("Ver detalhes")} ›</span></div>
       </a>`).join("")}</div></section>
   </div>`;
   document.title = nome + " · Café Príncipe";
