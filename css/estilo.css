@@ -667,3 +667,5 @@ section h2{font-size:clamp(2.6rem,7.5vw,4.2rem)}
   .hero-pr{display:inline-flex;font-family:var(--destaque);font-weight:700;font-size:1.8rem;line-height:1;color:var(--creme)}
   .pausa{top:.8rem;bottom:auto;right:.9rem}
 }
+
+.rodape-legal{font-size:.82rem;color:var(--creme-2);margin-top:1.2rem;padding-top:1rem;border-top:1px solid var(--carvao-3)}

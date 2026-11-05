@@ -142,11 +142,18 @@ if(CAFE.analitica && CAFE.analitica.cloudflareToken){
 /* ============ POLÍTICA DE PRIVACIDADE ============ */
 const PRIV = ["p1","p2","p3","p4","p5","p6","p7","p8"];
 const PRIV_PT = {"t": "Política de privacidade", "p1": "Este site é do Café Príncipe ({morada}; telefone {tel}).", "p2": "O site não tem formulários e não recolhe dados pessoais. As encomendas e as reservas são feitas por telefone, diretamente com o café.", "p3": "Não usamos cookies de rastreio nem de publicidade. O site guarda no seu dispositivo apenas a língua que escolheu (para se lembrar dela na próxima visita) e uma cópia do menu, para o poder abrir sem rede.", "p4": "Para mostrar os tipos de letra, o seu navegador pede-os ao Google Fonts, o que pode enviar o seu endereço IP ao Google.", "p5": "Contamos as visitas com o Cloudflare Web Analytics, que, segundo a Cloudflare, não usa cookies.", "p6": "O site está alojado na Cloudflare, que pode registar o endereço IP de quem o visita por razões técnicas e de segurança.", "p7": "Os botões do Google Maps e do Waze abrem esses serviços, que têm as suas próprias políticas de privacidade.", "p8": "Se tiver dúvidas sobre os seus dados, contacte o café pelo telefone acima. Também pode apresentar queixa à Comissão Nacional de Proteção de Dados (www.cnpd.pt)."};
+/* identificação do titular (rodapé): nome e NIF, como na fatura */
+function montarLegal(){
+  const L = CAFE.legal, el = $("#rodLegal"); if(!el) return;
+  if(!L || !L.nome){ el.hidden = true; return; }
+  el.textContent = "Snack Bar Príncipe · " + L.nome + (L.nif ? " · NIF " + L.nif : ""); el.hidden = false;
+}
 function montarPriv(){
+  montarLegal();
   const tel = n => `<a href="tel:${n.replace(/\s/g,"")}">${n}</a>`;
   $("#privTitulo").textContent = T(PRIV_PT.t);
   $("#privCorpo").innerHTML = PRIV.filter(k => (k !== "p4" || CAFE.fontesGoogle) && (k !== "p5" || (CAFE.analitica && CAFE.analitica.cloudflareToken)))
-    .map(k => `<p>${T(PRIV_PT[k]).replace("{morada}", CAFE.morada).replace("{tel}", tel(TELEFONES.encomendas))}</p>`).join("");
+    .map(k => `<p>${T(PRIV_PT[k]).replace("{morada}", CAFE.morada).replace("{tel}", tel(TELEFONES.encomendas))}${k === "p1" && CAFE.legal && CAFE.legal.nome ? " " + T("Responsável") + ": " + CAFE.legal.nome + (CAFE.legal.nif ? ", NIF " + CAFE.legal.nif : "") + "." : ""}</p>`).join("");
 }
 const dlgPriv = $("#dlgPriv");
 $("#abrirPriv").addEventListener("click", e => { e.preventDefault(); montarPriv(); if(dlgPriv.showModal) dlgPriv.showModal(); else dlgPriv.setAttribute("open",""); });

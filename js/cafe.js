@@ -11,6 +11,7 @@ const TELEFONES = {
 /* ============ DADOS DO CAFÉ (preenche antes de publicar) ============ */
 const CAFE = {
   morada: "Praceta de Camões 15, 4805-019 Brito, Portugal",
+  legal: { nome: "José Carlos da Silva Gonçalves Carneiro", nif: "184781345" },   // titular do estabelecimento (como na fatura); aparece no rodapé e na política de privacidade. Deixa vazio ("") para esconder
   tempoPreparacao: "",          // ex.: " Pedidos prontos em 20 a 30 min." (vazio = não aparece)
   fotoHeroR: .49,   // telemóvel: onde está o prato na foto vertical (0 = topo, 1 = fundo); usado para o centrar no ecrã
   fotoHero: matchMedia("(max-width:820px)").matches ? FOTOS.heroMovel : FOTOS.hero,                 // foto do 1.º ecrã do topo (a francesinha)

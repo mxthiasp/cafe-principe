@@ -101,6 +101,7 @@ function montarAvaliacoes(){
     (a.linkDeixar ? `<a class="btn-sec" href="${a.linkDeixar}" target="_blank" rel="noopener">${T("Deixa a tua avaliação")}</a>` : "");
 }
 function montarFaq(){
+  if(!$("#faqLista")) return;   // a secção "Antes de vires" foi retirada do site
   const tel = n => `<a href="tel:${n.replace(/\s/g,"")}">${n}</a>`, ambos = tel(TELEFONES.encomendas) + " / " + tel(TELEFONES.reservas);
   $("#faqLista").innerHTML = FAQ.map(([q,r]) => `<div><h3>${T(q)}</h3><p>${
     T(r).replace("{tel_reservas}", ambos).replace("{tel}", ambos).replace("{feriado}", hh(FERIADO.abreApartir)).replace("{morada}", CAFE.morada)}</p></div>`).join("");
