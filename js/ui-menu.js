@@ -68,6 +68,11 @@ $("#waze").href = "https://waze.com/ul?navigate=yes&q=" + _destino;
 $("#apple").href = "https://maps.apple.com/?daddr=" + _destino + "&dirflg=d";
 const _apple = /iPhone|iPad|iPod/.test(navigator.userAgent) || /Mac/.test(navigator.platform || "") || (navigator.maxTouchPoints > 1 && /Mac/.test(navigator.userAgent));
 if(_apple) $("#apple").hidden = false;
+/* telemóvel: o botão "Como chegar" abre uma folha com as apps de mapas */
+$("#gmaps2").href = $("#gmaps").href; $("#waze2").href = $("#waze").href; $("#apple2").href = $("#apple").href; $("#apple2").hidden = !_apple; $("#mapasMorada").textContent = CAFE.morada;
+const dlgMapas = $("#dlgMapas");
+$("#abrirMapas").addEventListener("click", () => { if(dlgMapas.showModal) dlgMapas.showModal(); else dlgMapas.setAttribute("open",""); });
+dlgMapas.addEventListener("click", e => { if(e.target === dlgMapas || e.target.closest(".folha-linha")) dlgMapas.close(); });
 if(CAFE.fotoFachada){ const f = $("#chegarFoto"); f.innerHTML = `<img src="${CAFE.fotoFachada}" alt="${T("Entrada do Café Príncipe")}" loading="lazy" decoding="async">`; f.hidden = false; $("#chegar").classList.add("com-foto"); }
 if(CAFE.tempoPreparacao) $("#tempoPrep").textContent = CAFE.tempoPreparacao;
 if(CAFE.fotoHero){ const h=document.querySelector(".hero"); h.classList.add("hero--foto"); h.style.setProperty("--hero-foto",`url("${CAFE.fotoHero}")`); }   // foto como fundo do hero

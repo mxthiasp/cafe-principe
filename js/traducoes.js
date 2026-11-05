@@ -33,3 +33,5 @@ Object.assign(DICT, {"Vídeo do nosso molho a ser deitado numa francesinha": ["V
 Object.assign(DICT, {"Responsável": ["Responsible party", "Responsable", "Verantwortlicher", "Responsable"]});
 Object.assign(DICT, {"Quiseste dizer": ["Did you mean", "Vouliez-vous dire", "Meinten Sie", "¿Quisiste decir"]});
 Object.assign(DICT, {"Ver horário completo": ["See full opening hours", "Voir tous les horaires", "Alle Öffnungszeiten ansehen", "Ver horario completo"]});
+Object.assign(DICT, {"Encomendar": ["Order", "Commander", "Bestellen", "Pedir"], "Reservar": ["Book a table", "Réserver", "Reservieren", "Reservar"]});
+Object.assign(DICT, {"Google Maps": ["Google Maps","Google Maps","Google Maps","Google Maps"], "Waze": ["Waze","Waze","Waze","Waze"], "Apple Maps": ["Apple Maps","Apple Maps","Apple Maps","Apple Maps"]});
