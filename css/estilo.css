@@ -648,7 +648,7 @@ section h2{font-size:clamp(2.6rem,7.5vw,4.2rem)}
   .hero--foto{--foto-h:100%;min-height:calc(100svh - var(--alt-header,64px));padding:0 0 1.5rem;align-items:flex-end;background:var(--carvao)}
   .hero--foto .wrap{align-self:stretch;display:flex;flex-direction:column;justify-content:flex-end}
   .hero-slides{inset:0;height:auto}
-  .hero-slides .hero-slide,.hero-slides .hero-slide:nth-child(n){background-color:var(--carvao);background-repeat:no-repeat;background-size:cover;background-position:center center}
+  .hero-slides .hero-slide,.hero-slides .hero-slide:nth-child(n){background-color:var(--carvao);background-repeat:no-repeat;background-size:100% auto;background-position:center calc(40svh - 26px - var(--r,.5)*125vw)}   /* foto vertical (4:5) a toda a largura, com o prato a ~40% da altura do ecrã */
   .hero--foto::after{background:linear-gradient(180deg,rgba(13,13,13,.55) 0,rgba(13,13,13,0) 12%,rgba(13,13,13,0) 56%,rgba(13,13,13,.9) 80%,var(--carvao) 100%)}
   .hero-vd{display:flex;flex-direction:column;gap:7px;position:absolute;z-index:3;right:.8rem;top:42%}
   .hero-vd i{width:5px;height:5px;border-radius:3px;background:rgba(244,243,234,.4);transition:height .3s,background .3s}

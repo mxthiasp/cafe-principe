@@ -12,15 +12,16 @@ const TELEFONES = {
 const CAFE = {
   morada: "Praceta de Camões 15, 4805-019 Brito, Portugal",
   tempoPreparacao: "",          // ex.: " Pedidos prontos em 20 a 30 min." (vazio = não aparece)
+  fotoHeroR: .49,   // telemóvel: onde está o prato na foto vertical (0 = topo, 1 = fundo); usado para o centrar no ecrã
   fotoHero: matchMedia("(max-width:820px)").matches ? FOTOS.heroMovel : FOTOS.hero,                 // foto do 1.º ecrã do topo (a francesinha)
   /* Mais pratos a rodar no topo. Cada um só aparece quando tiver foto, ex.: foto: "fotos/prego.webp".
      "frase" é o título grande; o nome do prato, a descrição e o preço vêm do menu. Com menos de 2 fotos, o topo fica fixo. */
   slides: [
-    {prato: "Francesinha em Pão",  frase: "Toda a francesinha, num pão.",                  foto: FOTOS.heroPao, fotoMovel: FOTOS.heroMPao},
-    {prato: "Cachorro Especial",   frase: "O cachorro com molho de francesinha.",           foto: FOTOS.heroCachorroEspecial, fotoMovel: FOTOS.heroMCachorroEspecial},
-    {prato: "Cachorro na Chapa",   frase: "Feito na chapa, com molho de francesinha.",     foto: FOTOS.heroCachorroChapa, fotoMovel: FOTOS.heroMCachorroChapa},
-    {prato: "Prego em Prato",      frase: "Bife de vitela tenro, queijo derretido e ovo estrelado.",                  foto: FOTOS.heroPrego, fotoMovel: FOTOS.heroMPrego},
-    {prato: "Hambúrguer Especial", frase: "O hambúrguer que também leva molho de francesinha.", foto: FOTOS.heroHamburguerEspecial, fotoMovel: FOTOS.heroMHamburguer}
+    {prato: "Francesinha em Pão",  frase: "Toda a francesinha, num pão.",                  foto: FOTOS.heroPao, fotoMovel: FOTOS.heroMPao, rMovel: 0.7},
+    {prato: "Cachorro Especial",   frase: "O cachorro com molho de francesinha.",           foto: FOTOS.heroCachorroEspecial, fotoMovel: FOTOS.heroMCachorroEspecial, rMovel: 0.61},
+    {prato: "Cachorro na Chapa",   frase: "Feito na chapa, com molho de francesinha.",     foto: FOTOS.heroCachorroChapa, fotoMovel: FOTOS.heroMCachorroChapa, rMovel: 0.67},
+    {prato: "Prego em Prato",      frase: "Bife de vitela tenro, queijo derretido e ovo estrelado.",                  foto: FOTOS.heroPrego, fotoMovel: FOTOS.heroMPrego, rMovel: 0.57},
+    {prato: "Hambúrguer Especial", frase: "O hambúrguer que também leva molho de francesinha.", foto: FOTOS.heroHamburguerEspecial, fotoMovel: FOTOS.heroMHamburguer, rMovel: 0.44}
   ],
   redes: { instagram: "", facebook: "" },   // links completos; vazio = não aparece
   sobreNos: {

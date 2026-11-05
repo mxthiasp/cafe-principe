@@ -6,13 +6,14 @@
 let aoEstarPronto = null;   // definido mais abaixo, no bloco do topo
 /* ============ TOPO COM VÁRIOS PRATOS ============ */
 const heroBotao = $("#heroBotao"), heroTexto = $("#heroTexto"), heroExtra = $("#heroExtra");
-const principal = {titulo:h1.getAttribute("aria-label"), texto:heroTexto.textContent, botao:heroBotao.textContent, foto:CAFE.fotoHero};
+const movel0 = matchMedia("(max-width:820px)").matches;
+const principal = {titulo:h1.getAttribute("aria-label"), texto:heroTexto.textContent, botao:heroBotao.textContent, foto:CAFE.fotoHero, r:movel0 ? CAFE.fotoHeroR : 0};
 let topoAtualizar = () => { escreverTitulo(T(principal.titulo)); heroTexto.textContent = T(principal.texto); heroBotao.textContent = T(principal.botao); };
 const movel = matchMedia("(max-width:820px)").matches;   // no telemóvel usam-se as fotos verticais
 const outros = (CAFE.slides || []).map(sl => {
   for(const [cat, itens] of Object.entries(MENU)){
     const p = itens.find(x => x.nome === sl.prato);
-    if(p) return {titulo:sl.frase || p.nome, frase:sl.frase, texto:p.desc, nomePrato:p.nome, preco:p.preco, botao:principal.botao, cat:"", prato:"", foto:(movel && sl.fotoMovel) || sl.foto};
+    if(p) return {titulo:sl.frase || p.nome, frase:sl.frase, texto:p.desc, nomePrato:p.nome, preco:p.preco, botao:principal.botao, cat:"", prato:"", foto:(movel && sl.fotoMovel) || sl.foto, r:movel ? sl.rMovel : 0};
   }
   return null;
 }).filter(Boolean);
@@ -21,7 +22,7 @@ if(ecras.length >= 2){
   heroEl.classList.add("hero--slides");
   heroEl.setAttribute("aria-roledescription", "carrossel");
   const camada = document.createElement("div"); camada.className = "hero-slides";
-  ecras.forEach((x,i) => { const d = document.createElement("div"); d.className = "hero-slide" + (i === 0 ? " ativo" : ""); camada.appendChild(d); x.el = d; });
+  ecras.forEach((x,i) => { const d = document.createElement("div"); d.className = "hero-slide" + (i === 0 ? " ativo" : ""); if(x.r) d.style.setProperty("--r", x.r); camada.appendChild(d); x.el = d; });
   heroEl.insertBefore(camada, heroEl.firstChild);
   /* cada foto só é pedida quando está quase a aparecer */
   const carregar = i => { const x = ecras[(i + ecras.length) % ecras.length]; if(!x.el.style.backgroundImage) x.el.style.backgroundImage = `url("${x.foto}")`; };

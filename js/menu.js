@@ -10,12 +10,12 @@
 const RAIZ = /^https?:/.test(location.protocol) ? "/" : "./";
 const FOTOS = {
   hero: RAIZ + "img/hero.webp",
-  heroMovel: RAIZ + "img/hero-m-francesinha-especial.webp",   // topo no telemóvel (foto vertical)
-  heroMPao: RAIZ + "img/hero-m-francesinha-em-pao.webp",
-  heroMCachorroEspecial: RAIZ + "img/hero-m-cachorro-especial.webp",
-  heroMCachorroChapa: RAIZ + "img/hero-m-cachorro-na-chapa.webp",
-  heroMPrego: RAIZ + "img/hero-m-prego-em-prato.webp",
-  heroMHamburguer: RAIZ + "img/hero-m-hamburguer-especial.webp",
+  heroMovel: RAIZ + "img/hero-v-francesinha-especial.webp",   // topo no telemóvel (foto vertical)
+  heroMPao: RAIZ + "img/hero-v-francesinha-em-pao.webp",
+  heroMCachorroEspecial: RAIZ + "img/hero-v-cachorro-especial.webp",
+  heroMCachorroChapa: RAIZ + "img/hero-v-cachorro-na-chapa.webp",
+  heroMPrego: RAIZ + "img/hero-v-prego-em-prato.webp",
+  heroMHamburguer: RAIZ + "img/hero-v-hamburguer-especial.webp",
   tosta: RAIZ + "img/tosta-mista.webp",
   cachorroChapa: RAIZ + "img/cachorro-na-chapa.webp",
   francesinhaPao: RAIZ + "img/francesinha-em-pao.webp",
@@ -96,7 +96,7 @@ const MENU = {
   ],
   "Picadinhos": [
     {nome:"Picadinho de Vitela", desc:"Carne de vitela, salsicha, chouriço, pickles, azeitonas e molho de francesinha. Com batata.", preco:12.0},
-    {nome:"Meio Picadinho de Vitela", desc:"Carne de vitela, salsicha, chouriço, pickles, azeitonas e molho de francesinha. Com batata.", preco:0}
+    {nome:"Meio Picadinho de Vitela", desc:"Carne de vitela, salsicha, chouriço, pickles, azeitonas e molho de francesinha. Com batata.", preco:8.75}
   ],
   "Entradas": [
     {nome:"Pão de Alho", desc:"", preco:2.75},
@@ -106,11 +106,12 @@ const MENU = {
     {nome:"Bolinhos de Bacalhau", desc:"6 bolinhos de bacalhau.", preco:4.8}
   ],
   "Menu Infantil": [
-    {nome:"Mini Prego de Vitela com Ovo", desc:"Mini prego de vitela com ovo.", preco:0},
-    {nome:"Bife de Frango com Batata", desc:"Bife de frango com batata.", preco:0},
-    {nome:"2 Salsichas com Batata", desc:"Duas salsichas com batata.", preco:0},
-    {nome:"Hambúrguer com Ovo e Batata", desc:"Hambúrguer com ovo e batata.", preco:0}
+    {nome:"Mini Prego de Vitela com Ovo", desc:"Mini prego de vitela com ovo.", preco:8.75},
+    {nome:"Bife de Frango com Batata", desc:"Bife de frango com batata.", preco:5.5},
+    {nome:"2 Salsichas com Batata e Ovo", desc:"Duas salsichas com batata e ovo.", preco:4.5},
+    {nome:"Hambúrguer com Ovo e Batata", desc:"Hambúrguer com ovo e batata.", preco:4.75}
   ],
   "Sobremesas": [
+    {nome:"Sobremesa", desc:"Qualquer sobremesa do dia, ao mesmo preço. Pergunta-nos quais temos.", preco:2.5}
   ]
 };

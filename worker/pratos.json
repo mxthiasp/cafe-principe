@@ -212,7 +212,7 @@
  "meio-picadinho-de-vitela": {
   "nome": "Meio Picadinho de Vitela",
   "desc": "Carne de vitela, salsicha, chouriço, pickles, azeitonas e molho de francesinha. Com batata.",
-  "preco": 0,
+  "preco": 8.75,
   "img": "/og-image.jpg"
  },
  "pao-de-alho": {
@@ -248,25 +248,31 @@
  "mini-prego-de-vitela-com-ovo": {
   "nome": "Mini Prego de Vitela com Ovo",
   "desc": "Mini prego de vitela com ovo.",
-  "preco": 0,
+  "preco": 8.75,
   "img": "/og-image.jpg"
  },
  "bife-de-frango-com-batata": {
   "nome": "Bife de Frango com Batata",
   "desc": "Bife de frango com batata.",
-  "preco": 0,
+  "preco": 5.5,
   "img": "/og-image.jpg"
  },
- "2-salsichas-com-batata": {
-  "nome": "2 Salsichas com Batata",
-  "desc": "Duas salsichas com batata.",
-  "preco": 0,
+ "2-salsichas-com-batata-e-ovo": {
+  "nome": "2 Salsichas com Batata e Ovo",
+  "desc": "Duas salsichas com batata e ovo.",
+  "preco": 4.5,
   "img": "/og-image.jpg"
  },
  "hamburguer-com-ovo-e-batata": {
   "nome": "Hambúrguer com Ovo e Batata",
   "desc": "Hambúrguer com ovo e batata.",
-  "preco": 0,
+  "preco": 4.75,
+  "img": "/og-image.jpg"
+ },
+ "sobremesa": {
+  "nome": "Sobremesa",
+  "desc": "Qualquer sobremesa do dia, ao mesmo preço. Pergunta-nos quais temos.",
+  "preco": 2.5,
   "img": "/og-image.jpg"
  }
 }
