@@ -10,7 +10,12 @@
 const RAIZ = /^https?:/.test(location.protocol) ? "/" : "./";
 const FOTOS = {
   hero: RAIZ + "img/hero.webp",
-  heroMovel: RAIZ + "img/hero-movel.webp",
+  heroMovel: RAIZ + "img/hero-m-francesinha-especial.webp",   // topo no telemóvel (foto vertical)
+  heroMPao: RAIZ + "img/hero-m-francesinha-em-pao.webp",
+  heroMCachorroEspecial: RAIZ + "img/hero-m-cachorro-especial.webp",
+  heroMCachorroChapa: RAIZ + "img/hero-m-cachorro-na-chapa.webp",
+  heroMPrego: RAIZ + "img/hero-m-prego-em-prato.webp",
+  heroMHamburguer: RAIZ + "img/hero-m-hamburguer-especial.webp",
   tosta: RAIZ + "img/tosta-mista.webp",
   cachorroChapa: RAIZ + "img/cachorro-na-chapa.webp",
   francesinhaPao: RAIZ + "img/francesinha-em-pao.webp",

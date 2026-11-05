@@ -8,10 +8,11 @@ let aoEstarPronto = null;   // definido mais abaixo, no bloco do topo
 const heroBotao = $("#heroBotao"), heroTexto = $("#heroTexto"), heroExtra = $("#heroExtra");
 const principal = {titulo:h1.getAttribute("aria-label"), texto:heroTexto.textContent, botao:heroBotao.textContent, foto:CAFE.fotoHero};
 let topoAtualizar = () => { escreverTitulo(T(principal.titulo)); heroTexto.textContent = T(principal.texto); heroBotao.textContent = T(principal.botao); };
+const movel = matchMedia("(max-width:820px)").matches;   // no telemóvel usam-se as fotos verticais
 const outros = (CAFE.slides || []).map(sl => {
   for(const [cat, itens] of Object.entries(MENU)){
     const p = itens.find(x => x.nome === sl.prato);
-    if(p) return {titulo:sl.frase || p.nome, frase:sl.frase, texto:p.desc, nomePrato:p.nome, preco:p.preco, botao:principal.botao, cat:"", prato:"", foto:sl.foto};
+    if(p) return {titulo:sl.frase || p.nome, frase:sl.frase, texto:p.desc, nomePrato:p.nome, preco:p.preco, botao:principal.botao, cat:"", prato:"", foto:(movel && sl.fotoMovel) || sl.foto};
   }
   return null;
 }).filter(Boolean);
@@ -28,9 +29,8 @@ if(ecras.length >= 2){
   const pontos = document.createElement("div"); pontos.className = "hero-pontos"; pontos.setAttribute("role", "group"); pontos.setAttribute("aria-label", "Pratos em destaque");
   pontos.innerHTML = ecras.map((x,i) => `<button type="button" class="hp${i === 0 ? " ativo" : ""}" data-i="${i}" aria-label="${x.nomePrato || x.titulo}"><i></i></button>`).join("");
   heroEl.appendChild(pontos);
-  const contador = document.createElement("div"); contador.className = "hero-cont"; contador.setAttribute("aria-hidden", "true");   // "01 / 05" (só no telemóvel)
-  const numero = i => `<b>${String(i + 1).padStart(2, "0")}</b> / ${String(ecras.length).padStart(2, "0")}`;
-  contador.innerHTML = numero(0); heroEl.appendChild(contador);
+  const marcas = document.createElement("div"); marcas.className = "hero-vd"; marcas.setAttribute("aria-hidden", "true");   // pontinhos laterais (só no telemóvel)
+  marcas.innerHTML = ecras.map((x,i) => `<i${i === 0 ? ' class="a"' : ""}></i>`).join(""); heroEl.appendChild(marcas);
   let atual = 0;
   const trocarTexto = (x, animar = true) => {
     const tit = x.nomePrato && !x.frase ? nomePrato({nome:x.nomePrato}) : T(x.titulo);
@@ -70,7 +70,7 @@ if(ecras.length >= 2){
     carregar(i); carregar(i + 1);
     ecras[atual].el.classList.remove("ativo"); pontos.children[atual].classList.remove("ativo");
     atual = i; ecras[i].el.classList.add("ativo"); pontos.children[i].classList.add("ativo");
-    trocarTexto(ecras[i]); contador.innerHTML = numero(i);
+    trocarTexto(ecras[i]); [...marcas.children].forEach((d,k) => d.classList.toggle("a", k === i));
   };
   pontos.addEventListener("click", e => { const b = e.target.closest(".hp"); if(b) ir(+b.dataset.i); });
   /* clicar (ou tocar) na foto passa para o prato seguinte; no telemóvel também se pode deslizar com o dedo */

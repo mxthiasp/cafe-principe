@@ -16,11 +16,11 @@ const CAFE = {
   /* Mais pratos a rodar no topo. Cada um só aparece quando tiver foto, ex.: foto: "fotos/prego.webp".
      "frase" é o título grande; o nome do prato, a descrição e o preço vêm do menu. Com menos de 2 fotos, o topo fica fixo. */
   slides: [
-    {prato: "Francesinha em Pão",  frase: "Toda a francesinha, num pão.",                  foto: FOTOS.heroPao},
-    {prato: "Cachorro Especial",   frase: "O cachorro com molho de francesinha.",           foto: FOTOS.heroCachorroEspecial},
-    {prato: "Cachorro na Chapa",   frase: "Feito na chapa, com molho de francesinha.",     foto: FOTOS.heroCachorroChapa},
-    {prato: "Prego em Prato",      frase: "Bife de vitela, queijo e ovo.",                  foto: FOTOS.heroPrego},
-    {prato: "Hambúrguer Especial", frase: "O hambúrguer que também leva molho de francesinha.", foto: FOTOS.heroHamburguerEspecial}
+    {prato: "Francesinha em Pão",  frase: "Toda a francesinha, num pão.",                  foto: FOTOS.heroPao, fotoMovel: FOTOS.heroMPao},
+    {prato: "Cachorro Especial",   frase: "O cachorro com molho de francesinha.",           foto: FOTOS.heroCachorroEspecial, fotoMovel: FOTOS.heroMCachorroEspecial},
+    {prato: "Cachorro na Chapa",   frase: "Feito na chapa, com molho de francesinha.",     foto: FOTOS.heroCachorroChapa, fotoMovel: FOTOS.heroMCachorroChapa},
+    {prato: "Prego em Prato",      frase: "Bife de vitela tenro, queijo derretido e ovo estrelado.",                  foto: FOTOS.heroPrego, fotoMovel: FOTOS.heroMPrego},
+    {prato: "Hambúrguer Especial", frase: "O hambúrguer que também leva molho de francesinha.", foto: FOTOS.heroHamburguerEspecial, fotoMovel: FOTOS.heroMHamburguer}
   ],
   redes: { instagram: "", facebook: "" },   // links completos; vazio = não aparece
   sobreNos: {

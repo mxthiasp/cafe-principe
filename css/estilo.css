@@ -639,36 +639,31 @@ section h2{font-size:clamp(2.6rem,7.5vw,4.2rem)}
 
 
 /* ============ TELEMÓVEL: ecrã inicial com a foto a ocupar o ecrã todo e só um botão ============
-   Foto em ecrã completo, "01 / 05" e estado (aberto/fechado) no topo, nome do prato + frase + "Ver menu →" e preço em baixo.
-   O telefone fica sempre no cabeçalho (fixo). Para mudar o enquadramento da foto: .hero-slide{background-position} abaixo. */
-.hero-cont,.hero-pr{display:none}
+   Foto vertical em ecrã completo (img/hero-m-*.webp); nome do prato + frase + "Ver menu →" e preço em baixo; pontinhos laterais mostram que há mais pratos.
+   O telefone fica sempre no cabeçalho (fixo). */
+.hero-vd,.hero-pr{display:none}
 @media (max-width:820px){
   body{padding-bottom:0}
   .barra-ligar{display:none!important}
   .hero--foto{--foto-h:100%;min-height:calc(100svh - var(--alt-header,64px));padding:0 0 1.5rem;align-items:flex-end;background:var(--carvao)}
   .hero--foto .wrap{align-self:stretch;display:flex;flex-direction:column;justify-content:flex-end}
   .hero-slides{inset:0;height:auto}
-  .hero-slides .hero-slide,.hero-slides .hero-slide:nth-child(n){background-color:var(--carvao);background-repeat:no-repeat;background-size:auto 80%;background-position:62% 40%;-webkit-mask-image:linear-gradient(180deg,transparent 6%,#000 24%);mask-image:linear-gradient(180deg,transparent 6%,#000 24%)}   /* o topo da foto esbate-se no fundo escuro */
-  .hero--foto::after{background:linear-gradient(180deg,rgba(13,13,13,.6) 0,rgba(13,13,13,0) 14%,rgba(13,13,13,0) 56%,rgba(13,13,13,.88) 80%,var(--carvao) 100%)}
-  /* topo: contador à esquerda, estado à direita */
-  .hero-cont{display:block;position:absolute;z-index:3;top:1rem;left:4vw;font-family:var(--destaque);font-weight:700;font-size:.95rem;letter-spacing:.16em;color:var(--creme-2)}
-  .hero-cont b{color:var(--creme)}
-  .hero-entrada>.estado{display:inline-flex;position:absolute;top:1rem;right:0;margin:0;padding:0;border:0;background:none;font-size:.82rem;font-weight:600;color:#E8E7DC;gap:.45rem;text-shadow:0 1px 8px rgba(0,0,0,.7)}
-  .hero-entrada>.estado .ponto{width:8px;height:8px}
-  /* texto */
+  .hero-slides .hero-slide,.hero-slides .hero-slide:nth-child(n){background-color:var(--carvao);background-repeat:no-repeat;background-size:cover;background-position:center center}
+  .hero--foto::after{background:linear-gradient(180deg,rgba(13,13,13,.55) 0,rgba(13,13,13,0) 12%,rgba(13,13,13,0) 56%,rgba(13,13,13,.9) 80%,var(--carvao) 100%)}
+  .hero-vd{display:flex;flex-direction:column;gap:7px;position:absolute;z-index:3;right:.8rem;top:42%}
+  .hero-vd i{width:5px;height:5px;border-radius:3px;background:rgba(244,243,234,.4);transition:height .3s,background .3s}
+  .hero-vd i.a{height:22px;background:var(--creme)}
+  .hero-entrada>.estado{display:none}
   .hero-entrada{gap:.3rem .9rem}
   .hero-entrada>h1{font-size:2.5rem;line-height:1}
   .hero-entrada>#heroTexto{display:none}
-  .hero--prato .hero-entrada>#heroTexto{display:block;order:1;font-size:1rem}
+  .hero--prato .hero-entrada>#heroTexto{display:block;order:1;font-size:1rem;margin:0;max-width:none}
   .hero--prato .hero-prato{font-family:var(--titulo);font-weight:400;font-size:2.5rem;line-height:1;letter-spacing:.01em;text-transform:uppercase;color:var(--creme);margin:0 0 .12em}
-  .hero--prato .hero-entrada>#heroTexto{margin:0;max-width:none}
   .hero--prato .hero-desc{display:none}
   .hero--prato .hero-entrada>h1{order:2;font-family:var(--corpo);font-weight:500;font-size:1.05rem;line-height:1.35;color:#D9D8CC;text-transform:none;letter-spacing:0;margin-bottom:.9rem}
-  /* "Ver menu →" como ligação e preço do outro lado */
   .hero-entrada>.btn{order:5;flex:0 0 auto;width:auto;min-height:44px;padding:.4rem 0 .3rem;background:none;border:0;border-bottom:2px solid var(--lima);border-radius:0;box-shadow:none;color:var(--lima);font-size:1.3rem;animation:none}
   .hero-entrada>.btn::after{content:"→";margin-left:.7rem}
   .hero-entrada>.hero-extra{order:6;margin-left:auto}
   .hero-pr{display:inline-flex;font-family:var(--destaque);font-weight:700;font-size:1.8rem;line-height:1;color:var(--creme)}
-  /* pausa discreta, a meio do lado direito */
-  .pausa{top:52%;bottom:auto;right:.9rem}
+  .pausa{top:.8rem;bottom:auto;right:.9rem}
 }
