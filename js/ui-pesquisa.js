@@ -156,3 +156,9 @@ function escreverTitulo(txt){
   h1.innerHTML = txt.trim().split(/\s+/).map((w,i) => `<span class="pal" aria-hidden="true"><span style="--i:${i}">${w}</span></span>`).join(" ");
 }
 escreverTitulo(h1.textContent);
+
+/* ============ FOTOS: aparecem com um desvanecer suave quando carregam (em vez de "saltarem") ============ */
+const fotoPronta = i => i.classList.add("ok");
+document.addEventListener("load", e => { if(e.target.tagName === "IMG") fotoPronta(e.target); }, true);
+document.addEventListener("error", e => { if(e.target.tagName === "IMG") fotoPronta(e.target); }, true);
+document.querySelectorAll(".foto img, .prato-foto img").forEach(i => { if(i.complete) fotoPronta(i); });

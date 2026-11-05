@@ -737,3 +737,12 @@ input:focus-visible{outline-offset:2px}
 }
 @keyframes folhaSobe{from{transform:translateY(100%)}to{transform:none}}
 @media (prefers-reduced-motion:reduce){.folha[open]{animation:none}}
+
+/* ============ ACABAMENTO: fotos que aparecem com suavidade, resposta ao toque, entrada da página do prato ============ */
+.js .foto img:not(.ok),.js .prato-foto img:not(.ok){opacity:0}
+.foto img,.prato-foto img{transition:opacity .45s ease,transform .8s cubic-bezier(.2,.8,.2,1)}
+.card:active,.va:active,.folha-linha:active,.tab:active,.cart-btn:active,.banda-cta-tel:active{transform:scale(.98)}
+.card,.va,.folha-linha,.tab,.cart-btn,.banda-cta-tel{-webkit-tap-highlight-color:transparent}
+body.vista-prato .pagina-prato{animation:paginaEntra .3s ease-out}
+@keyframes paginaEntra{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+@media (prefers-reduced-motion:reduce){body.vista-prato .pagina-prato{animation:none}.foto img,.prato-foto img{transition:none}}
