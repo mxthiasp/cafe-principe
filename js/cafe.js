@@ -4,8 +4,8 @@
    É o ficheiro que mais vais querer editar. Mantém as aspas e as vírgulas como estão.
    ============================================================ */
 const TELEFONES = {
-  encomendas: "+351 253 572 255",   // número do café
-  reservas:   "+351 937 926 144"    // telemóvel do chefe
+  encomendas: "+351 253 572 255",   // número do café: é o principal, usado em tudo (encomendas, reservas, botões)
+  reservas:   "+351 937 926 144"    // telemóvel do chefe: só aparece no fim, como "Se ninguém atender"
 };
 
 /* ============ DADOS DO CAFÉ (preenche antes de publicar) ============ */

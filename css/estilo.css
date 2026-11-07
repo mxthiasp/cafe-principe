@@ -765,3 +765,9 @@ body.vista-prato .pagina-prato{animation:paginaEntra .3s ease-out}
 .mapa-btn:hover .mapa-t{color:var(--lima,#b5c23d)}
 .mapa-btn:focus-visible{outline:2px solid var(--lima,#b5c23d);outline-offset:-4px}
 
+/* telefone do chefe: aparece no fim, mais pequeno, só para quando ninguém atende */
+.visita-alt{margin:0 0 1rem;font-size:.95rem;color:var(--creme-2)}
+.visita-alt a,.tel-alt a{color:var(--creme);text-decoration:underline;text-underline-offset:3px;white-space:nowrap}
+.tel-alt{color:var(--creme-2)}
+small.tel-alt{display:block;margin-top:.25rem;font-size:.85rem}
+

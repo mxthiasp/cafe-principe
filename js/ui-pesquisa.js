@@ -104,9 +104,9 @@ $("#partilhar").onclick = async () => {
 };
 /* menu completo para imprimir ou guardar em PDF (no idioma escolhido) */
 $("#imprimir").onclick = () => {
-  const tel = TELEFONES.encomendas + " / " + TELEFONES.reservas;
+  const tel = TELEFONES.encomendas;
   $("#menuImpressao").innerHTML =
-    `<div class="im-topo"><svg class="im-logo" viewBox="100 40 1010 290" aria-hidden="true"><use href="#logo-cp"/></svg><div class="im-contacto"><b>${tel}</b>${CAFE.morada}</div></div>` +
+    `<div class="im-topo"><svg class="im-logo" viewBox="100 40 1010 290" aria-hidden="true"><use href="#logo-cp"/></svg><div class="im-contacto"><b>${tel}</b>${T("Se ninguém atender:")} ${TELEFONES.reservas}<br>${CAFE.morada}</div></div>` +
     `<div class="im-titulo">${T("Menu")}</div><div class="cols">` +
     Object.entries(MENU).map(([cat, itens]) => `<div class="cat"><h2>${nomeCat(cat)}</h2>` + itens.map(p =>
       `<div class="it"><b>${nomePrato(p)}</b>${p.preco > 0 ? `<span class="pr">${euro(p.preco)}</span>` : ""}<small>${descPrato(p)}</small></div>`).join("") + `</div>`).join("") +
