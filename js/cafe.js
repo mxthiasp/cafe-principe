@@ -31,7 +31,7 @@ const CAFE = {
       "No Café Príncipe servimos francesinhas, pregos, hambúrgueres, tostas, saladas e muito mais.",
       "A nossa estrela é a Francesinha Especial, com molho caseiro. Podes comer no café, com reserva de mesa, ou encomendar por telefone para levantar."
     ],
-    foto: RAIZ + "img/fachada-principal.webp",   // ex.: "fotos/fachada.webp" (foto da fachada, do espaço ou da equipa)
+    foto: RAIZ + "img/fachada-cinema.webp",   // ex.: "fotos/fachada.webp" (foto da fachada, do espaço ou da equipa)
     fotoProvisoria: true        // enquanto "foto" estiver vazio, mostra uma caixa com o texto "Fachada do café". Põe false para esconder
   },
   /* VÍDEO DA SALSA ("O nosso Molho"): corre sozinho, sem som e em ciclo, de ponta a ponta do ecrã. Vazio = a secção fica como está.
