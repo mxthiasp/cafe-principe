@@ -275,9 +275,51 @@
   "preco": 4.75,
   "img": "/og-image.jpg"
  },
- "sobremesa": {
-  "nome": "Sobremesa",
-  "desc": "Qualquer sobremesa do dia, ao mesmo preço. Pergunta-nos quais temos.",
+ "mousse-de-chocolate": {
+  "nome": "Mousse de Chocolate",
+  "desc": "Mousse de chocolate com granulado.",
+  "preco": 2.5,
+  "img": "/og-image.jpg"
+ },
+ "baba-de-camelo": {
+  "nome": "Baba de Camelo",
+  "desc": "Doce cremoso de leite condensado com frutos secos.",
+  "preco": 2.5,
+  "img": "/og-image.jpg"
+ },
+ "cheesecake-de-limao": {
+  "nome": "Cheesecake de Limão",
+  "desc": "Cheesecake cremoso com cobertura de limão.",
+  "preco": 2.5,
+  "img": "/og-image.jpg"
+ },
+ "cheesecake-de-maracuja": {
+  "nome": "Cheesecake de Maracujá",
+  "desc": "Cheesecake cremoso com cobertura de maracujá.",
+  "preco": 2.5,
+  "img": "/og-image.jpg"
+ },
+ "cheesecake-de-oreo": {
+  "nome": "Cheesecake de Oreo",
+  "desc": "Cheesecake cremoso com bolacha Oreo.",
+  "preco": 2.5,
+  "img": "/og-image.jpg"
+ },
+ "cheesecake-de-frutos-vermelhos": {
+  "nome": "Cheesecake de Frutos Vermelhos",
+  "desc": "Cheesecake cremoso com cobertura de frutos vermelhos.",
+  "preco": 2.5,
+  "img": "/og-image.jpg"
+ },
+ "mousse-de-oreo": {
+  "nome": "Mousse de Oreo",
+  "desc": "Mousse cremosa com bolacha Oreo.",
+  "preco": 2.5,
+  "img": "/og-image.jpg"
+ },
+ "natas-do-ceu": {
+  "nome": "Natas do Céu",
+  "desc": "Sobremesa cremosa com bolacha.",
   "preco": 2.5,
   "img": "/og-image.jpg"
  }

@@ -31,7 +31,7 @@ const CAFE = {
       "No Café Príncipe servimos francesinhas, pregos, hambúrgueres, tostas, saladas e muito mais.",
       "A nossa estrela é a Francesinha Especial, com molho caseiro. Podes comer no café, com reserva de mesa, ou encomendar por telefone para levantar."
     ],
-    foto: "",                   // ex.: "fotos/fachada.webp" (foto da fachada, do espaço ou da equipa)
+    foto: RAIZ + "img/fachada-fora.webp",   // ex.: "fotos/fachada.webp" (foto da fachada, do espaço ou da equipa)
     fotoProvisoria: true        // enquanto "foto" estiver vazio, mostra uma caixa com o texto "Fachada do café". Põe false para esconder
   },
   /* VÍDEO DA SALSA ("O nosso Molho"): corre sozinho, sem som e em ciclo, de ponta a ponta do ecrã. Vazio = a secção fica como está.
@@ -42,7 +42,7 @@ const CAFE = {
     linkGoogle: "",             // link das avaliações do vosso Google (opcional)
     linkDeixar: ""              // link para deixar uma avaliação (opcional)
   },
-  fotoFachada: "",                       // foto da entrada do café para a secção "Como chegar". Põe o ficheiro na pasta img/ e escreve aqui, por exemplo: RAIZ + "img/fachada.webp"
+  fotoFachada: RAIZ + "img/fachada.webp",                       // foto da entrada do café para a secção "Como chegar". Põe o ficheiro na pasta img/ e escreve aqui, por exemplo: RAIZ + "img/fachada.webp"
   enderecosLimpos: true,                 // true = cada prato tem o seu endereço (/prato/francesinha-especial). Precisa do worker.js e do wrangler.jsonc novos
   analitica: { cloudflareToken: "" },   // cola aqui o token do Cloudflare Web Analytics (sem cookies). Vazio = sem estatísticas
   fontesGoogle: false,                   // as letras estão na pasta fonts/; true só se voltarem a vir do Google (a política de privacidade passa a mencioná-lo)

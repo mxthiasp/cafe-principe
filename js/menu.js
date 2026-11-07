@@ -37,7 +37,18 @@ const FOTOS = {
   pregoPratoFrango: RAIZ + "img/prego-em-prato-de-frango.webp",
   pregoPao: RAIZ + "img/prego-em-pao.webp",
   baguetaAtum: RAIZ + "img/baguete-de-atum.webp",
-  omeleteCamarao: RAIZ + "img/omelete-de-camarao.webp"
+  omeleteCamarao: RAIZ + "img/omelete-de-camarao.webp",
+  mousseChocolate: RAIZ + "img/mousse-de-chocolate.webp",
+  babaCamelo: RAIZ + "img/baba-de-camelo.webp",
+  cheesecakeLimao: RAIZ + "img/cheesecake-de-limao.webp",
+  cheesecakeMaracuja: RAIZ + "img/cheesecake-de-maracuja.webp",
+  natasCeu: RAIZ + "img/natas-do-ceu.webp",
+  cheesecakeOreo: RAIZ + "img/cheesecake-de-oreo.webp",
+  mousseOreo: RAIZ + "img/mousse-de-oreo.webp",
+  cheesecakeFrutos: RAIZ + "img/cheesecake-de-frutos-vermelhos.webp",
+  asinhas: RAIZ + "img/asinhas-de-frango.webp",
+  salsichasOvo: RAIZ + "img/2-salsichas-com-batata-e-ovo.webp",
+  hamburguerOvo: RAIZ + "img/hamburguer-com-ovo-e-batata.webp"
 };
 
 /* ============ DADOS DO MENU (edita nomes, preços e descrições) ============ */
@@ -103,17 +114,24 @@ const MENU = {
   "Entradas": [
     {nome:"Pão de Alho", desc:"", preco:2.75},
     {nome:"Pão de Alho c/ Bacon", desc:"Com bacon.", preco:4.5},
-    {nome:"Asinhas de Frango", desc:"Asinhas de frango fritas.", preco:4.5},
+    {nome:"Asinhas de Frango", desc:"Asinhas de frango fritas.", preco:4.5, foto:FOTOS.asinhas},
     {nome:"Rissóis de Carne", desc:"6 rissóis de carne.", preco:4.2},
     {nome:"Bolinhos de Bacalhau", desc:"6 bolinhos de bacalhau.", preco:4.8}
   ],
   "Menu Infantil": [
     {nome:"Mini Prego de Vitela com Ovo", desc:"Mini prego de vitela com ovo.", preco:8.75},
     {nome:"Bife de Frango com Batata", desc:"Bife de frango com batata.", preco:5.5},
-    {nome:"2 Salsichas com Batata e Ovo", desc:"Duas salsichas com batata e ovo.", preco:4.5},
-    {nome:"Hambúrguer com Ovo e Batata", desc:"Hambúrguer com ovo e batata.", preco:4.75}
+    {nome:"2 Salsichas com Batata e Ovo", desc:"Duas salsichas com batata e ovo.", preco:4.5, foto:FOTOS.salsichasOvo},
+    {nome:"Hambúrguer com Ovo e Batata", desc:"Hambúrguer com ovo e batata.", preco:4.75, foto:FOTOS.hamburguerOvo}
   ],
   "Sobremesas": [
-    {nome:"Sobremesa", desc:"Qualquer sobremesa do dia, ao mesmo preço. Pergunta-nos quais temos.", preco:2.5}
+    {nome:"Mousse de Chocolate", desc:"Mousse de chocolate com granulado.", preco:2.5, foto:FOTOS.mousseChocolate},
+    {nome:"Baba de Camelo", desc:"Doce cremoso de leite condensado com frutos secos.", preco:2.5, foto:FOTOS.babaCamelo},
+    {nome:"Cheesecake de Limão", desc:"Cheesecake cremoso com cobertura de limão.", preco:2.5, foto:FOTOS.cheesecakeLimao},
+    {nome:"Cheesecake de Maracujá", desc:"Cheesecake cremoso com cobertura de maracujá.", preco:2.5, foto:FOTOS.cheesecakeMaracuja},
+    {nome:"Cheesecake de Oreo", desc:"Cheesecake cremoso com bolacha Oreo.", preco:2.5, foto:FOTOS.cheesecakeOreo},
+    {nome:"Cheesecake de Frutos Vermelhos", desc:"Cheesecake cremoso com cobertura de frutos vermelhos.", preco:2.5, foto:FOTOS.cheesecakeFrutos},
+    {nome:"Mousse de Oreo", desc:"Mousse cremosa com bolacha Oreo.", preco:2.5, foto:FOTOS.mousseOreo},
+    {nome:"Natas do Céu", desc:"Sobremesa cremosa com bolacha.", preco:2.5, foto:FOTOS.natasCeu}
   ]
 };
