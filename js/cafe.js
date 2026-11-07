@@ -28,7 +28,6 @@ const CAFE = {
   sobreNos: {
     titulo: "Sobre nós",
     texto: [
-      "No Café Príncipe servimos francesinhas, pregos, hambúrgueres, tostas, saladas e muito mais.",
       "A nossa estrela é a Francesinha Especial, com molho caseiro. Podes comer no café, com reserva de mesa, ou encomendar por telefone para levantar."
     ],
     foto: RAIZ + "img/fachada-cinema.webp",   // ex.: "fotos/fachada.webp" (foto da fachada, do espaço ou da equipa)

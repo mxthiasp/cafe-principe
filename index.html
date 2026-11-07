@@ -31,8 +31,8 @@
 <link rel="preload" as="font" type="font/woff2" href="/fonts/barlow-500-latin.woff2" crossorigin>
 <link rel="preload" as="font" type="font/woff2" href="/fonts/barlow-600-latin.woff2" crossorigin>
 <link rel="preload" as="font" type="font/woff2" href="/fonts/barlow-condensed-600-latin.woff2" crossorigin>
-<link rel="stylesheet" href="/css/estilo.css?v=201346c3">
-<meta name="versao" content="201346c3">
+<link rel="stylesheet" href="/css/estilo.css?v=2ceb2793">
+<meta name="versao" content="2ceb2793">
 <script>document.documentElement.classList.add("js");setTimeout(function(){document.documentElement.classList.add("pronto")},1500);try{var l=(localStorage.getItem("idioma")||navigator.language||"pt").slice(0,2).toLowerCase();if(/^(en|fr|de|es)$/.test(l)){var k=document.createElement("link");k.rel="preload";k.as="script";k.href="/js/traducoes.js?v="+document.querySelector("meta[name=versao]").content;document.head.appendChild(k)}}catch(e){}</script>
 </head>
 <body>
@@ -179,12 +179,6 @@
     <div class="visita-banner">
       <p class="eyebrow">Brito · Guimarães</p>
       <h2>Visita-nos</h2>
-      <p class="visita-estado" id="visitaEstado"></p>
-      <p class="visita-coz" id="visitaCozinha"></p>
-    </div>
-    <div class="visita-acoes" role="group" aria-label="Ações rápidas">
-      <a class="va va--p" data-tel="encomendas" data-sem-texto aria-label="Ligar para encomendar ou reservar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2z"/></svg><span>Ligar</span></a>
-      <button type="button" class="va" id="abrirMapas"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 11 22 2l-9 19-2-8z"/></svg><span>Como chegar</span></button>
     </div>
     <div class="visita-grelha">
       <div class="visita-col">
@@ -195,7 +189,11 @@
       </div>
       <div class="visita-col visita-onde">
         <p class="lab">Morada</p>
-        <p class="visita-morada" id="moradaTxt"></p>
+        <button type="button" class="visita-end" id="abrirMapas" aria-haspopup="dialog">
+          <i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 10c0 6-8 12-8 12S4 16 4 10a8 8 0 0 1 16 0z"/><circle cx="12" cy="10" r="3"/></svg></i>
+          <span><b id="moradaTxt"></b><small>Como chegar</small></span>
+          <u><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 6 6 6-6 6"/></svg></u>
+        </button>
         <div class="chegar" id="chegar"><figure class="chegar-foto" id="chegarFoto" hidden></figure></div>
         <div class="chegar-mapa" id="chegarMapa"><button type="button" class="mapa-btn" id="verMapa"><svg viewBox="0 0 24 24" width="30" height="30" aria-hidden="true"><path fill="currentColor" d="M12 2a7 7 0 0 0-7 7c0 5.2 7 13 7 13s7-7.8 7-13a7 7 0 0 0-7-7zm0 9.5A2.5 2.5 0 1 1 12 6.500a2.500 2.500 0 0 1 0 5z"/></svg><span class="mapa-t">Ver mapa</span><small class="mapa-s">Mapa do Google Maps</small></button></div>
         <p class="mapas-logos" hidden>
@@ -204,7 +202,7 @@
           <a id="apple" class="mapa-logo" target="_blank" rel="noopener" aria-label="Abrir no Apple Maps" hidden><img src="/img/mapas/apple-maps.svg" alt="" width="52" height="52" loading="lazy" decoding="async"></a>
         </p>
       </div>
-      <div class="visita-col">
+      <div class="visita-col visita-tels">
         <p class="lab">Encomendas e reservas de mesa</p>
         <p class="visita-tel"><a data-tel="encomendas"></a></p>
         <p class="visita-alt">Se ninguém atender: <a data-tel="reservas"></a></p>
@@ -246,13 +244,13 @@
 
 <a class="barra-ligar" data-tel="encomendas" data-rotulo="Ligar para encomendar"></a>
 
-<script defer src="/js/idiomas.js?v=201346c3"></script>
-<script defer src="/js/menu.js?v=201346c3"></script>
-<script defer src="/js/cafe.js?v=201346c3"></script>
-<script defer src="/js/ui-base.js?v=201346c3"></script>
-<script defer src="/js/ui-menu.js?v=201346c3"></script>
-<script defer src="/js/ui-pedido.js?v=201346c3"></script>
-<script defer src="/js/ui-pesquisa.js?v=201346c3"></script>
-<script defer src="/js/ui-topo.js?v=201346c3"></script>
+<script defer src="/js/idiomas.js?v=2ceb2793"></script>
+<script defer src="/js/menu.js?v=2ceb2793"></script>
+<script defer src="/js/cafe.js?v=2ceb2793"></script>
+<script defer src="/js/ui-base.js?v=2ceb2793"></script>
+<script defer src="/js/ui-menu.js?v=2ceb2793"></script>
+<script defer src="/js/ui-pedido.js?v=2ceb2793"></script>
+<script defer src="/js/ui-pesquisa.js?v=2ceb2793"></script>
+<script defer src="/js/ui-topo.js?v=2ceb2793"></script>
 </body>
 </html>

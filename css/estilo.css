@@ -717,19 +717,17 @@ input:focus-visible{outline-offset:2px}
 .visita-banner{position:relative;min-height:clamp(250px,32vw,380px);border-radius:6px;overflow:hidden;display:flex;flex-direction:column;justify-content:flex-end;padding:clamp(16px,3vw,40px);background:#111 url("/img/fachada-cinema.webp") center 42%/cover}
 .visita-banner::before{content:"";position:absolute;inset:0;background:linear-gradient(0deg,rgba(0,0,0,.92) 6%,rgba(0,0,0,.2) 72%)}
 .visita-banner>*{position:relative}
+.visita-end{all:unset;box-sizing:border-box;display:flex;align-items:center;gap:.9rem;width:100%;padding:.9rem 1rem;border-radius:12px;background:var(--carvao-2);box-shadow:inset 0 0 0 1px var(--carvao-3);color:var(--creme);cursor:pointer}
+.visita-end i{display:grid;color:var(--lima);flex:none}.visita-end i svg{width:26px;height:26px}
+.visita-end span{flex:1;min-width:0}
+.visita-end b{display:block;font:600 1.15rem/1.25 var(--corpo)}
+.visita-end small{display:block;margin-top:.15rem;font:700 .85rem var(--destaque);letter-spacing:.12em;text-transform:uppercase;color:var(--lima)}
+.visita-end u{color:var(--creme-2);text-decoration:none;display:grid;flex:none}.visita-end u svg{width:20px;height:20px}
+.visita-end:focus-visible{outline:3px solid var(--lima);outline-offset:3px}
+@media (hover:hover){.visita-end:hover{box-shadow:inset 0 0 0 1px var(--lima)}}
+.visita-end~.chegar-mapa{margin-top:1.2rem}
 .visita-banner .eyebrow{color:#e4e3da;margin:0}
 #contactos .visita-banner h2{font-size:clamp(3.1rem,9vw,5.2rem);line-height:.95;margin:.25rem 0 .5rem}
-.visita-estado{display:block;font:400 clamp(1.5rem,3vw,2rem)/1.1 var(--titulo);color:var(--creme);margin:0}
-.visita-estado.aberto{color:var(--lima)}
-.visita-coz{margin:.3rem 0 0;color:#e4e3da;font-size:.95rem}
-/* ação segmentada: um só bloco (Ligar preenchido, Como chegar vazio) */
-.visita-acoes{display:flex;position:relative;z-index:2;width:100%;margin:1rem 0 0;border-radius:12px;overflow:hidden;box-shadow:0 0 0 1.5px var(--lima);background:var(--carvao)}
-.va{flex:1;display:flex;align-items:center;justify-content:center;gap:.6rem;height:56px;padding:0 1rem;border:0;background:var(--carvao);color:var(--lima);font:700 1.2rem var(--destaque);letter-spacing:.07em;text-transform:uppercase;text-decoration:none;white-space:nowrap;cursor:pointer}
-.va--p{background:var(--lima);color:var(--carvao)}
-.va+.va{border-left:1.5px solid var(--lima)}
-.va svg{width:22px;height:22px;flex:none}
-@media (hover:hover){.va--p:hover{filter:brightness(1.08)}.va:not(.va--p):hover{background:#1b1b1b}}
-.va:focus-visible{outline:3px solid var(--creme);outline-offset:-5px}
 /* colunas */
 .visita-grelha{display:grid;gap:0}
 .visita-col{padding:1.7rem 0;border-bottom:1px solid var(--carvao-3)}
@@ -742,7 +740,6 @@ input:focus-visible{outline-offset:2px}
 .visita-tel a{font-size:clamp(1.9rem,6vw,2.4rem);white-space:normal}
 .visita-alt{margin:.2rem 0 .8rem;color:var(--creme-2);font-size:.92rem}
 @media (min-width:821px){
-  .visita-acoes{width:min(420px,100%);margin:-92px 36px 0 auto}
   .visita-grelga,.visita-grelha{grid-template-columns:1.25fr 1fr 1fr;gap:0}
   .visita-col{padding:2.1rem 2.2rem;border-bottom:0;border-right:1px solid var(--carvao-3)}
   .visita-grelha{border-top:0;margin-top:1.4rem;border-bottom:1px solid var(--carvao-3)}
@@ -754,6 +751,14 @@ input:focus-visible{outline-offset:2px}
   .folha-pega{display:none}
 }
 @media (max-width:820px){
+  .visita-banner{min-height:270px;border-radius:6px 6px 0 0}
+  .visita-grelha{display:flex;flex-direction:column;margin-top:0}
+  .visita-onde{display:contents}
+  .visita-onde>.lab{display:none}
+  .visita-end{order:-1;border-radius:0 0 6px 6px}
+  .visita-grelha>.visita-col:first-child{padding-top:1.6rem}
+  .visita-onde>.chegar-mapa{order:2;margin:1.4rem 0 0}
+  .visita-tels{order:3;margin-top:1.4rem;border-top:1px solid var(--carvao-3)}
   .hor-tab>div{gap:.7rem}.hor-tab dt{flex-basis:5.4rem;font-size:1.05rem}.hor-tab dd{font-size:.9rem}
   .folha[open]{display:block;position:fixed;inset:auto 0 0 0;margin:0;width:100%;max-width:none;max-height:80vh;border:0;border-top:1px solid var(--carvao-3);border-radius:22px 22px 0 0;background:#171717;color:var(--creme);padding:.7rem 1rem calc(1.4rem + env(safe-area-inset-bottom));animation:folhaSobe .28s cubic-bezier(.2,.8,.2,1)}
 }
