@@ -34,18 +34,20 @@ const FOTOS = {
   sandesFiambre: RAIZ + "img/sandes-de-fiambre.webp",
   sandesQueijo: RAIZ + "img/sandes-de-queijo.webp",
   sandesMista: RAIZ + "img/sandes-mista.webp",
-  pregoPratoFrango: RAIZ + "img/prego-em-prato-de-frango.webp",
+  pregoPaoOvo: RAIZ + "img/prego-em-pao-com-ovo.webp",
+  picadinho: RAIZ + "img/picadinho-de-vitela.webp",
+  francesinhaChapa: RAIZ + "img/francesinha-na-chapa.webp",
   pregoPao: RAIZ + "img/prego-em-pao.webp",
   baguetaAtum: RAIZ + "img/baguete-de-atum.webp",
   omeleteCamarao: RAIZ + "img/omelete-de-camarao.webp",
-  mousseChocolate: RAIZ + "img/mousse-de-chocolate.webp",
-  babaCamelo: RAIZ + "img/baba-de-camelo.webp",
-  cheesecakeLimao: RAIZ + "img/cheesecake-de-limao.webp",
-  cheesecakeMaracuja: RAIZ + "img/cheesecake-de-maracuja.webp",
+  mousseChocolate: RAIZ + "img/mousse-de-chocolate-2.webp",
+  babaCamelo: RAIZ + "img/baba-de-camelo-2.webp",
+  cheesecakeLimao: RAIZ + "img/cheesecake-de-limao-2.webp",
+  cheesecakeMaracuja: RAIZ + "img/cheesecake-de-maracuja-2.webp",
   natasCeu: RAIZ + "img/natas-do-ceu.webp",
-  cheesecakeOreo: RAIZ + "img/cheesecake-de-oreo.webp",
-  mousseOreo: RAIZ + "img/mousse-de-oreo.webp",
-  cheesecakeFrutos: RAIZ + "img/cheesecake-de-frutos-vermelhos.webp",
+  cheesecakeOreo: RAIZ + "img/cheesecake-de-oreo-2.webp",
+  mousseOreo: RAIZ + "img/mousse-de-oreo-2.webp",
+  cheesecakeFrutos: RAIZ + "img/cheesecake-de-frutos-vermelhos-2.webp",
   asinhas: RAIZ + "img/asinhas-de-frango.webp",
   salsichasOvo: RAIZ + "img/2-salsichas-com-batata-e-ovo.webp",
   hamburguerOvo: RAIZ + "img/hamburguer-com-ovo-e-batata.webp"
@@ -60,14 +62,13 @@ const MENU = {
     {nome:"Meia Francesinha Especial", desc:"Pão, bife de vitela, chouriço, fiambre, queijo, ketchup, mostarda, ovo e molho de francesinha. Com batata.", preco:8.75, foto:FOTOS.meiaEspecial},
     {nome:"Francesinha Especial de Frango", desc:"Pão, bife de frango, chouriço, fiambre, queijo, ketchup, mostarda, ovo e molho de francesinha. Com batata.", preco:10.5, foto:FOTOS.especial},
     {nome:"Francesinha Especial de Camarão", desc:"Pão, bife de vitela, camarão, chouriço, fiambre, queijo, ketchup, mostarda, ovo e molho de francesinha. Com batata.", preco:15.5},
-    {nome:"Francesinha na Chapa", desc:"Pão, bife de vitela, fiambre, queijo, ovo e molho de francesinha. Com batata.", preco:11.75},
+    {nome:"Francesinha na Chapa", desc:"Pão, bife de vitela, fiambre, queijo, ovo e molho de francesinha. Com batata.", preco:11.75, foto:FOTOS.francesinhaChapa},
     {nome:"Francesinha em Pão", desc:"Pão barrado com molho de francesinha, chouriço, ketchup, mostarda, queijo e fiambre.", preco:4.75, foto:FOTOS.francesinhaPao}
   ],
   "Pregos": [
     {nome:"Prego em Pão", desc:"Pão, bife de vitela, fiambre e queijo.", preco:5.75, foto:FOTOS.pregoPao},
-    {nome:"Prego em Pão c/ Ovo", desc:"Pão, bife de vitela, fiambre, queijo e ovo.", preco:6.5},
-    {nome:"Prego em Prato", desc:"Bife de vitela, fiambre, queijo, alface, tomate e ovo. Com batata.", preco:12.5, foto:FOTOS.pregoPrato},
-    {nome:"Prego em Prato de Frango", desc:"Bife de frango, fiambre, queijo, alface, tomate e ovo. Com batata.", preco:0, foto:FOTOS.pregoPratoFrango}
+    {nome:"Prego em Pão c/ Ovo", desc:"Pão, bife de vitela, fiambre, queijo e ovo.", preco:6.5, foto:FOTOS.pregoPaoOvo},
+    {nome:"Prego em Prato", desc:"Bife de vitela, fiambre, queijo, alface, tomate e ovo. Com batata.", preco:12.5, foto:FOTOS.pregoPrato}
   ],
   "Bifes e Panados": [
     {nome:"Bife de Frango em Pão", desc:"Pão, bife de frango, fiambre e queijo.", preco:4.0},
@@ -108,7 +109,7 @@ const MENU = {
     {nome:"Bife de Frango c/ Salada e Batata", desc:"Bife de frango, alface, tomate, fiambre, queijo, cenoura e milho. Com batata. Molho à escolha: iogurte ou azeite e vinagre.", preco:9.25}
   ],
   "Picadinhos": [
-    {nome:"Picadinho de Vitela", desc:"Carne de vitela, salsicha, chouriço, pickles, azeitonas e molho de francesinha. Com batata.", preco:12.0},
+    {nome:"Picadinho de Vitela", desc:"Carne de vitela, salsicha, chouriço, pickles, azeitonas e molho de francesinha. Com batata.", preco:12.0, foto:FOTOS.picadinho},
     {nome:"Meio Picadinho de Vitela", desc:"Carne de vitela, salsicha, chouriço, pickles, azeitonas e molho de francesinha. Com batata.", preco:8.75}
   ],
   "Entradas": [
