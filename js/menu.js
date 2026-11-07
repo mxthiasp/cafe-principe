@@ -35,8 +35,9 @@ const FOTOS = {
   sandesQueijo: RAIZ + "img/sandes-de-queijo.webp",
   sandesMista: RAIZ + "img/sandes-mista.webp",
   pregoPaoOvo: RAIZ + "img/prego-em-pao-com-ovo.webp",
-  picadinho: RAIZ + "img/picadinho-de-vitela.webp",
-  francesinhaChapa: RAIZ + "img/francesinha-na-chapa.webp",
+  picadinho: RAIZ + "img/picadinho-de-vitela-2.webp",
+  meioPicadinho: RAIZ + "img/meio-picadinho-de-vitela.webp",
+  cachorroPao: RAIZ + "img/cachorro-em-pao.webp",
   pregoPao: RAIZ + "img/prego-em-pao.webp",
   baguetaAtum: RAIZ + "img/baguete-de-atum.webp",
   omeleteCamarao: RAIZ + "img/omelete-de-camarao.webp",
@@ -62,7 +63,7 @@ const MENU = {
     {nome:"Meia Francesinha Especial", desc:"Pão, bife de vitela, chouriço, fiambre, queijo, ketchup, mostarda, ovo e molho de francesinha. Com batata.", preco:8.75, foto:FOTOS.meiaEspecial},
     {nome:"Francesinha Especial de Frango", desc:"Pão, bife de frango, chouriço, fiambre, queijo, ketchup, mostarda, ovo e molho de francesinha. Com batata.", preco:10.5, foto:FOTOS.especial},
     {nome:"Francesinha Especial de Camarão", desc:"Pão, bife de vitela, camarão, chouriço, fiambre, queijo, ketchup, mostarda, ovo e molho de francesinha. Com batata.", preco:15.5},
-    {nome:"Francesinha na Chapa", desc:"Pão, bife de vitela, fiambre, queijo, ovo e molho de francesinha. Com batata.", preco:11.75, foto:FOTOS.francesinhaChapa},
+    {nome:"Francesinha na Chapa", desc:"Pão, bife de vitela, fiambre, queijo, ovo e molho de francesinha. Com batata.", preco:11.75},
     {nome:"Francesinha em Pão", desc:"Pão barrado com molho de francesinha, chouriço, ketchup, mostarda, queijo e fiambre.", preco:4.75, foto:FOTOS.francesinhaPao}
   ],
   "Pregos": [
@@ -76,7 +77,7 @@ const MENU = {
     {nome:"Panado em Prato", desc:"Panado de porco, fiambre, queijo e ovo. Com batata.", preco:10.0}
   ],
   "Cachorros": [
-    {nome:"Cachorro em Pão", desc:"Pão barrado com molho de francesinha, salsicha, fiambre, queijo, ketchup e mostarda.", preco:4.75},
+    {nome:"Cachorro em Pão", desc:"Pão barrado com molho de francesinha, salsicha, fiambre, queijo, ketchup e mostarda.", preco:4.75, foto:FOTOS.cachorroPao},
     {nome:"Cachorro Especial", desc:"Pão, salsicha, fiambre, queijo, ketchup, mostarda e molho de francesinha. Com batata.", preco:11.0, foto:FOTOS.cachorroEspecial},
     {nome:"Cachorro na Chapa", desc:"Pão, salsicha, fiambre, queijo e molho de francesinha. Com batata.", preco:11.0, foto:FOTOS.cachorroChapa}
   ],
@@ -110,7 +111,7 @@ const MENU = {
   ],
   "Picadinhos": [
     {nome:"Picadinho de Vitela", desc:"Carne de vitela, salsicha, chouriço, pickles, azeitonas e molho de francesinha. Com batata.", preco:12.0, foto:FOTOS.picadinho},
-    {nome:"Meio Picadinho de Vitela", desc:"Carne de vitela, salsicha, chouriço, pickles, azeitonas e molho de francesinha. Com batata.", preco:8.75}
+    {nome:"Meio Picadinho de Vitela", desc:"Carne de vitela, salsicha, chouriço, pickles, azeitonas e molho de francesinha. Com batata.", preco:8.75, foto:FOTOS.meioPicadinho}
   ],
   "Entradas": [
     {nome:"Pão de Alho", desc:"", preco:2.75},
