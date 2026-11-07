@@ -35,6 +35,7 @@ const FOTOS = {
   sandesQueijo: RAIZ + "img/sandes-de-queijo.webp",
   sandesMista: RAIZ + "img/sandes-mista.webp",
   pregoPratoFrango: RAIZ + "img/prego-em-prato-de-frango.webp",
+  pregoPao: RAIZ + "img/prego-em-pao.webp",
   baguetaAtum: RAIZ + "img/baguete-de-atum.webp",
   omeleteCamarao: RAIZ + "img/omelete-de-camarao.webp"
 };
@@ -52,7 +53,7 @@ const MENU = {
     {nome:"Francesinha em Pão", desc:"Pão barrado com molho de francesinha, chouriço, ketchup, mostarda, queijo e fiambre.", preco:4.75, foto:FOTOS.francesinhaPao}
   ],
   "Pregos": [
-    {nome:"Prego em Pão", desc:"Pão, bife de vitela, fiambre e queijo.", preco:5.75},
+    {nome:"Prego em Pão", desc:"Pão, bife de vitela, fiambre e queijo.", preco:5.75, foto:FOTOS.pregoPao},
     {nome:"Prego em Pão c/ Ovo", desc:"Pão, bife de vitela, fiambre, queijo e ovo.", preco:6.5},
     {nome:"Prego em Prato", desc:"Bife de vitela, fiambre, queijo, alface, tomate e ovo. Com batata.", preco:12.5, foto:FOTOS.pregoPrato},
     {nome:"Prego em Prato de Frango", desc:"Bife de frango, fiambre, queijo, alface, tomate e ovo. Com batata.", preco:0, foto:FOTOS.pregoPratoFrango}
