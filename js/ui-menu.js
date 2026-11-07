@@ -70,6 +70,17 @@ $("#gmaps2").href = $("#gmaps").href; $("#waze2").href = $("#waze").href; $("#ap
 const dlgMapas = $("#dlgMapas");
 $("#abrirMapas").addEventListener("click", () => { if(dlgMapas.showModal) dlgMapas.showModal(); else dlgMapas.setAttribute("open",""); });
 dlgMapas.addEventListener("click", e => { if(e.target === dlgMapas || e.target.closest(".folha-linha")) dlgMapas.close(); });
+/* Mapa: só carrega o Google Maps quando a pessoa clica (assim não há cookies de terceiros sem querer) */
+{ const vm = $("#verMapa");
+  if(vm){
+    $(".mapa-s", vm).textContent = T("Mapa do Google Maps");
+    vm.addEventListener("click", () => {
+      const f = document.createElement("iframe");
+      f.src = "https://www.google.com/maps?q=" + encodeURIComponent(CAFE.morada) + "&hl=" + (document.documentElement.lang || "pt") + "&z=18&output=embed";
+      f.title = T("Mapa"); f.loading = "lazy"; f.referrerPolicy = "no-referrer-when-downgrade"; f.allowFullscreen = true;
+      $("#chegarMapa").replaceChildren(f);
+    });
+  } }
 if(CAFE.fotoFachada){ const f = $("#chegarFoto"); f.innerHTML = `<img src="${CAFE.fotoFachada}" alt="${T("Entrada do Café Príncipe")}" loading="lazy" decoding="async">`; f.hidden = false; $("#chegar").classList.add("com-foto"); }
 if(CAFE.tempoPreparacao) $("#tempoPrep").textContent = CAFE.tempoPreparacao;
 if(CAFE.fotoHero){ const h=document.querySelector(".hero"); h.classList.add("hero--foto"); h.style.setProperty("--hero-foto",`url("${CAFE.fotoHero}")`); }   // foto como fundo do hero
