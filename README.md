@@ -12,13 +12,13 @@ Publica-se sozinho na Cloudflare sempre que há um commit no ramo `main`.
 | a tradução de um prato ou de um texto (inglês, francês, alemão, espanhol) | `js/traducoes.js` (só é descarregado quando alguém escolhe outra língua; a lista de línguas e as bandeiras estão em `js/idiomas.js`) |
 | as cores, os tamanhos, o aspeto no telemóvel | `css/estilo.css` |
 | a estrutura da página (secções, textos fixos em português) | `index.html` |
-| a lógica do site (dividida por tema) | `js/ui-base.js` (idiomas), `ui-menu.js` (separadores, página de prato), `ui-pedido.js` ("O meu pedido"), `ui-pesquisa.js`, `ui-topo.js` (topo e privacidade). Normalmente não é preciso mexer |
+| a lógica do site (dividida por tema) | `js/ui-base.js` (idiomas), `ui-menu.js` (separadores, página de prato), `ui-pedido.js` (endereços `/prato/...` e dados para o Google), `ui-pesquisa.js` (pesquisa e título do topo), `ui-topo.js` (topo, vídeo do molho, idiomas e privacidade). Normalmente não é preciso mexer |
 
 ### Faixa de aviso e prato do dia (em `js/cafe.js`)
 
 - **Aviso no topo** (`CAFE.aviso`): põe `ativo: true`, escreve o `texto` e, se quiseres, a data `ate` ("2026-12-31"). O cliente pode fechá-lo. O texto pode ser uma frase em português ou um objeto com as várias línguas.
 - **Prato do dia** (`CAFE.pratoDoDia`): põe `ativo: true` e em `prato` o nome EXATO de um prato do menu: o preço, a descrição e as traduções vêm de lá e o cartão abre o prato. Deixa `prato: ""` para escrever um texto livre. `ate` esconde-o sozinho depois dessa data.
-- **O meu pedido**: lista que o cliente prepara no site para depois ligar. Não é uma encomenda nem recebe pagamentos. Fica guardada só no telemóvel dele.
+- **Encomendas**: fazem-se só por telefone, para levantar no café. No telemóvel, o primeiro ecrã mostra se está aberto, um botão "Ligar para encomendar" e a nota "só para levantar"; o botão de ligar também está sempre no cabeçalho. A barra "Ligar" fixa no fundo do ecrã foi retirada de propósito.
 
 Outras pastas: `img/` (fotos), `fonts/` (letras), `worker/` (pré-visualização de cada prato ao partilhar), `sw.js` (modo sem rede).
 
