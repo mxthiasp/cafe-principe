@@ -70,8 +70,9 @@ function montarPrato(){
     </div>
     <section class="relacionados"><h2>${T("Também podes gostar")}</h2><div class="relacionados-lista">${rel.map(x => `
       <a class="card" href="${urlPrato(x.p.nome)}" data-prato="${x.p.nome}">
-        <div class="foto${x.p.foto ? "" : " foto--vazia"}">${x.p.foto ? `<img src="${x.p.foto}" alt="${nomePrato(x.p)}" loading="lazy" decoding="async">` : ""}${chipPreco(x.p.preco)}</div>
+        <div class="foto${x.p.foto ? "" : " foto--vazia"}">${x.p.foto ? `<img src="${x.p.foto}" alt="${nomePrato(x.p)}" loading="lazy" decoding="async">` : ""}</div>
         <h3>${nomePrato(x.p)}</h3>
+        ${precoCartao(x.p.preco)}
       </a>`).join("")}</div></section>
   </div>`;
   document.title = nome + " · Café Príncipe";

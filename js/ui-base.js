@@ -148,6 +148,8 @@ function precoPartes(n){
   return LANG === "en" ? `<span class="pe">€</span><span class="pi">${i}</span><sup class="pd">${d}</sup>` : `<span class="pi">${i}</span><sup class="pd">${d}</sup><span class="pe">€</span>`;
 }
 const chipPreco = n => n > 0 ? `<span class="preco-chip"><span class="sr-so">${euro(n)}</span><span aria-hidden="true" class="pp">${precoPartes(n)}</span></span>` : `<span class="preco-chip preco-chip--vazio">${T("Preço a confirmar")}</span>`;
+/* preço nos cartões do menu: logo por baixo do nome, sempre no mesmo sítio */
+const precoCartao = n => n > 0 ? `<div class="card-preco"><span class="sr-so">${euro(n)}</span><span aria-hidden="true" class="pp">${precoPartes(n)}</span></div>` : `<div class="card-preco card-preco--vazio">${T("Preço a confirmar")}</div>`;
 const euro = n => LANG === "en" ? "€" + n.toFixed(2) : n.toFixed(2).replace(".", ",") + " €";
 const $ = s => document.querySelector(s);
 const slug = t => t.normalize("NFD").replace(/[\u0300-\u036f]/g,"").toLowerCase().replace(/[^a-z0-9]+/g,"-").replace(/(^-|-$)/g,"");

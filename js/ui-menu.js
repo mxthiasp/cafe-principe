@@ -10,8 +10,9 @@ function cartaoHTML(p, i){
   const nome = nomePrato(p);
   return `
     <div class="card-wrap" style="--i:${i}"><a class="card novo" style="--i:${i}" href="${urlPrato(p.nome)}" data-nome="${p.nome}">
-      ${p.foto ? `<div class="foto"><img src="${p.foto}" alt="${nome}" loading="lazy" decoding="async">${chipPreco(p.preco)}</div>` : `<div class="foto foto--vazia">${chipPreco(p.preco)}</div>`}
+      ${p.foto ? `<div class="foto"><img src="${p.foto}" alt="${nome}" loading="lazy" decoding="async"></div>` : `<div class="foto foto--vazia"></div>`}
       <h3>${nome}</h3>
+      ${precoCartao(p.preco)}
       <p>${descPrato(p)}</p>
     </a></div>`;
 }

@@ -1,6 +1,6 @@
 {
   "schemaVersion": 2,
-  "generatedAt": "2026-11-10T23:05:00Z",
+  "generatedAt": "2026-11-10T23:40:00Z",
   "title": "Design System: Café Príncipe",
   "extensions": {
     "colorMeta": {
@@ -140,7 +140,7 @@
       },
       "price": {
         "displayName": "Preço",
-        "purpose": "Preço em creme dentro do chip de preço sobre a foto; o € em lima."
+        "purpose": "Preço em lima logo por baixo do nome nos cartões; dentro do chip creme só na foto da página do prato e no topo."
       },
       "label": {
         "displayName": "Balcão",
@@ -235,9 +235,9 @@
       "name": "Cartão de prato",
       "kind": "card",
       "refersTo": "card",
-      "description": "Foto 4:3 com o chip de preço no canto, nome e descrição.",
-      "html": "<a class=\"ds-card\" href=\"#\"><div class=\"ds-card-foto\"><span class=\"ds-chip-preco\">9,50<span class=\"ds-eur\">€</span></span></div><h3>Francesinha Especial</h3><p>Pão, carnes, queijo gratinado e o molho da casa.</p></a>",
-      "css": ".ds-card{display:flex;flex-direction:column;gap:.8rem;width:280px;background:#181818;border:1px solid #2A2A28;border-radius:14px;padding:.8rem;color:#F4F3EA;text-decoration:none;box-shadow:0 6px 18px -10px rgba(0,0,0,.8);transition:transform .2s,border-color .2s,box-shadow .2s}.ds-card:hover{transform:translateY(-4px);border-color:#7E8C4A;box-shadow:0 16px 30px -14px rgba(0,0,0,.9)}.ds-card:focus-visible{outline:3px solid #B0BF3F;outline-offset:2px}.ds-card-foto{position:relative;aspect-ratio:4/3;border-radius:14px;background:radial-gradient(circle at 30% 30%,#4a5326,transparent 60%),linear-gradient(135deg,#2c2f1c,#121311)}.ds-card h3{font-family:\"Barlow Condensed\",\"Arial Narrow\",sans-serif;font-weight:700;font-size:1.4rem;line-height:1.1;text-transform:uppercase;letter-spacing:.02em;margin:.2rem 0 0}.ds-card p{color:#A9AA9B;font-family:Barlow,system-ui,sans-serif;font-size:.92rem;margin:0}.ds-chip-preco{position:absolute;left:.7rem;bottom:.7rem;display:inline-flex;align-items:flex-start;gap:.06em;background:rgba(13,13,13,.78);backdrop-filter:blur(6px);color:#F4F3EA;border:1px solid rgba(244,243,234,.22);border-radius:999px;padding:.4rem .9rem .32rem;font-family:\"Barlow Condensed\",\"Arial Narrow\",sans-serif;font-weight:700;font-size:1.5rem;line-height:1}.ds-eur{font-size:.5em;margin-top:.14em;color:#B0BF3F}"
+      "description": "Foto 4:3, nome, preço em lima logo por baixo do nome, descrição.",
+      "html": "<a class=\"ds-card\" href=\"#\"><div class=\"ds-card-foto\"></div><h3>Francesinha Especial</h3><div class=\"ds-preco\">12<sup>00</sup><span>€</span></div><p>Pão, carnes, queijo gratinado e o molho da casa.</p></a>",
+      "css": ".ds-card{display:flex;flex-direction:column;gap:.8rem;width:280px;background:#181818;border:1px solid #2A2A28;border-radius:14px;padding:.8rem;color:#F4F3EA;text-decoration:none;box-shadow:0 6px 18px -10px rgba(0,0,0,.8);transition:transform .2s,border-color .2s,box-shadow .2s}.ds-card:hover{transform:translateY(-4px);border-color:#7E8C4A;box-shadow:0 16px 30px -14px rgba(0,0,0,.9)}.ds-card:focus-visible{outline:3px solid #B0BF3F;outline-offset:2px}.ds-card-foto{aspect-ratio:4/3;border-radius:14px;background:radial-gradient(circle at 30% 30%,#4a5326,transparent 60%),linear-gradient(135deg,#2c2f1c,#121311)}.ds-card h3{font-family:\"Barlow Condensed\",\"Arial Narrow\",sans-serif;font-weight:700;font-size:1.4rem;line-height:1.1;text-transform:uppercase;letter-spacing:.02em;margin:.2rem 0 0}.ds-card p{color:#A9AA9B;font-family:Barlow,system-ui,sans-serif;font-size:.92rem;margin:0}.ds-preco{font-family:\"Barlow Condensed\",\"Arial Narrow\",sans-serif;font-weight:700;font-size:1.9rem;line-height:1;color:#B0BF3F;font-variant-numeric:tabular-nums;display:inline-flex;align-items:flex-start;gap:.06em;margin:-.3rem 0 0}.ds-preco sup,.ds-preco span{font-size:.52em;margin-top:.12em;vertical-align:baseline}"
     },
     {
       "name": "Pesquisa",
@@ -266,7 +266,7 @@
   ],
   "narrative": {
     "northStar": "O Cartaz de Balcão",
-    "overview": "O site lê-se como os painéis de menu por cima do balcão de uma cadeia de fast food: fundo carvão, títulos gordos e condensados em maiúsculas, fotos de comida grandes e um único verde-lima que grita o que importa — o botão de ligar, o separador ativo, o símbolo do euro. Não é um restaurante de toalha: é rápido, direto e com apetite.\n\nA densidade é de cartaz, não de revista. Cada secção tem um título grande sublinhado pelo traço verde do logótipo, uma grelha de cartões-foto e uma ação clara. O movimento é curto e com mola (entradas de 0,4 s, um salto de 2–4 px ao passar o rato, a faixa lima a correr) e desliga-se todo com `prefers-reduced-motion` ou com o botão de pausa.\n\nOs componentes são gordos e diretos: pílulas lima sólidas com texto condensado em maiúsculas, como num quiosque de pedidos. Tudo o que se pode tocar parece um botão.",
+    "overview": "O site lê-se como os painéis de menu por cima do balcão de uma cadeia de fast food: fundo carvão, títulos gordos e condensados em maiúsculas, fotos de comida grandes e um único verde-lima que grita o que importa — o preço, o botão de ligar, o separador ativo. Não é um restaurante de toalha: é rápido, direto e com apetite.\n\nA densidade é de cartaz, não de revista. Cada secção tem um título grande sublinhado pelo traço verde do logótipo, uma grelha de cartões-foto e uma ação clara. O movimento é curto e com mola (entradas de 0,4 s, um salto de 2–4 px ao passar o rato, a faixa lima a correr) e desliga-se todo com `prefers-reduced-motion` ou com o botão de pausa.\n\nOs componentes são gordos e diretos: pílulas lima sólidas com texto condensado em maiúsculas, como num quiosque de pedidos. Tudo o que se pode tocar parece um botão.",
     "keyCharacteristics": [
       "Fundo carvão quase preto em todo o site; não há tema claro (só a impressão do menu é em branco).",
       "Um único acento, o verde-lima, reservado para ações, preços e estados ativos.",
@@ -278,7 +278,7 @@
     "rules": [
       {
         "name": "A Regra do Verde que Vende",
-        "body": "O lima marca ações, estados ativos e o €. Exceções já em uso: o traço do logótipo, a faixa, os rótulos `eyebrow` e o subtítulo \"Ingredientes\" na página do prato. Não alargar o lima a mais texto que não se clica.",
+        "body": "O lima marca ações, estados ativos e os preços nos cartões. Exceções já em uso: o traço do logótipo, a faixa, os rótulos `eyebrow` e o subtítulo \"Ingredientes\" na página do prato. Não alargar o lima a mais texto que não se clica.",
         "section": "colors"
       },
       {
@@ -295,10 +295,16 @@
         "name": "A Regra do Brilho Único",
         "body": "A sombra lima só existe no botão principal do topo. Os outros elementos usam sombras pretas.",
         "section": "elevation"
+      },
+      {
+        "name": "A Regra do Preço Fixo",
+        "body": "Em todos os cartões o preço fica no mesmo sítio: por baixo do nome, na mesma coluna. Não alternar a foto de lado nem mudar a ordem nome → preço → descrição.",
+        "section": "components"
       }
     ],
     "dos": [
-      "Do usar o lima `#B0BF3F` em ações e estados ativos; quando é fundo, o texto por cima é carvão.",
+      "Do usar o lima `#B0BF3F` em ações, estados ativos e preços dos cartões; quando é fundo, o texto por cima é carvão.",
+      "Do pôr o preço dos cartões logo por baixo do nome, no mesmo sítio em todos os cartões.",
       "Do pôr os títulos de secção em Anton maiúsculas com o traço verde por baixo.",
       "Do usar pílula (999px) para tudo o que se clica e 14px para cartões e fotos.",
       "Do mostrar a comida em foto grande, com gradiente carvão sob o texto.",

@@ -31,7 +31,7 @@ typography:
     letterSpacing: "0.03em"
   price:
     fontFamily: "Barlow Condensed, Arial Narrow, Roboto Condensed, sans-serif"
-    fontSize: "1.5rem"
+    fontSize: "1.9rem"
     fontWeight: 700
     lineHeight: 1
     letterSpacing: "0.01em"
@@ -95,6 +95,9 @@ components:
     textColor: "{colors.creme}"
     rounded: "{rounded.pilula}"
     padding: "0.35rem 0.9rem"
+  card-price:
+    textColor: "{colors.lima}"
+    typography: "{typography.price}"
   price-chip:
     backgroundColor: "rgba(13,13,13,.78)"
     textColor: "{colors.creme}"
@@ -114,7 +117,7 @@ components:
 
 **Creative North Star: "O Cartaz de Balcão"**
 
-O site lê-se como os painéis de menu por cima do balcão de uma cadeia de fast food: fundo carvão, títulos gordos e condensados em maiúsculas, fotos de comida grandes e um único verde-lima que grita o que importa — o botão de ligar, o separador ativo, o símbolo do euro. Não é um restaurante de toalha: é rápido, direto e com apetite.
+O site lê-se como os painéis de menu por cima do balcão de uma cadeia de fast food: fundo carvão, títulos gordos e condensados em maiúsculas, fotos de comida grandes e um único verde-lima que grita o que importa — o preço, o botão de ligar, o separador ativo. Não é um restaurante de toalha: é rápido, direto e com apetite.
 
 A densidade é de cartaz, não de revista. Cada secção tem um título grande sublinhado pelo traço verde do logótipo, uma grelha de cartões-foto e uma ação clara. O movimento é curto e com mola (entradas de 0,4 s, um salto de 2–4 px ao passar o rato, a faixa lima a correr) e desliga-se todo com `prefers-reduced-motion` ou com o botão de pausa.
 
@@ -147,7 +150,7 @@ Uma paleta de balcão à noite: carvão em três tons, creme quente para texto e
 - **Creme Apagado** (`creme-2`): descrições de pratos, notas, rodapé, migalhas e placeholders.
 
 ### Named Rules
-**A Regra do Verde que Vende.** O lima marca ações, estados ativos e o €. Exceções já em uso: o traço do logótipo, a faixa, os rótulos `eyebrow` e o subtítulo "Ingredientes" na página do prato. Não alargar o lima a mais texto que não se clica.
+**A Regra do Verde que Vende.** O lima marca ações, estados ativos e os preços nos cartões. Exceções já em uso: o traço do logótipo, a faixa, os rótulos `eyebrow` e o subtítulo "Ingredientes" na página do prato. Não alargar o lima a mais texto que não se clica.
 
 **A Regra do Texto Escuro no Lima.** Sobre lima o texto é sempre carvão, nunca creme ou branco.
 
@@ -163,7 +166,7 @@ Uma paleta de balcão à noite: carvão em três tons, creme quente para texto e
 - **Display** (Anton 400, clamp(2.7rem, 8vw, 5.6rem), 1): título do topo e o nome do prato na página de cada prato (clamp(2.2rem, 6vw, 3.6rem)).
 - **Headline** (Anton 400, clamp(2.1rem, 5.2vw, 3.3rem), 1.02): título de cada secção, sempre com o traço verde por baixo.
 - **Title** (Barlow Condensed 700, 1.4rem, 1.1, maiúsculas): nome do prato nos cartões (1.9rem nos cartões em destaque) e subtítulos.
-- **Price** (Barlow Condensed 700, 1.5rem; 1–1.15rem nos cartões em telemóvel, 2rem na foto da página do prato): número em creme dentro do chip de preço, com os cêntimos e o € a meia altura e o € em lima.
+- **Price** (Barlow Condensed 700, lima, números tabulares): nos cartões fica logo por baixo do nome, a 1.9rem no computador e 1.55rem no telemóvel, com os cêntimos e o € a meia altura. Na foto da página do prato e no topo continua dentro do chip de preço, em creme.
 - **Label** (Barlow Condensed 600–700, 1.05–1.15rem, 0.05–0.06em, maiúsculas): botões, separadores, links do topo, navegação entre pratos.
 - **Body** (Barlow 400, 1.0625rem, 1.5): descrições com 34–48ch; nos cartões desce para 0.92rem em creme apagado.
 
@@ -214,10 +217,15 @@ Gordos e diretos, como as teclas de um quiosque de pedidos.
 - **Background:** carvão de cartão, com borda de 1px em carvão de borda.
 - **Shadow Strategy:** cartão em repouso → cartão levantado no hover (ver Elevation).
 - **Border:** passa a oliva no hover. A foto dentro do cartão aumenta para 1.07.
-- **Internal Padding:** 0.8rem; foto 4:3 no topo com o chip de preço no canto, depois o nome e a descrição. Em telemóvel os cartões alternam a foto à esquerda e à direita.
+- **Internal Padding:** 0.8rem. Ordem fixa: foto, nome, preço em lima, descrição. No computador a foto 4:3 fica em cima; no telemóvel fica sempre à esquerda (50 %), também nos pratos sem foto, para o preço ficar no mesmo sítio em todos os cartões.
+
+### Preço nos cartões
+O preço é a segunda coisa que se lê, logo por baixo do nome: lima, Barlow Condensed 700, nunca em cima da foto. "Preço a confirmar" ocupa o mesmo lugar em Barlow 600 creme apagado.
+
+**A Regra do Preço Fixo.** Em todos os cartões o preço fica no mesmo sítio: por baixo do nome, na mesma coluna. Não alternar a foto de lado nem mudar a ordem nome → preço → descrição.
 
 ### Chip de preço
-Pílula carvão translúcida (78 %) com desfoque, borda creme a 22 % e o preço em Barlow Condensed 700 creme, pousada no canto inferior da foto. "Preço a confirmar" usa a mesma pílula em Barlow normal mais pequeno. O mesmo chip aparece em grande na foto da página do prato.
+Pílula carvão translúcida (78 %) com desfoque, borda creme a 22 % e o preço em Barlow Condensed 700 creme, pousada no canto inferior da foto. Usa-se só na foto da página do prato e no topo, não nos cartões.
 
 ### Inputs / Fields
 - **Style:** pesquisa em pílula, carvão de cartão, borda de 1.5px, ícone à esquerda e botão circular de limpar à direita.
@@ -238,7 +246,8 @@ Fita lima de largura total com texto carvão em Barlow Condensed maiúsculas (le
 ## Do's and Don'ts
 
 ### Do:
-- **Do** usar o lima `#B0BF3F` em ações e estados ativos; quando é fundo, o texto por cima é carvão.
+- **Do** usar o lima `#B0BF3F` em ações, estados ativos e preços dos cartões; quando é fundo, o texto por cima é carvão.
+- **Do** pôr o preço dos cartões logo por baixo do nome, no mesmo sítio em todos os cartões.
 - **Do** pôr os títulos de secção em Anton maiúsculas com o traço verde por baixo.
 - **Do** usar pílula (999px) para tudo o que se clica e 14px para cartões e fotos.
 - **Do** mostrar a comida em foto grande, com gradiente carvão sob o texto.

@@ -4,6 +4,7 @@
    Carregam por esta ordem e partilham as mesmas variáveis. Os dados estão em js/cafe.js, js/menu.js, js/idiomas.js e js/traducoes.js.
    ============================================================ */
 let aoEstarPronto = null;   // definido mais abaixo, no bloco do topo
+let atualizarVideo = () => {};   // texto do botão do vídeo da salsa; definido mais abaixo e chamado ao mudar de língua
 /* ============ TOPO COM VÁRIOS PRATOS ============ */
 const heroBotao = $("#heroBotao"), heroTexto = $("#heroTexto"), heroExtra = $("#heroExtra");
 const movel0 = matchMedia("(max-width:820px)").matches;
@@ -179,7 +180,7 @@ function setLang(l, guardar = true){
   LANG = l;
   document.documentElement.lang = {pt:"pt-PT", en:"en", fr:"fr", de:"de", es:"es"}[l];
   if(guardar){ try{ localStorage.setItem("idioma", l); }catch(e){} }
-  traduzirDOM(); montarPriv(); montarPratoDia(); montarAviso(); atualizarPausa(); rotularTabs(); montarFaixa(); montarSobre(); montarAvaliacoes(); montarFaq(); 
+  traduzirDOM(); montarPriv(); montarPratoDia(); montarAviso(); atualizarPausa(); atualizarVideo(); rotularTabs(); montarFaixa(); montarSobre(); montarAvaliacoes(); montarFaq(); 
   if(consulta) pesquisar(consulta); else mostrarCategoria(catAtual || "Francesinhas");
   if(pratoAtual){ montarPrato(); }
   atualizarEstado(); atualizarJSONLD(); $("#rodHorario").innerHTML = horarioTexto();
@@ -234,23 +235,49 @@ atualizarJSONLD();
   const v = CAFE.salsaVideo; if(!v || !v.src) return;
   const sec = $("#salsa"), wrap = sec && sec.querySelector(".wrap"), txt = wrap && wrap.firstElementChild; if(!txt) return;
   const h2 = txt.querySelector("h2"), p = txt.querySelector("p");
-  const poupar = false;   // o vídeo corre sempre sozinho (sem controlos), em PC e telemóvel
   const fig = document.createElement("figure"); fig.className = "salsa-video";
   const vid = document.createElement("video");
-  vid.muted = true; vid.defaultMuted = true; vid.loop = true; vid.playsInline = true; vid.preload = "auto"; vid.autoplay = true; vid.disablePictureInPicture = true; vid.controls = false;
+  /* nada é descarregado antes de o vídeo estar perto do ecrã: nem a capa, nem o vídeo (3 MB) */
+  vid.muted = true; vid.defaultMuted = true; vid.loop = true; vid.playsInline = true; vid.preload = "none"; vid.disablePictureInPicture = true; vid.controls = false;
   vid.setAttribute("muted", ""); vid.setAttribute("playsinline", ""); vid.setAttribute("aria-label", T("Vídeo do nosso molho a ser deitado numa francesinha"));
-  if(v.poster) vid.poster = v.poster;
-  const src = document.createElement("source"); src.src = v.src; src.type = /\.webm$/i.test(v.src) ? "video/webm" : "video/mp4"; vid.appendChild(src);
-  fig.appendChild(vid);
+  /* botão sobre o vídeo: "Ver o vídeo" quando está parado, pausa quando está a andar */
+  const btn = document.createElement("button"); btn.type = "button"; btn.className = "video-btn";
+  btn.innerHTML = '<svg class="ic-play" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5.5v13a1 1 0 0 0 1.5.86l10.5-6.5a1 1 0 0 0 0-1.72L9.5 4.64A1 1 0 0 0 8 5.5Z"/></svg><svg class="ic-pausa" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><rect x="6" y="5" width="4" height="14" rx="1"/><rect x="14" y="5" width="4" height="14" rx="1"/></svg><span class="video-txt"></span>';
+  fig.append(vid, btn);
   wrap.classList.remove("salsa"); wrap.replaceChildren(h2);
   const info = document.createElement("div"); info.className = "wrap salsa-info"; info.appendChild(p);
   sec.replaceChildren(wrap, fig, info); sec.classList.add("com-video");
-  /* só corre quando está à vista (poupa bateria e dados) */
-  const tocar = () => { const r = vid.play(); if(r && r.catch) r.catch(() => {}); };
-  vid.addEventListener("pause", () => { if(!vid.ended && vid.dataset.vista === "1") setTimeout(tocar, 200); });   // se o navegador o pausar sozinho, volta a andar
-  document.addEventListener("pointerdown", () => { if(vid.paused && vid.dataset.vista === "1") tocar(); }, {passive:true, once:true});
-  if("IntersectionObserver" in window) new IntersectionObserver(es => es.forEach(e => {
-    vid.dataset.vista = e.isIntersecting ? "1" : "0";
-    if(e.isIntersecting) tocar(); else vid.pause();
-  }), {threshold:.25}).observe(vid);
+
+  /* Só anda sozinho se a pessoa não pediu menos movimento e a rede não é fraca (ou poupança de dados).
+     Se o navegador o pausar, ou a pessoa carregar na pausa, fica parado até alguém carregar em "Ver o vídeo". */
+  const rede = navigator.connection;
+  const redeFraca = () => !!(rede && (rede.saveData || /(^|-)2g$|^3g$/.test(rede.effectiveType || "")));
+  const menosMov = matchMedia("(prefers-reduced-motion: reduce)");
+  const pausaGeral = () => document.documentElement.classList.contains("pausado");
+  let querAndar = !menosMov.matches && !redeFraca(), vista = false, perto = false, comFonte = false, pausaNossa = false;
+  const prepararCapa = () => { if(perto) return; perto = true; if(v.poster) vid.poster = v.poster; };
+  const carregarVideo = () => {
+    if(comFonte) return; comFonte = true;
+    const src = document.createElement("source"); src.src = v.src; src.type = /\.webm$/i.test(v.src) ? "video/webm" : "video/mp4";
+    vid.appendChild(src); vid.preload = "auto"; vid.load();
+  };
+  atualizarVideo = () => {
+    const anda = !vid.paused;
+    btn.classList.toggle("a-tocar", anda);
+    btn.querySelector(".video-txt").textContent = anda ? T("Pausar vídeo") : T("Ver o vídeo");
+  };
+  /* se o navegador recusar pôr o vídeo a andar sozinho (ex.: modo de poupança de bateria), fica o botão "Ver o vídeo" */
+  const andar = () => { prepararCapa(); carregarVideo(); const r = vid.play(); if(r && r.catch) r.catch(e => { if(e && e.name === "AbortError") return; querAndar = false; atualizarVideo(); }); };
+  const parar = () => { if(vid.paused) return; pausaNossa = true; vid.pause(); };
+  const decidir = () => { if(vista && querAndar && !pausaGeral()){ if(vid.paused) andar(); } else parar(); };
+  vid.addEventListener("play", () => { querAndar = true; atualizarVideo(); });
+  vid.addEventListener("pause", () => { if(!pausaNossa) querAndar = false; pausaNossa = false; atualizarVideo(); });   // pausa do navegador: não volta a andar sozinho
+  btn.onclick = () => { if(vid.paused){ querAndar = true; andar(); } else { querAndar = false; parar(); } };
+  if(menosMov.addEventListener) menosMov.addEventListener("change", () => { if(menosMov.matches){ querAndar = false; parar(); } });
+  new MutationObserver(decidir).observe(document.documentElement, {attributes:true, attributeFilter:["class"]});   // botão de pausar o movimento do topo
+  if("IntersectionObserver" in window){
+    new IntersectionObserver(es => { if(es.some(e => e.isIntersecting)) prepararCapa(); }, {rootMargin:"600px 0px"}).observe(vid);
+    new IntersectionObserver(es => es.forEach(e => { vista = e.isIntersecting; decidir(); }), {threshold:.25}).observe(vid);
+  } else { prepararCapa(); vista = true; decidir(); }
+  atualizarVideo();
 })();
