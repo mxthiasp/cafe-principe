@@ -34,6 +34,18 @@ function corrigir(tokens, orig){
   });
   return mudou ? certo : null;
 }
+/* pesquisa sem resultados: diz o que falhou e dá duas saídas (limpar e voltar ao menu, ou ligar a perguntar) */
+function semResultados(){
+  grelha.innerHTML = "";
+  const caixa = document.createElement("div"); caixa.className = "sem-resultados";
+  const m = document.createElement("p"); m.className = "sem-res-txt"; m.textContent = T("Sem resultados para") + " “" + consulta + "”.";
+  const dica = document.createElement("p"); dica.className = "sem-res-dica"; dica.textContent = T("Não encontras o que procuras? Liga-nos.");
+  const acoes = document.createElement("div"); acoes.className = "sem-res-acoes";
+  const limpar = document.createElement("button"); limpar.type = "button"; limpar.className = "btn-sec"; limpar.textContent = T("Ver o menu todo");
+  limpar.onclick = () => { $("#pesq").value = ""; pesquisar(""); $("#barraTabs").scrollIntoView({block:"start", behavior:SUAVE}); };
+  const ligar = document.createElement("a"); ligar.className = "btn sem-res-ligar"; ligar.href = "tel:" + TELEFONES.encomendas.replace(/\s/g, ""); ligar.textContent = T("Ligar") + " " + TELEFONES.encomendas;
+  acoes.append(ligar, limpar); caixa.append(m, dica, acoes); grelha.appendChild(caixa);
+}
 function pesquisar(q){
   consulta = q.trim();
   const barra = $("#barraTabs"), info = $("#pesqInfo");
@@ -49,7 +61,7 @@ function pesquisar(q){
   barra.classList.add("a-pesquisar"); tabs.querySelectorAll(".tab").forEach(t => t.setAttribute("aria-selected", "false"));
   grelha.style.setProperty("--dx", "0px"); grelha.style.setProperty("--dy", "24px");
   if(res.length) grelha.innerHTML = res.map((x,i) => cartaoHTML(x.p, i)).join("");
-  else { grelha.innerHTML = ""; const m = document.createElement("p"); m.className = "sem-resultados"; m.textContent = T("Sem resultados para") + " “" + consulta + "”."; grelha.appendChild(m); }
+  else semResultados();
   const n = res.length === 1 ? T("1 prato") : res.length ? T("{n} pratos").replace("{n}", res.length) : "";
   info.textContent = "";
   if(sugestao){   // "Quiseste dizer: francesinha?" — clicar aplica a correção

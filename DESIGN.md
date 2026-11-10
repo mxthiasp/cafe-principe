@@ -13,7 +13,7 @@ colors:
 typography:
   display:
     fontFamily: "Anton, Impact, Haettenschweiler, Arial Narrow Bold, sans-serif"
-    fontSize: "clamp(2.7rem, 8vw, 5.6rem)"
+    fontSize: "clamp(2.7rem, 5.4vw, 4.4rem)"
     fontWeight: 400
     lineHeight: 1
     letterSpacing: "0.01em"
@@ -50,6 +50,7 @@ rounded:
   pequeno: "6px"
   menu: "12px"
   raio: "14px"
+  botao: "4px"
   pilula: "999px"
 spacing:
   card: "0.8rem"
@@ -61,7 +62,7 @@ components:
     backgroundColor: "{colors.lima}"
     textColor: "{colors.carvao}"
     typography: "{typography.label}"
-    rounded: "{rounded.pilula}"
+    rounded: "{rounded.botao}"
     padding: "0.7rem 1.5rem"
   button-primary-hover:
     backgroundColor: "{colors.lima-viva}"
@@ -69,18 +70,18 @@ components:
   button-xl:
     backgroundColor: "{colors.lima}"
     textColor: "{colors.carvao}"
-    rounded: "{rounded.pilula}"
+    rounded: "{rounded.botao}"
     padding: "0.9rem 2.4rem"
   button-secondary:
     backgroundColor: "transparent"
     textColor: "{colors.creme}"
-    rounded: "{rounded.pilula}"
+    rounded: "{rounded.botao}"
     padding: "0.4rem 1rem"
   tab:
     backgroundColor: "{colors.carvao-2}"
     textColor: "{colors.creme}"
     typography: "{typography.label}"
-    rounded: "{rounded.pilula}"
+    rounded: "{rounded.botao}"
     padding: "0.5rem 1.3rem"
   tab-selected:
     backgroundColor: "{colors.lima}"
@@ -93,7 +94,7 @@ components:
   chip:
     backgroundColor: "{colors.carvao-2}"
     textColor: "{colors.creme}"
-    rounded: "{rounded.pilula}"
+    rounded: "{rounded.botao}"
     padding: "0.35rem 0.9rem"
   card-price:
     textColor: "{colors.lima}"
@@ -107,7 +108,7 @@ components:
   input-search:
     backgroundColor: "{colors.carvao-2}"
     textColor: "{colors.creme}"
-    rounded: "{rounded.pilula}"
+    rounded: "{rounded.botao}"
     padding: "0.85rem 3rem"
 ---
 
@@ -119,9 +120,9 @@ components:
 
 O site lê-se como os painéis de menu por cima do balcão de uma cadeia de fast food: fundo carvão, títulos gordos e condensados em maiúsculas, fotos de comida grandes e um único verde-lima que grita o que importa — o preço, o botão de ligar, o separador ativo. Não é um restaurante de toalha: é rápido, direto e com apetite.
 
-A densidade é de cartaz, não de revista. Cada secção tem um título grande sublinhado pelo traço verde do logótipo, uma grelha de cartões-foto e uma ação clara. O movimento é curto e com mola (entradas de 0,4 s, um salto de 2–4 px ao passar o rato, a faixa lima a correr) e desliga-se todo com `prefers-reduced-motion` ou com o botão de pausa.
+A densidade é de cartaz, não de revista. Cada secção tem um título grande sublinhado pelo traço verde do logótipo, uma grelha de cartões-foto e uma ação clara. O movimento é curto e com mola (entradas de 0,4 s, um salto de 2–4 px ao passar o rato, a faixa lima a correr) e desliga-se todo com `prefers-reduced-motion`. As palavras do título sobem de baixo, cortadas só por baixo, para os acentos e cedilhas nunca ficarem cortados.
 
-Os componentes são gordos e diretos: pílulas lima sólidas com texto condensado em maiúsculas, como num quiosque de pedidos. Tudo o que se pode tocar parece um botão.
+Os componentes são gordos e diretos: blocos lima sólidos com cantos quase retos (4px) e texto condensado em maiúsculas, como as teclas de um quiosque de pedidos. Sem brilhos nem pulsar. Tudo o que se pode tocar parece um botão.
 
 **Key Characteristics:**
 - Fundo carvão quase preto em todo o site; não há tema claro (só a impressão do menu é em branco).
@@ -129,7 +130,7 @@ Os componentes são gordos e diretos: pílulas lima sólidas com texto condensad
 - Títulos em Anton, maiúsculas, com o traço verde do logótipo por baixo.
 - Etiquetas, botões, preços e nomes de pratos em Barlow Condensed 700, maiúsculas, com espaçamento entre letras.
 - Fotos de comida em grande, com gradiente escuro por baixo do texto.
-- Formas em pílula para tudo o que é ação; cartões com cantos de 14px.
+- Cantos de 4px em tudo o que é ação (botões, separadores, chips, pesquisa); cartões e fotos com 14px.
 
 ## Colors
 
@@ -163,7 +164,7 @@ Uma paleta de balcão à noite: carvão em três tons, creme quente para texto e
 **Character:** Anton é o cartaz: uma só espessura, grossa, condensada e sempre em maiúsculas. Barlow Condensed é a voz do balcão (botões, preços, nomes de pratos) e Barlow normal mantém as descrições legíveis.
 
 ### Hierarchy
-- **Display** (Anton 400, clamp(2.7rem, 8vw, 5.6rem), 1): título do topo e o nome do prato na página de cada prato (clamp(2.2rem, 6vw, 3.6rem)).
+- **Display** (Anton 400, clamp(2.7rem, 5.4vw, 4.4rem) no computador; 2.5rem no telemóvel, 2.1rem em ecrãs baixos; 1): título do topo e o nome do prato na página de cada prato (clamp(2.2rem, 6vw, 3.6rem)).
 - **Headline** (Anton 400, clamp(2.1rem, 5.2vw, 3.3rem), 1.02): título de cada secção, sempre com o traço verde por baixo.
 - **Title** (Barlow Condensed 700, 1.4rem, 1.1, maiúsculas): nome do prato nos cartões (1.9rem nos cartões em destaque) e subtítulos.
 - **Price** (Barlow Condensed 700, lima, números tabulares): nos cartões fica logo por baixo do nome, a 1.9rem no computador e 1.55rem no telemóvel, com os cêntimos e o € a meia altura. Na foto da página do prato e no topo continua dentro do chip de preço, em creme.
@@ -189,27 +190,26 @@ Sistema escuro e quase plano: a profundidade vem dos tons de carvão (página �
 - **Cartão em repouso** (`box-shadow: 0 6px 18px -10px rgba(0,0,0,.8)`): todos os cartões de prato.
 - **Cartão levantado** (`box-shadow: 0 16px 30px -14px rgba(0,0,0,.9)`): hover do cartão, com `translateY(-4px)`.
 - **Menu suspenso** (`box-shadow: 0 16px 36px -12px rgba(0,0,0,.9)`): lista de idiomas.
-- **Brilho lima** (`box-shadow: 0 10px 30px -8px #B0BF3F`): só no botão XL do topo, com o pulso animado.
 
 ### Named Rules
-**A Regra do Brilho Único.** A sombra lima só existe no botão principal do topo. Os outros elementos usam sombras pretas.
+**A Regra Sem Brilho.** Não há sombras lima, pulsos nem reflexos em botões; a profundidade usa só sombras pretas.
 
 ## Shapes
 
-Duas famílias de forma: **pílula** (999px) para tudo o que é ação ou filtro — botões, separadores, etiquetas, chips, pesquisa, seletor de idioma — e **cartão** com cantos de 14px para fotos, cartões, a caixa do prato do dia e as janelas. Botões só com ícone (setas, pausa, fechar, redes) são círculos de 40–44px. A forma assinatura é o traço verde do logótipo, um pincel irregular usado sob os títulos, como marca de água no topo e como marca nas fotos que faltam.
+Duas famílias de forma: **cantos quase retos** (4px) para tudo o que é ação ou filtro — botões, separadores, chips, pesquisa, seletor de idioma, botão do vídeo — e **cartão** com cantos de 14px para fotos, cartões, a caixa do prato do dia e as janelas. Botões só com ícone (setas, pausa, fechar, redes) são círculos de 40–44px. A forma assinatura é o traço verde do logótipo, um pincel irregular usado sob os títulos, como marca de água no topo e como marca nas fotos que faltam.
 
 ## Components
 
 ### Buttons
 Gordos e diretos, como as teclas de um quiosque de pedidos.
-- **Shape:** pílula (999px).
+- **Shape:** cantos de 4px.
 - **Primary:** lima com texto carvão, Barlow Condensed 700 em maiúsculas, `0.7rem 1.5rem`.
-- **Hover / Focus:** passa a lima viva, sobe 2px e um reflexo branco atravessa o botão em 0.75s. Ao carregar encolhe para 0.97. O foco é um contorno lima de 3px afastado 3px.
-- **XL (topo):** 1.6rem, `0.9rem 2.4rem`, brilho lima e um pulso a cada 3s.
+- **Hover / Focus:** passa a lima viva e sobe 2px; sem reflexo nem brilho. Ao carregar encolhe para 0.97. O foco é um contorno lima de 3px afastado 3px.
+- **XL (topo):** 1.6rem, `0.9rem 2.4rem`, sem sombra nem pulso.
 - **Secondary:** fundo transparente, borda de 1.5px em carvão de borda, texto creme; no hover a borda e o texto passam a lima.
 
 ### Chips
-- **Style:** carvão de cartão, borda de 1px, pílula, `0.35rem 0.9rem`. Usados para ingredientes e alergénios.
+- **Style:** carvão de cartão, borda de 1px, cantos de 4px, `0.35rem 0.9rem`. Usados para ingredientes e alergénios.
 - **Etiqueta:** variante pequena (0.8rem, 700) com fundo lima a 15% e texto lima.
 
 ### Cards / Containers
@@ -228,11 +228,17 @@ O preço é a segunda coisa que se lê, logo por baixo do nome: lima, Barlow Con
 Pílula carvão translúcida (78 %) com desfoque, borda creme a 22 % e o preço em Barlow Condensed 700 creme, pousada no canto inferior da foto. Usa-se só na foto da página do prato e no topo, não nos cartões.
 
 ### Inputs / Fields
-- **Style:** pesquisa em pílula, carvão de cartão, borda de 1.5px, ícone à esquerda e botão circular de limpar à direita.
+- **Style:** pesquisa com cantos de 4px, carvão de cartão, borda de 1.5px, ícone à esquerda e botão circular de limpar à direita.
 - **Focus:** a borda passa a lima, sem contorno extra.
 
+### Pesquisa sem resultados
+Caixa carvão de cartão (14px) com "Sem resultados para “…”" em Barlow Condensed 700 maiúsculas, a frase "Não encontras o que procuras? Liga-nos." e duas saídas: botão lima "Ligar" com o número e botão secundário "Ver o menu todo", que limpa a pesquisa e volta aos separadores.
+
+### Menu no telemóvel
+Pesquisa e separadores logo por baixo do título; "Partilhar menu" e "Menu em PDF" passam para o fim do menu. Separadores mais compactos (1rem, 44px de altura) para se verem três de cada vez.
+
 ### Navigation
-Cabeçalho fixo, translúcido com desfoque, com o logótipo à esquerda, links em Barlow Condensed 600 maiúsculas (lima no hover) e à direita o idioma e o botão "Ligar" em pílula lima. Ao fazer scroll fica compacto. Em telemóvel os links desaparecem e o botão de ligar fica só com o ícone, sempre no cabeçalho fixo; não há barra no fundo do ecrã (desligada de propósito).
+Cabeçalho fixo, translúcido com desfoque, com o logótipo à esquerda, links em Barlow Condensed 600 maiúsculas (lima no hover) e à direita o idioma e o botão "Ligar" lima. Ao fazer scroll fica compacto. Em telemóvel os links desaparecem e o botão de ligar fica só com o ícone, sempre no cabeçalho fixo; não há barra no fundo do ecrã (desligada de propósito).
 
 ### Primeiro ecrã no telemóvel
 Por baixo do nome do prato e de "Ver menu →": o estado ("Aberto agora, fecha às…") em Barlow Condensed 700 maiúsculas, lima quando está aberto e creme quando está fechado; depois um botão lima de largura total "Ligar para encomendar" com o ícone do telefone (54px de altura, 50px em ecrãs baixos); por fim a linha centrada "Só para levantar no café · sem entregas". No computador estes três ficam escondidos, porque o topo já mostra o estado em pílula e a nota de encomendas.
@@ -252,9 +258,9 @@ Fita lima de largura total com texto carvão em Barlow Condensed maiúsculas (le
 - **Do** usar o lima `#B0BF3F` em ações, estados ativos e preços dos cartões; quando é fundo, o texto por cima é carvão.
 - **Do** pôr o preço dos cartões logo por baixo do nome, no mesmo sítio em todos os cartões.
 - **Do** pôr os títulos de secção em Anton maiúsculas com o traço verde por baixo.
-- **Do** usar pílula (999px) para tudo o que se clica e 14px para cartões e fotos.
+- **Do** usar cantos de 4px em tudo o que se clica e 14px para cartões e fotos; a pílula fica só para o chip de preço e as etiquetas.
 - **Do** mostrar a comida em foto grande, com gradiente carvão sob o texto.
-- **Do** garantir que cada animação nova respeita `prefers-reduced-motion` e o botão de pausa.
+- **Do** garantir que cada animação nova respeita `prefers-reduced-motion`.
 - **Do** manter o contorno de foco lima de 3px em todos os elementos interativos.
 
 ### Don't:
@@ -262,4 +268,4 @@ Fita lima de largura total com texto carvão em Barlow Condensed maiúsculas (le
 - **Don't** usar fundos claros nas secções do site; o branco é só para a impressão do menu.
 - **Don't** usar Anton em texto corrido nem Barlow normal em botões.
 - **Don't** pôr texto creme ou branco sobre lima.
-- **Don't** usar cantos retos em botões ou separadores.
+- **Don't** usar pílulas (999px) em botões ou separadores, nem sombras lima.

@@ -1,6 +1,6 @@
 {
   "schemaVersion": 2,
-  "generatedAt": "2026-11-11T00:05:00Z",
+  "generatedAt": "2026-11-11T00:40:00Z",
   "title": "Design System: Café Príncipe",
   "extensions": {
     "colorMeta": {
@@ -166,11 +166,6 @@
         "name": "menu-suspenso",
         "value": "0 16px 36px -12px rgba(0,0,0,.9)",
         "purpose": "Lista de idiomas."
-      },
-      {
-        "name": "brilho-lima",
-        "value": "0 10px 30px -8px #B0BF3F",
-        "purpose": "Só o botão XL do topo, com o pulso."
       }
     ],
     "motion": [
@@ -213,7 +208,7 @@
       "refersTo": "button-primary",
       "description": "Ação principal: ver o menu, ligar, pedir.",
       "html": "<button class=\"ds-btn\">Ver o menu</button>",
-      "css": ".ds-btn{position:relative;overflow:hidden;display:inline-flex;align-items:center;justify-content:center;gap:.5rem;background:var(--lima,#B0BF3F);color:var(--carvao,#0D0D0D);font-family:\"Barlow Condensed\",\"Arial Narrow\",sans-serif;font-weight:700;font-size:1.15rem;text-transform:uppercase;letter-spacing:.06em;padding:.7rem 1.5rem;border:0;border-radius:999px;cursor:pointer;transition:transform .15s,background .15s}.ds-btn:hover{background:#C4D452;transform:translateY(-2px)}.ds-btn:active{transform:scale(.97)}.ds-btn:focus-visible{outline:3px solid #B0BF3F;outline-offset:3px}"
+      "css": ".ds-btn{position:relative;overflow:hidden;display:inline-flex;align-items:center;justify-content:center;gap:.5rem;background:var(--lima,#B0BF3F);color:var(--carvao,#0D0D0D);font-family:\"Barlow Condensed\",\"Arial Narrow\",sans-serif;font-weight:700;font-size:1.15rem;text-transform:uppercase;letter-spacing:.06em;padding:.7rem 1.5rem;border:0;border-radius:4px;cursor:pointer;transition:transform .15s,background .15s}.ds-btn:hover{background:#C4D452;transform:translateY(-2px)}.ds-btn:active{transform:scale(.97)}.ds-btn:focus-visible{outline:3px solid #B0BF3F;outline-offset:3px}"
     },
     {
       "name": "Ligar (primeiro ecrã no telemóvel)",
@@ -221,7 +216,7 @@
       "refersTo": "hero-ligar",
       "description": "Botão lima de largura total no primeiro ecrã do telemóvel, com o estado por cima e \"só para levantar\" por baixo.",
       "html": "<div class=\"ds-pedir\"><p class=\"ds-estado\">Aberto agora, fecha às 00h00</p><a class=\"ds-ligar\" href=\"#\"><svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2.2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2Z\"/></svg><span>Ligar para encomendar</span></a><p class=\"ds-levantar\">Só para levantar no café · sem entregas</p></div>",
-      "css": ".ds-pedir{width:340px;background:#0D0D0D;padding:1rem}.ds-estado{margin:0 0 .5rem;font-family:\"Barlow Condensed\",\"Arial Narrow\",sans-serif;font-weight:700;font-size:1rem;letter-spacing:.06em;text-transform:uppercase;color:#B0BF3F}.ds-ligar{display:flex;align-items:center;justify-content:center;gap:.6rem;min-height:54px;padding:.7rem 1.2rem;border-radius:999px;background:#B0BF3F;color:#0D0D0D;font-family:\"Barlow Condensed\",\"Arial Narrow\",sans-serif;font-weight:700;font-size:1.35rem;line-height:1;letter-spacing:.06em;text-transform:uppercase;text-decoration:none;transition:background .15s,transform .15s}.ds-ligar svg{width:22px;height:22px}.ds-ligar:active{transform:scale(.98);background:#C4D452}.ds-ligar:focus-visible{outline:3px solid #F4F3EA;outline-offset:3px}.ds-levantar{margin:.55rem 0 0;font-family:Barlow,system-ui,sans-serif;font-size:.95rem;color:#D8D8CC;text-align:center}"
+      "css": ".ds-pedir{width:340px;background:#0D0D0D;padding:1rem}.ds-estado{margin:0 0 .5rem;font-family:\"Barlow Condensed\",\"Arial Narrow\",sans-serif;font-weight:700;font-size:1rem;letter-spacing:.06em;text-transform:uppercase;color:#B0BF3F}.ds-ligar{display:flex;align-items:center;justify-content:center;gap:.6rem;min-height:54px;padding:.7rem 1.2rem;border-radius:4px;background:#B0BF3F;color:#0D0D0D;font-family:\"Barlow Condensed\",\"Arial Narrow\",sans-serif;font-weight:700;font-size:1.35rem;line-height:1;letter-spacing:.06em;text-transform:uppercase;text-decoration:none;transition:background .15s,transform .15s}.ds-ligar svg{width:22px;height:22px}.ds-ligar:active{transform:scale(.98);background:#C4D452}.ds-ligar:focus-visible{outline:3px solid #F4F3EA;outline-offset:3px}.ds-levantar{margin:.55rem 0 0;font-family:Barlow,system-ui,sans-serif;font-size:.95rem;color:#D8D8CC;text-align:center}"
     },
     {
       "name": "Botão secundário",
@@ -229,7 +224,7 @@
       "refersTo": "button-secondary",
       "description": "Ações de apoio: partilhar, menu em PDF.",
       "html": "<button class=\"ds-btn-sec\">Menu em PDF</button>",
-      "css": ".ds-btn-sec{display:inline-flex;align-items:center;gap:.5rem;background:transparent;border:1.5px solid var(--carvao-3,#2A2A28);color:var(--creme,#F4F3EA);padding:.4rem 1rem;border-radius:999px;font-family:\"Barlow Condensed\",\"Arial Narrow\",sans-serif;font-weight:700;font-size:1.05rem;text-transform:uppercase;letter-spacing:.05em;cursor:pointer;transition:border-color .2s,color .2s}.ds-btn-sec:hover{border-color:#B0BF3F;color:#B0BF3F}.ds-btn-sec:focus-visible{outline:3px solid #B0BF3F;outline-offset:3px}"
+      "css": ".ds-btn-sec{display:inline-flex;align-items:center;gap:.5rem;background:transparent;border:1.5px solid var(--carvao-3,#2A2A28);color:var(--creme,#F4F3EA);padding:.4rem 1rem;border-radius:4px;font-family:\"Barlow Condensed\",\"Arial Narrow\",sans-serif;font-weight:700;font-size:1.05rem;text-transform:uppercase;letter-spacing:.05em;cursor:pointer;transition:border-color .2s,color .2s}.ds-btn-sec:hover{border-color:#B0BF3F;color:#B0BF3F}.ds-btn-sec:focus-visible{outline:3px solid #B0BF3F;outline-offset:3px}"
     },
     {
       "name": "Separadores do menu",
@@ -237,7 +232,7 @@
       "refersTo": "tab",
       "description": "Categorias do menu em pílulas; a ativa é lima sólida.",
       "html": "<div class=\"ds-tabs\" role=\"tablist\"><button class=\"ds-tab\" role=\"tab\" aria-selected=\"true\">Francesinhas</button><button class=\"ds-tab\" role=\"tab\" aria-selected=\"false\">Pregos</button><button class=\"ds-tab\" role=\"tab\" aria-selected=\"false\">Sobremesas</button></div>",
-      "css": ".ds-tabs{display:flex;gap:.6rem;background:#0D0D0D;padding:.6rem}.ds-tab{background:#181818;border:2px solid #2A2A28;color:#F4F3EA;padding:.5rem 1.3rem;border-radius:999px;font-family:\"Barlow Condensed\",\"Arial Narrow\",sans-serif;font-weight:700;font-size:1.15rem;text-transform:uppercase;letter-spacing:.05em;cursor:pointer;transition:.2s}.ds-tab:hover{border-color:#B0BF3F}.ds-tab[aria-selected=\"true\"]{background:#B0BF3F;border-color:#B0BF3F;color:#0D0D0D}.ds-tab:focus-visible{outline:3px solid #B0BF3F;outline-offset:3px}"
+      "css": ".ds-tabs{display:flex;gap:.6rem;background:#0D0D0D;padding:.6rem}.ds-tab{background:#181818;border:2px solid #2A2A28;color:#F4F3EA;padding:.5rem 1.3rem;border-radius:4px;font-family:\"Barlow Condensed\",\"Arial Narrow\",sans-serif;font-weight:700;font-size:1.15rem;text-transform:uppercase;letter-spacing:.05em;cursor:pointer;transition:.2s}.ds-tab:hover{border-color:#B0BF3F}.ds-tab[aria-selected=\"true\"]{background:#B0BF3F;border-color:#B0BF3F;color:#0D0D0D}.ds-tab:focus-visible{outline:3px solid #B0BF3F;outline-offset:3px}"
     },
     {
       "name": "Cartão de prato",
@@ -253,7 +248,7 @@
       "refersTo": "input-search",
       "description": "Pesquisa do menu em pílula; o foco põe a borda em lima.",
       "html": "<label class=\"ds-pesq\"><svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\"><circle cx=\"11\" cy=\"11\" r=\"7\"/><path d=\"m20 20-3.5-3.5\"/></svg><input type=\"search\" placeholder=\"Procurar um prato…\"></label>",
-      "css": ".ds-pesq{position:relative;display:block;max-width:420px}.ds-pesq svg{position:absolute;left:1.05rem;top:50%;transform:translateY(-50%);width:20px;height:20px;color:#A9AA9B}.ds-pesq input{width:100%;background:#181818;border:1.5px solid #2A2A28;border-radius:999px;color:#F4F3EA;font-family:Barlow,system-ui,sans-serif;font-size:1.05rem;padding:.85rem 1.2rem .85rem 3rem;transition:border-color .2s}.ds-pesq input::placeholder{color:#A9AA9B}.ds-pesq input:focus{outline:none;border-color:#B0BF3F}"
+      "css": ".ds-pesq{position:relative;display:block;max-width:420px}.ds-pesq svg{position:absolute;left:1.05rem;top:50%;transform:translateY(-50%);width:20px;height:20px;color:#A9AA9B}.ds-pesq input{width:100%;background:#181818;border:1.5px solid #2A2A28;border-radius:4px;color:#F4F3EA;font-family:Barlow,system-ui,sans-serif;font-size:1.05rem;padding:.85rem 1.2rem .85rem 3rem;transition:border-color .2s}.ds-pesq input::placeholder{color:#A9AA9B}.ds-pesq input:focus{outline:none;border-color:#B0BF3F}"
     },
     {
       "name": "Chip",
@@ -261,7 +256,7 @@
       "refersTo": "chip",
       "description": "Ingredientes e alergénios.",
       "html": "<span class=\"ds-chip\">Queijo</span> <span class=\"ds-etiqueta\">Novo</span>",
-      "css": ".ds-chip{display:inline-block;background:#181818;border:1px solid #2A2A28;border-radius:999px;padding:.35rem .9rem;color:#F4F3EA;font-family:Barlow,system-ui,sans-serif;font-size:1rem}.ds-etiqueta{display:inline-block;font-family:Barlow,system-ui,sans-serif;font-size:.8rem;font-weight:700;padding:.25rem .7rem;border-radius:999px;background:rgba(176,191,63,.15);color:#B0BF3F}"
+      "css": ".ds-chip{display:inline-block;background:#181818;border:1px solid #2A2A28;border-radius:4px;padding:.35rem .9rem;color:#F4F3EA;font-family:Barlow,system-ui,sans-serif;font-size:1rem}.ds-etiqueta{display:inline-block;font-family:Barlow,system-ui,sans-serif;font-size:.8rem;font-weight:700;padding:.25rem .7rem;border-radius:999px;background:rgba(176,191,63,.15);color:#B0BF3F}"
     },
     {
       "name": "Faixa",
@@ -274,14 +269,14 @@
   ],
   "narrative": {
     "northStar": "O Cartaz de Balcão",
-    "overview": "O site lê-se como os painéis de menu por cima do balcão de uma cadeia de fast food: fundo carvão, títulos gordos e condensados em maiúsculas, fotos de comida grandes e um único verde-lima que grita o que importa — o preço, o botão de ligar, o separador ativo. Não é um restaurante de toalha: é rápido, direto e com apetite.\n\nA densidade é de cartaz, não de revista. Cada secção tem um título grande sublinhado pelo traço verde do logótipo, uma grelha de cartões-foto e uma ação clara. O movimento é curto e com mola (entradas de 0,4 s, um salto de 2–4 px ao passar o rato, a faixa lima a correr) e desliga-se todo com `prefers-reduced-motion` ou com o botão de pausa.\n\nOs componentes são gordos e diretos: pílulas lima sólidas com texto condensado em maiúsculas, como num quiosque de pedidos. Tudo o que se pode tocar parece um botão.",
+    "overview": "O site lê-se como os painéis de menu por cima do balcão de uma cadeia de fast food: fundo carvão, títulos gordos e condensados em maiúsculas, fotos de comida grandes e um único verde-lima que grita o que importa — o preço, o botão de ligar, o separador ativo. Não é um restaurante de toalha: é rápido, direto e com apetite.\n\nA densidade é de cartaz, não de revista. Cada secção tem um título grande sublinhado pelo traço verde do logótipo, uma grelha de cartões-foto e uma ação clara. O movimento é curto e com mola (entradas de 0,4 s, um salto de 2–4 px ao passar o rato, a faixa lima a correr) e desliga-se todo com `prefers-reduced-motion`. As palavras do título sobem de baixo, cortadas só por baixo, para os acentos e cedilhas nunca ficarem cortados.\n\nOs componentes são gordos e diretos: blocos lima sólidos com cantos quase retos (4px) e texto condensado em maiúsculas, como as teclas de um quiosque de pedidos. Sem brilhos nem pulsar. Tudo o que se pode tocar parece um botão.",
     "keyCharacteristics": [
       "Fundo carvão quase preto em todo o site; não há tema claro (só a impressão do menu é em branco).",
       "Um único acento, o verde-lima, reservado para ações, preços e estados ativos.",
       "Títulos em Anton, maiúsculas, com o traço verde do logótipo por baixo.",
       "Etiquetas, botões, preços e nomes de pratos em Barlow Condensed 700, maiúsculas, com espaçamento entre letras.",
       "Fotos de comida em grande, com gradiente escuro por baixo do texto.",
-      "Formas em pílula para tudo o que é ação; cartões com cantos de 14px."
+      "Cantos de 4px em tudo o que é ação (botões, separadores, chips, pesquisa); cartões e fotos com 14px."
     ],
     "rules": [
       {
@@ -300,8 +295,8 @@
         "section": "typography"
       },
       {
-        "name": "A Regra do Brilho Único",
-        "body": "A sombra lima só existe no botão principal do topo. Os outros elementos usam sombras pretas.",
+        "name": "A Regra Sem Brilho",
+        "body": "Não há sombras lima, pulsos nem reflexos em botões; a profundidade usa só sombras pretas.",
         "section": "elevation"
       },
       {
@@ -314,9 +309,9 @@
       "Do usar o lima `#B0BF3F` em ações, estados ativos e preços dos cartões; quando é fundo, o texto por cima é carvão.",
       "Do pôr o preço dos cartões logo por baixo do nome, no mesmo sítio em todos os cartões.",
       "Do pôr os títulos de secção em Anton maiúsculas com o traço verde por baixo.",
-      "Do usar pílula (999px) para tudo o que se clica e 14px para cartões e fotos.",
+      "Do usar cantos de 4px em tudo o que se clica e 14px para cartões e fotos; a pílula fica só para o chip de preço e as etiquetas.",
       "Do mostrar a comida em foto grande, com gradiente carvão sob o texto.",
-      "Do garantir que cada animação nova respeita `prefers-reduced-motion` e o botão de pausa.",
+      "Do garantir que cada animação nova respeita `prefers-reduced-motion`.",
       "Do manter o contorno de foco lima de 3px em todos os elementos interativos."
     ],
     "donts": [
@@ -324,7 +319,7 @@
       "Don't usar fundos claros nas secções do site; o branco é só para a impressão do menu.",
       "Don't usar Anton em texto corrido nem Barlow normal em botões.",
       "Don't pôr texto creme ou branco sobre lima.",
-      "Don't usar cantos retos em botões ou separadores."
+      "Don't usar pílulas (999px) em botões ou separadores, nem sombras lima."
     ]
   }
 }

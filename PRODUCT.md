@@ -60,6 +60,6 @@ Francesinha boa a preço de café, pronta depressa para levantar.
 
 ## Accessibility & Inclusion
 
-- Todo o movimento respeita `prefers-reduced-motion` e há um botão para pausar as animações do topo.
+- Todo o movimento respeita `prefers-reduced-motion`. O vídeo do molho tem botão próprio para pausar; o botão de pausa do topo está escondido.
 - O site tem um link "Saltar para o menu", contornos de foco visíveis e navegação por teclado nos separadores e menus.
 - Cada texto tem de existir nas cinco línguas.
