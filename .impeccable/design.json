@@ -1,0 +1,316 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-11-10T23:05:00Z",
+  "title": "Design System: Café Príncipe",
+  "extensions": {
+    "colorMeta": {
+      "lima": {
+        "role": "primary",
+        "displayName": "Lima Príncipe",
+        "canonical": "#B0BF3F",
+        "tonalRamp": [
+          "#2B2F0F",
+          "#424819",
+          "#5B6323",
+          "#7A852D",
+          "#98A536",
+          "#B0BF3F",
+          "#CBD776",
+          "#E6ECBD"
+        ]
+      },
+      "lima-viva": {
+        "role": "primary",
+        "displayName": "Lima Viva",
+        "canonical": "#C4D452",
+        "tonalRamp": [
+          "#30350F",
+          "#4A521A",
+          "#666F25",
+          "#85902F",
+          "#A6B33D",
+          "#C4D452",
+          "#D6E182",
+          "#EBF0C2"
+        ]
+      },
+      "oliva": {
+        "role": "secondary",
+        "displayName": "Oliva de Grelha",
+        "canonical": "#7E8C4A",
+        "tonalRamp": [
+          "#1F2312",
+          "#30361C",
+          "#434B27",
+          "#5A6434",
+          "#6E7A40",
+          "#7E8C4A",
+          "#A5B07C",
+          "#D4DABD"
+        ]
+      },
+      "carvao": {
+        "role": "neutral",
+        "displayName": "Carvão",
+        "canonical": "#0D0D0D",
+        "tonalRamp": [
+          "#0D0D0D",
+          "#181818",
+          "#2A2A28",
+          "#3E3E3B",
+          "#5A5A55",
+          "#7D7D76",
+          "#A9AA9B",
+          "#F4F3EA"
+        ]
+      },
+      "carvao-2": {
+        "role": "neutral",
+        "displayName": "Carvão de Cartão",
+        "canonical": "#181818",
+        "tonalRamp": [
+          "#0D0D0D",
+          "#181818",
+          "#2A2A28",
+          "#3E3E3B",
+          "#5A5A55",
+          "#7D7D76",
+          "#A9AA9B",
+          "#F4F3EA"
+        ]
+      },
+      "carvao-3": {
+        "role": "neutral",
+        "displayName": "Carvão de Borda",
+        "canonical": "#2A2A28",
+        "tonalRamp": [
+          "#0D0D0D",
+          "#181818",
+          "#2A2A28",
+          "#3E3E3B",
+          "#5A5A55",
+          "#7D7D76",
+          "#A9AA9B",
+          "#F4F3EA"
+        ]
+      },
+      "creme": {
+        "role": "neutral",
+        "displayName": "Creme",
+        "canonical": "#F4F3EA",
+        "tonalRamp": [
+          "#2C2C27",
+          "#47473F",
+          "#64645A",
+          "#828276",
+          "#A9AA9B",
+          "#C9C9BD",
+          "#E2E1D6",
+          "#F4F3EA"
+        ]
+      },
+      "creme-2": {
+        "role": "neutral",
+        "displayName": "Creme Apagado",
+        "canonical": "#A9AA9B",
+        "tonalRamp": [
+          "#2C2C27",
+          "#47473F",
+          "#64645A",
+          "#828276",
+          "#A9AA9B",
+          "#C9C9BD",
+          "#E2E1D6",
+          "#F4F3EA"
+        ]
+      }
+    },
+    "typographyMeta": {
+      "display": {
+        "displayName": "Cartaz",
+        "purpose": "Título do topo e nome do prato na página de cada prato. Anton, maiúsculas."
+      },
+      "headline": {
+        "displayName": "Título de secção",
+        "purpose": "Títulos de secção, sempre com o traço verde do logótipo por baixo."
+      },
+      "title": {
+        "displayName": "Nome do prato",
+        "purpose": "Nome do prato nos cartões e subtítulos. Barlow Condensed 700, maiúsculas."
+      },
+      "price": {
+        "displayName": "Preço",
+        "purpose": "Preço em creme dentro do chip de preço sobre a foto; o € em lima."
+      },
+      "label": {
+        "displayName": "Balcão",
+        "purpose": "Botões, separadores, links do topo e navegação."
+      },
+      "body": {
+        "displayName": "Texto",
+        "purpose": "Descrições e texto corrido em Barlow."
+      }
+    },
+    "shadows": [
+      {
+        "name": "cartao-repouso",
+        "value": "0 6px 18px -10px rgba(0,0,0,.8)",
+        "purpose": "Todos os cartões de prato em repouso."
+      },
+      {
+        "name": "cartao-levantado",
+        "value": "0 16px 30px -14px rgba(0,0,0,.9)",
+        "purpose": "Hover do cartão, com translateY(-4px)."
+      },
+      {
+        "name": "menu-suspenso",
+        "value": "0 16px 36px -12px rgba(0,0,0,.9)",
+        "purpose": "Lista de idiomas."
+      },
+      {
+        "name": "brilho-lima",
+        "value": "0 10px 30px -8px #B0BF3F",
+        "purpose": "Só o botão XL do topo, com o pulso."
+      }
+    ],
+    "motion": [
+      {
+        "name": "mola",
+        "value": "cubic-bezier(.2,.8,.2,1)",
+        "purpose": "Entradas, revelações e a foto do cartão a crescer."
+      },
+      {
+        "name": "entrada",
+        "value": "0.4s",
+        "purpose": "Entrada do texto do topo e dos cartões, em cascata de 60ms."
+      },
+      {
+        "name": "hover",
+        "value": "0.15s–0.2s",
+        "purpose": "Salto do botão (2px) e do cartão (4px)."
+      },
+      {
+        "name": "faixa",
+        "value": "40s linear infinite",
+        "purpose": "Fita lima a correr; para no hover e com a pausa."
+      }
+    ],
+    "breakpoints": [
+      {
+        "name": "telemovel",
+        "value": "820px"
+      },
+      {
+        "name": "links-topo",
+        "value": "1260px"
+      }
+    ]
+  },
+  "components": [
+    {
+      "name": "Botão principal",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "Ação principal: ver o menu, ligar, pedir.",
+      "html": "<button class=\"ds-btn\">Ver o menu</button>",
+      "css": ".ds-btn{position:relative;overflow:hidden;display:inline-flex;align-items:center;justify-content:center;gap:.5rem;background:var(--lima,#B0BF3F);color:var(--carvao,#0D0D0D);font-family:\"Barlow Condensed\",\"Arial Narrow\",sans-serif;font-weight:700;font-size:1.15rem;text-transform:uppercase;letter-spacing:.06em;padding:.7rem 1.5rem;border:0;border-radius:999px;cursor:pointer;transition:transform .15s,background .15s}.ds-btn:hover{background:#C4D452;transform:translateY(-2px)}.ds-btn:active{transform:scale(.97)}.ds-btn:focus-visible{outline:3px solid #B0BF3F;outline-offset:3px}"
+    },
+    {
+      "name": "Botão secundário",
+      "kind": "button",
+      "refersTo": "button-secondary",
+      "description": "Ações de apoio: partilhar, menu em PDF.",
+      "html": "<button class=\"ds-btn-sec\">Menu em PDF</button>",
+      "css": ".ds-btn-sec{display:inline-flex;align-items:center;gap:.5rem;background:transparent;border:1.5px solid var(--carvao-3,#2A2A28);color:var(--creme,#F4F3EA);padding:.4rem 1rem;border-radius:999px;font-family:\"Barlow Condensed\",\"Arial Narrow\",sans-serif;font-weight:700;font-size:1.05rem;text-transform:uppercase;letter-spacing:.05em;cursor:pointer;transition:border-color .2s,color .2s}.ds-btn-sec:hover{border-color:#B0BF3F;color:#B0BF3F}.ds-btn-sec:focus-visible{outline:3px solid #B0BF3F;outline-offset:3px}"
+    },
+    {
+      "name": "Separadores do menu",
+      "kind": "nav",
+      "refersTo": "tab",
+      "description": "Categorias do menu em pílulas; a ativa é lima sólida.",
+      "html": "<div class=\"ds-tabs\" role=\"tablist\"><button class=\"ds-tab\" role=\"tab\" aria-selected=\"true\">Francesinhas</button><button class=\"ds-tab\" role=\"tab\" aria-selected=\"false\">Pregos</button><button class=\"ds-tab\" role=\"tab\" aria-selected=\"false\">Sobremesas</button></div>",
+      "css": ".ds-tabs{display:flex;gap:.6rem;background:#0D0D0D;padding:.6rem}.ds-tab{background:#181818;border:2px solid #2A2A28;color:#F4F3EA;padding:.5rem 1.3rem;border-radius:999px;font-family:\"Barlow Condensed\",\"Arial Narrow\",sans-serif;font-weight:700;font-size:1.15rem;text-transform:uppercase;letter-spacing:.05em;cursor:pointer;transition:.2s}.ds-tab:hover{border-color:#B0BF3F}.ds-tab[aria-selected=\"true\"]{background:#B0BF3F;border-color:#B0BF3F;color:#0D0D0D}.ds-tab:focus-visible{outline:3px solid #B0BF3F;outline-offset:3px}"
+    },
+    {
+      "name": "Cartão de prato",
+      "kind": "card",
+      "refersTo": "card",
+      "description": "Foto 4:3 com o chip de preço no canto, nome e descrição.",
+      "html": "<a class=\"ds-card\" href=\"#\"><div class=\"ds-card-foto\"><span class=\"ds-chip-preco\">9,50<span class=\"ds-eur\">€</span></span></div><h3>Francesinha Especial</h3><p>Pão, carnes, queijo gratinado e o molho da casa.</p></a>",
+      "css": ".ds-card{display:flex;flex-direction:column;gap:.8rem;width:280px;background:#181818;border:1px solid #2A2A28;border-radius:14px;padding:.8rem;color:#F4F3EA;text-decoration:none;box-shadow:0 6px 18px -10px rgba(0,0,0,.8);transition:transform .2s,border-color .2s,box-shadow .2s}.ds-card:hover{transform:translateY(-4px);border-color:#7E8C4A;box-shadow:0 16px 30px -14px rgba(0,0,0,.9)}.ds-card:focus-visible{outline:3px solid #B0BF3F;outline-offset:2px}.ds-card-foto{position:relative;aspect-ratio:4/3;border-radius:14px;background:radial-gradient(circle at 30% 30%,#4a5326,transparent 60%),linear-gradient(135deg,#2c2f1c,#121311)}.ds-card h3{font-family:\"Barlow Condensed\",\"Arial Narrow\",sans-serif;font-weight:700;font-size:1.4rem;line-height:1.1;text-transform:uppercase;letter-spacing:.02em;margin:.2rem 0 0}.ds-card p{color:#A9AA9B;font-family:Barlow,system-ui,sans-serif;font-size:.92rem;margin:0}.ds-chip-preco{position:absolute;left:.7rem;bottom:.7rem;display:inline-flex;align-items:flex-start;gap:.06em;background:rgba(13,13,13,.78);backdrop-filter:blur(6px);color:#F4F3EA;border:1px solid rgba(244,243,234,.22);border-radius:999px;padding:.4rem .9rem .32rem;font-family:\"Barlow Condensed\",\"Arial Narrow\",sans-serif;font-weight:700;font-size:1.5rem;line-height:1}.ds-eur{font-size:.5em;margin-top:.14em;color:#B0BF3F}"
+    },
+    {
+      "name": "Pesquisa",
+      "kind": "input",
+      "refersTo": "input-search",
+      "description": "Pesquisa do menu em pílula; o foco põe a borda em lima.",
+      "html": "<label class=\"ds-pesq\"><svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\"><circle cx=\"11\" cy=\"11\" r=\"7\"/><path d=\"m20 20-3.5-3.5\"/></svg><input type=\"search\" placeholder=\"Procurar um prato…\"></label>",
+      "css": ".ds-pesq{position:relative;display:block;max-width:420px}.ds-pesq svg{position:absolute;left:1.05rem;top:50%;transform:translateY(-50%);width:20px;height:20px;color:#A9AA9B}.ds-pesq input{width:100%;background:#181818;border:1.5px solid #2A2A28;border-radius:999px;color:#F4F3EA;font-family:Barlow,system-ui,sans-serif;font-size:1.05rem;padding:.85rem 1.2rem .85rem 3rem;transition:border-color .2s}.ds-pesq input::placeholder{color:#A9AA9B}.ds-pesq input:focus{outline:none;border-color:#B0BF3F}"
+    },
+    {
+      "name": "Chip",
+      "kind": "chip",
+      "refersTo": "chip",
+      "description": "Ingredientes e alergénios.",
+      "html": "<span class=\"ds-chip\">Queijo</span> <span class=\"ds-etiqueta\">Novo</span>",
+      "css": ".ds-chip{display:inline-block;background:#181818;border:1px solid #2A2A28;border-radius:999px;padding:.35rem .9rem;color:#F4F3EA;font-family:Barlow,system-ui,sans-serif;font-size:1rem}.ds-etiqueta{display:inline-block;font-family:Barlow,system-ui,sans-serif;font-size:.8rem;font-weight:700;padding:.25rem .7rem;border-radius:999px;background:rgba(176,191,63,.15);color:#B0BF3F}"
+    },
+    {
+      "name": "Faixa",
+      "kind": "custom",
+      "refersTo": "faixa",
+      "description": "Fita lima a correr com as mensagens da casa.",
+      "html": "<div class=\"ds-faixa\"><span>Francesinhas</span><span>Pregos</span><span>Cachorros</span></div>",
+      "css": ".ds-faixa{display:flex;background:#B0BF3F;color:#0D0D0D;overflow:hidden}.ds-faixa span{font-family:\"Barlow Condensed\",\"Arial Narrow\",sans-serif;font-weight:700;text-transform:uppercase;letter-spacing:.12em;font-size:1.1rem;padding:.85rem 0 .85rem 2.8rem;white-space:nowrap}.ds-faixa span::after{content:\"\";display:inline-block;width:.45em;height:.45em;margin-left:2.8rem;border-radius:50%;background:#0D0D0D;vertical-align:middle}"
+    }
+  ],
+  "narrative": {
+    "northStar": "O Cartaz de Balcão",
+    "overview": "O site lê-se como os painéis de menu por cima do balcão de uma cadeia de fast food: fundo carvão, títulos gordos e condensados em maiúsculas, fotos de comida grandes e um único verde-lima que grita o que importa — o botão de ligar, o separador ativo, o símbolo do euro. Não é um restaurante de toalha: é rápido, direto e com apetite.\n\nA densidade é de cartaz, não de revista. Cada secção tem um título grande sublinhado pelo traço verde do logótipo, uma grelha de cartões-foto e uma ação clara. O movimento é curto e com mola (entradas de 0,4 s, um salto de 2–4 px ao passar o rato, a faixa lima a correr) e desliga-se todo com `prefers-reduced-motion` ou com o botão de pausa.\n\nOs componentes são gordos e diretos: pílulas lima sólidas com texto condensado em maiúsculas, como num quiosque de pedidos. Tudo o que se pode tocar parece um botão.",
+    "keyCharacteristics": [
+      "Fundo carvão quase preto em todo o site; não há tema claro (só a impressão do menu é em branco).",
+      "Um único acento, o verde-lima, reservado para ações, preços e estados ativos.",
+      "Títulos em Anton, maiúsculas, com o traço verde do logótipo por baixo.",
+      "Etiquetas, botões, preços e nomes de pratos em Barlow Condensed 700, maiúsculas, com espaçamento entre letras.",
+      "Fotos de comida em grande, com gradiente escuro por baixo do texto.",
+      "Formas em pílula para tudo o que é ação; cartões com cantos de 14px."
+    ],
+    "rules": [
+      {
+        "name": "A Regra do Verde que Vende",
+        "body": "O lima marca ações, estados ativos e o €. Exceções já em uso: o traço do logótipo, a faixa, os rótulos `eyebrow` e o subtítulo \"Ingredientes\" na página do prato. Não alargar o lima a mais texto que não se clica.",
+        "section": "colors"
+      },
+      {
+        "name": "A Regra do Texto Escuro no Lima",
+        "body": "Sobre lima o texto é sempre carvão, nunca creme ou branco.",
+        "section": "colors"
+      },
+      {
+        "name": "A Regra das Maiúsculas",
+        "body": "Tudo o que é Anton ou Barlow Condensed vai em maiúsculas. O texto corrido em Barlow nunca vai.",
+        "section": "typography"
+      },
+      {
+        "name": "A Regra do Brilho Único",
+        "body": "A sombra lima só existe no botão principal do topo. Os outros elementos usam sombras pretas.",
+        "section": "elevation"
+      }
+    ],
+    "dos": [
+      "Do usar o lima `#B0BF3F` em ações e estados ativos; quando é fundo, o texto por cima é carvão.",
+      "Do pôr os títulos de secção em Anton maiúsculas com o traço verde por baixo.",
+      "Do usar pílula (999px) para tudo o que se clica e 14px para cartões e fotos.",
+      "Do mostrar a comida em foto grande, com gradiente carvão sob o texto.",
+      "Do garantir que cada animação nova respeita `prefers-reduced-motion` e o botão de pausa.",
+      "Do manter o contorno de foco lima de 3px em todos os elementos interativos."
+    ],
+    "donts": [
+      "Don't introduzir um segundo acento de cor (vermelho, amarelo, azul): a cadeia de fast food aqui é verde-lima.",
+      "Don't usar fundos claros nas secções do site; o branco é só para a impressão do menu.",
+      "Don't usar Anton em texto corrido nem Barlow normal em botões.",
+      "Don't pôr texto creme ou branco sobre lima.",
+      "Don't usar cantos retos em botões ou separadores."
+    ]
+  }
+}
