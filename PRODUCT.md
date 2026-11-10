@@ -22,7 +22,7 @@ Francesinha boa a preço de café, pronta depressa para levantar.
 
 - As encomendas fazem-se só por telefone, para levantar no café. Não há entregas nem pagamentos online.
 - As mesas reservam-se por telefone (dia, hora e número de pessoas).
-- O cliente usa o site sobretudo no telemóvel, muitas vezes com pressa e com fome. O botão de ligar fica sempre no cabeçalho fixo; no telemóvel não há barra "Ligar" no fundo do ecrã.
+- O cliente usa o site sobretudo no telemóvel, muitas vezes com pressa e com fome. O botão de ligar fica sempre no cabeçalho fixo e, no telemóvel, há também um botão grande "Ligar para encomendar" no primeiro ecrã, com o estado (aberto/fechado) e a indicação "só para levantar". A barra "Ligar" fixa no fundo do ecrã foi desligada de propósito e não deve voltar.
 - Cada prato tem página própria (`/prato/<nome>`), com pré-visualização para partilhar, e o menu pode ser impresso ou guardado em PDF.
 - O site funciona sem rede depois da primeira visita.
 

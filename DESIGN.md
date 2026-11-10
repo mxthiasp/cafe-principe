@@ -232,7 +232,10 @@ Pílula carvão translúcida (78 %) com desfoque, borda creme a 22 % e o preço 
 - **Focus:** a borda passa a lima, sem contorno extra.
 
 ### Navigation
-Cabeçalho fixo, translúcido com desfoque, com o logótipo à esquerda, links em Barlow Condensed 600 maiúsculas (lima no hover) e à direita o idioma e o botão "Ligar" em pílula lima. Ao fazer scroll fica compacto. Em telemóvel os links desaparecem e o botão de ligar fica só com o ícone, sempre no cabeçalho fixo; não há barra no fundo do ecrã.
+Cabeçalho fixo, translúcido com desfoque, com o logótipo à esquerda, links em Barlow Condensed 600 maiúsculas (lima no hover) e à direita o idioma e o botão "Ligar" em pílula lima. Ao fazer scroll fica compacto. Em telemóvel os links desaparecem e o botão de ligar fica só com o ícone, sempre no cabeçalho fixo; não há barra no fundo do ecrã (desligada de propósito).
+
+### Primeiro ecrã no telemóvel
+Por baixo do nome do prato e de "Ver menu →": o estado ("Aberto agora, fecha às…") em Barlow Condensed 700 maiúsculas, lima quando está aberto e creme quando está fechado; depois um botão lima de largura total "Ligar para encomendar" com o ícone do telefone (54px de altura, 50px em ecrãs baixos); por fim a linha centrada "Só para levantar no café · sem entregas". No computador estes três ficam escondidos, porque o topo já mostra o estado em pílula e a nota de encomendas.
 
 ### Separadores do menu
 Pílulas deslizantes numa barra fixa: em repouso carvão de cartão com borda de 2px; no hover a borda passa a lima; o ativo é lima sólido com texto carvão. As pontas esbatem para carvão e com rato aparecem setas.

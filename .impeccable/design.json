@@ -1,6 +1,6 @@
 {
   "schemaVersion": 2,
-  "generatedAt": "2026-11-10T23:40:00Z",
+  "generatedAt": "2026-11-11T00:05:00Z",
   "title": "Design System: Café Príncipe",
   "extensions": {
     "colorMeta": {
@@ -214,6 +214,14 @@
       "description": "Ação principal: ver o menu, ligar, pedir.",
       "html": "<button class=\"ds-btn\">Ver o menu</button>",
       "css": ".ds-btn{position:relative;overflow:hidden;display:inline-flex;align-items:center;justify-content:center;gap:.5rem;background:var(--lima,#B0BF3F);color:var(--carvao,#0D0D0D);font-family:\"Barlow Condensed\",\"Arial Narrow\",sans-serif;font-weight:700;font-size:1.15rem;text-transform:uppercase;letter-spacing:.06em;padding:.7rem 1.5rem;border:0;border-radius:999px;cursor:pointer;transition:transform .15s,background .15s}.ds-btn:hover{background:#C4D452;transform:translateY(-2px)}.ds-btn:active{transform:scale(.97)}.ds-btn:focus-visible{outline:3px solid #B0BF3F;outline-offset:3px}"
+    },
+    {
+      "name": "Ligar (primeiro ecrã no telemóvel)",
+      "kind": "button",
+      "refersTo": "hero-ligar",
+      "description": "Botão lima de largura total no primeiro ecrã do telemóvel, com o estado por cima e \"só para levantar\" por baixo.",
+      "html": "<div class=\"ds-pedir\"><p class=\"ds-estado\">Aberto agora, fecha às 00h00</p><a class=\"ds-ligar\" href=\"#\"><svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2.2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2Z\"/></svg><span>Ligar para encomendar</span></a><p class=\"ds-levantar\">Só para levantar no café · sem entregas</p></div>",
+      "css": ".ds-pedir{width:340px;background:#0D0D0D;padding:1rem}.ds-estado{margin:0 0 .5rem;font-family:\"Barlow Condensed\",\"Arial Narrow\",sans-serif;font-weight:700;font-size:1rem;letter-spacing:.06em;text-transform:uppercase;color:#B0BF3F}.ds-ligar{display:flex;align-items:center;justify-content:center;gap:.6rem;min-height:54px;padding:.7rem 1.2rem;border-radius:999px;background:#B0BF3F;color:#0D0D0D;font-family:\"Barlow Condensed\",\"Arial Narrow\",sans-serif;font-weight:700;font-size:1.35rem;line-height:1;letter-spacing:.06em;text-transform:uppercase;text-decoration:none;transition:background .15s,transform .15s}.ds-ligar svg{width:22px;height:22px}.ds-ligar:active{transform:scale(.98);background:#C4D452}.ds-ligar:focus-visible{outline:3px solid #F4F3EA;outline-offset:3px}.ds-levantar{margin:.55rem 0 0;font-family:Barlow,system-ui,sans-serif;font-size:.95rem;color:#D8D8CC;text-align:center}"
     },
     {
       "name": "Botão secundário",
