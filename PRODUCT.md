@@ -35,7 +35,7 @@ Francesinha boa a preço de café, pronta depressa para levantar.
 - A CSP em `_headers` é restrita: serviços ou scripts externos novos têm de ser autorizados lá.
 - As estatísticas de visitas são sem cookies (Cloudflare Web Analytics).
 - O tempo de preparação varia muito e não se publica.
-- Ainda por decidir ou fornecer: os preços de asinhas de frango, rissóis de carne e bolinhos de bacalhau; as marcas para os alergénios e o aviso de vestígios; as contas de Instagram e Facebook (ainda não existem); o nome legal e o NIF.
+- Ainda por decidir ou fornecer: os preços de asinhas de frango, rissóis de carne e bolinhos de bacalhau; as marcas para os alergénios e o aviso de vestígios; as contas de Instagram e Facebook (ainda não existem). O nome legal e o NIF do titular já estão em `js/cafe.js` (`CAFE.legal`) e aparecem no rodapé.
 
 ## Brand Commitments
 
