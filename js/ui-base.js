@@ -133,11 +133,13 @@ function montarHorario(){
   const nm = $("#horarioMenu"); if(nm){ nm.textContent = MENU_ATE ? fmt(L.menu, {h:hh(MENU_ATE)}) : ""; nm.hidden = !MENU_ATE; }
 }
 function atualizarEstado(){
-  const e = estadoAbertura();
-  $("#estado").className = "estado" + (e.aberto ? " aberto" : "");
-  $("#estado").textContent = e.texto;
-  const v = $("#visitaEstado"); if(v){ v.className = "visita-estado" + (e.aberto ? " aberto" : ""); v.textContent = e.texto; }
-  const vc = $("#visitaCozinha"); if(vc) vc.textContent = e.aberto ? estadoRefeicoes() : "";
+  const e = estadoAbertura(), est = $("#estado");
+  est.className = "estado" + (e.aberto ? " aberto" : "");
+  est.textContent = e.texto;
+  /* café aberto mas cozinha fechada (ex.: 16h ou 00h30): diz quando há refeições, para ninguém ligar a pedir uma francesinha fora de horas */
+  const agora = agoraLisboa(), cozFecho = fechoAtual(agora, COZINHA);
+  const coz = e.aberto && cozFecho !== fechoAtual(agora, HORARIO) ? estadoRefeicoes(agora) : "";   // se a cozinha fecha à mesma hora que o café, não há nada a acrescentar
+  if(coz){ const s = document.createElement("span"); s.className = "estado-coz"; s.innerHTML = `<span class="sr-so">. </span>`; s.append(coz); est.append(s); }
   montarHorario();
 }
 

@@ -753,6 +753,9 @@ body.vista-prato .pagina-prato{animation:paginaEntra .3s ease-out}
 /* sem bolinha ao lado de "Aberto agora": a cor do texto diz se está aberto */
 .estado.aberto,.visita-estado.aberto{color:var(--lima)}
 @media (max-width:820px){.visita-estado{gap:0}}
+/* horário da cozinha ao lado do estado ("Refeições a partir das 18h00"): em creme, para não parecer que também está "aberto" */
+.estado-coz{color:var(--creme);font-weight:400}
+.estado-coz::before{content:"·";margin-right:.55rem;color:var(--creme-2)}
 
 /* telemóvel, primeiro ecrã: estado, botão grande de ligar e "só para levantar" (no computador já estão no topo) */
 .hero-pedir{display:none}
@@ -760,6 +763,8 @@ body.vista-prato .pagina-prato{animation:paginaEntra .3s ease-out}
   .hero-entrada>.estado{display:block;order:7;flex:0 0 100%;margin:.85rem 0 0;padding:0;background:none;border:0;border-radius:0;font-family:var(--destaque);font-weight:700;font-size:1rem;letter-spacing:.06em;text-transform:uppercase;color:#D8D8CC}
   .hero-entrada>.estado.aberto{color:var(--lima)}
   .hero-entrada>.estado:empty{display:none}
+  .hero-entrada>.estado .estado-coz{display:block;margin-top:.2rem;font-weight:700;color:#D8D8CC}
+  .hero-entrada>.estado .estado-coz::before{content:none}
   .hero-entrada>.hero-pedir{display:block;order:8;flex:0 0 100%;margin:.5rem 0 0}
   .hero-ligar{display:flex;align-items:center;justify-content:center;gap:.6rem;width:100%;min-height:54px;padding:.7rem 1.2rem;border-radius:4px;background:var(--lima);color:var(--carvao);font-family:var(--destaque);font-weight:700;font-size:1.35rem;line-height:1;letter-spacing:.06em;text-transform:uppercase;text-decoration:none;transition:background .15s,transform .15s;-webkit-tap-highlight-color:transparent}
   .hero-ligar svg{width:22px;height:22px;flex:none}
