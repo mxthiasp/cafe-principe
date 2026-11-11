@@ -1,6 +1,6 @@
 {
   "schemaVersion": 2,
-  "generatedAt": "2026-11-11T00:40:00Z",
+  "generatedAt": "2026-11-11T01:00:00Z",
   "title": "Design System: Café Príncipe",
   "extensions": {
     "colorMeta": {
@@ -208,7 +208,7 @@
       "refersTo": "button-primary",
       "description": "Ação principal: ver o menu, ligar, pedir.",
       "html": "<button class=\"ds-btn\">Ver o menu</button>",
-      "css": ".ds-btn{position:relative;overflow:hidden;display:inline-flex;align-items:center;justify-content:center;gap:.5rem;background:var(--lima,#B0BF3F);color:var(--carvao,#0D0D0D);font-family:\"Barlow Condensed\",\"Arial Narrow\",sans-serif;font-weight:700;font-size:1.15rem;text-transform:uppercase;letter-spacing:.06em;padding:.7rem 1.5rem;border:0;border-radius:4px;cursor:pointer;transition:transform .15s,background .15s}.ds-btn:hover{background:#C4D452;transform:translateY(-2px)}.ds-btn:active{transform:scale(.97)}.ds-btn:focus-visible{outline:3px solid #B0BF3F;outline-offset:3px}"
+      "css": ".ds-btn{position:relative;overflow:hidden;display:inline-flex;align-items:center;justify-content:center;gap:.5rem;background:var(--lima,#B0BF3F);color:var(--carvao,#0D0D0D);font-family:\"Barlow Condensed\",\"Arial Narrow\",sans-serif;font-weight:700;font-size:1.15rem;text-transform:uppercase;letter-spacing:.06em;padding:.7rem 1.5rem;border:0;border-radius:4px;cursor:pointer;transition:transform .15s,background .15s}.ds-btn:hover{background:#C4D452;transform:translateY(-2px)}.ds-btn:active{transform:scale(.97)}.ds-btn:focus-visible{outline:3px solid #F4F3EA;outline-offset:3px;box-shadow:0 0 0 6px #0D0D0D}"
     },
     {
       "name": "Ligar (primeiro ecrã no telemóvel)",
@@ -232,7 +232,7 @@
       "refersTo": "tab",
       "description": "Categorias do menu em pílulas; a ativa é lima sólida.",
       "html": "<div class=\"ds-tabs\" role=\"tablist\"><button class=\"ds-tab\" role=\"tab\" aria-selected=\"true\">Francesinhas</button><button class=\"ds-tab\" role=\"tab\" aria-selected=\"false\">Pregos</button><button class=\"ds-tab\" role=\"tab\" aria-selected=\"false\">Sobremesas</button></div>",
-      "css": ".ds-tabs{display:flex;gap:.6rem;background:#0D0D0D;padding:.6rem}.ds-tab{background:#181818;border:2px solid #2A2A28;color:#F4F3EA;padding:.5rem 1.3rem;border-radius:4px;font-family:\"Barlow Condensed\",\"Arial Narrow\",sans-serif;font-weight:700;font-size:1.15rem;text-transform:uppercase;letter-spacing:.05em;cursor:pointer;transition:.2s}.ds-tab:hover{border-color:#B0BF3F}.ds-tab[aria-selected=\"true\"]{background:#B0BF3F;border-color:#B0BF3F;color:#0D0D0D}.ds-tab:focus-visible{outline:3px solid #B0BF3F;outline-offset:3px}"
+      "css": ".ds-tabs{display:flex;gap:.6rem;background:#0D0D0D;padding:.6rem}.ds-tab{background:#181818;border:2px solid #2A2A28;color:#F4F3EA;padding:.5rem 1.3rem;border-radius:4px;font-family:\"Barlow Condensed\",\"Arial Narrow\",sans-serif;font-weight:700;font-size:1.15rem;text-transform:uppercase;letter-spacing:.05em;cursor:pointer;transition:.2s}.ds-tab:hover{border-color:#B0BF3F}.ds-tab[aria-selected=\"true\"]{background:#B0BF3F;border-color:#B0BF3F;color:#0D0D0D}.ds-tab:focus-visible{outline:3px solid #F4F3EA;outline-offset:3px;box-shadow:0 0 0 6px #0D0D0D}"
     },
     {
       "name": "Cartão de prato",

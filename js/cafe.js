@@ -83,5 +83,3 @@ const FAQ = [
   ["Tenho uma alergia ou intolerância.", "Fala connosco por telefone antes de encomendar."]
 ];
 
-/* ordem dos "Mais pedidos" no início do site */
-const ORDEM_DESTAQUES = ["Francesinha Especial","Prego em Prato","Francesinha em Pão"];

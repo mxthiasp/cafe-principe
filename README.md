@@ -8,7 +8,7 @@ Publica-se sozinho na Cloudflare sempre que há um commit no ramo `main`.
 | Quero mudar... | Ficheiro |
 |---|---|
 | um preço, o nome ou a descrição de um prato, as fotos dos pratos | `js/menu.js` |
-| o telefone, a morada, o horário, os feriados, o "sobre nós", as perguntas frequentes, a foto da fachada | `js/cafe.js` |
+| o telefone, a morada, o horário, os feriados, o "sobre nós", a foto da fachada (as perguntas frequentes continuam em `FAQ`, mas a secção foi retirada do site) | `js/cafe.js` |
 | a tradução de um prato ou de um texto (inglês, francês, alemão, espanhol) | `js/traducoes.js` (só é descarregado quando alguém escolhe outra língua; a lista de línguas e as bandeiras estão em `js/idiomas.js`) |
 | as cores, os tamanhos, o aspeto no telemóvel | `css/estilo.css` |
 | a estrutura da página (secções, textos fixos em português) | `index.html` |

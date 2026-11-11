@@ -204,7 +204,7 @@ Duas famílias de forma: **cantos quase retos** (4px) para tudo o que é ação 
 Gordos e diretos, como as teclas de um quiosque de pedidos.
 - **Shape:** cantos de 4px.
 - **Primary:** lima com texto carvão, Barlow Condensed 700 em maiúsculas, `0.7rem 1.5rem`.
-- **Hover / Focus:** passa a lima viva e sobe 2px; sem reflexo nem brilho. Ao carregar encolhe para 0.97. O foco é um contorno lima de 3px afastado 3px.
+- **Hover / Focus:** passa a lima viva e sobe 2px; sem reflexo nem brilho. Ao carregar encolhe para 0.97. O foco do teclado é um contorno creme de 3px afastado 3px, com um anel carvão por fora (igual nos botões, separadores, botão de ligar e botão do vídeo).
 - **XL (topo):** 1.6rem, `0.9rem 2.4rem`, sem sombra nem pulso.
 - **Secondary:** fundo transparente, borda de 1.5px em carvão de borda, texto creme; no hover a borda e o texto passam a lima.
 
