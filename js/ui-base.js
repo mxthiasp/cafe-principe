@@ -122,10 +122,13 @@ function horarioTexto(){
 /* horário em tabela (secção "Visita-nos"): o dia de hoje fica destacado */
 function montarHorario(){
   const tab = $("#horarioTab"); if(!tab) return;
-  const L = L_TXT[LANG], D = DIAS[LANG], hoje = agoraLisboa().getDay();
+  const L = L_TXT[LANG], D = DIAS[LANG], agora = agoraLisboa(), hoje = agora.getDay();
+  /* que linha vale hoje: a do dia da semana, a dos feriados, ou nenhuma (dia de fecho, ex.: 25 de dezembro) */
+  const diaFecho = !intervalosDoDia(agora).length && (HORARIO[hoje] || []).length, feriadoHoje = !diaFecho && eFeriado(agora);
+  const marca = (e) => e ? ` class="hoje"` : "", etiqueta = (e) => e ? ` <small class="hoje-tag">${T("Hoje")}</small>` : "";
   const fer = fmt(L.fer, {h:`${hh(FERIADO.abreApartir)}–${hh(FERIADO.fechaAs)}`}), i = fer.indexOf(":");
-  tab.innerHTML = gruposHorario(" · ").map(g => `<div${g.dias.includes(hoje) ? ' class="hoje"' : ""}><dt>${D[g.ini]}${g.ini !== g.fim ? L.a + D[g.fim] : ""}</dt><b></b><dd>${g.linhas.map(([et,t]) => et ? `<span><em>${et}</em> ${t}</span>` : `<span>${t}</span>`).join("")}</dd></div>`).join("")
-    + `<div><dt>${fer.slice(0,i)}</dt><b></b><dd><span>${fer.slice(i+1).trim()}</span></dd></div>`;
+  tab.innerHTML = gruposHorario(" · ").map(g => { const e = g.dias.includes(hoje) && !diaFecho && !feriadoHoje; return `<div${marca(e)}><dt>${D[g.ini]}${g.ini !== g.fim ? L.a + D[g.fim] : ""}${etiqueta(e)}</dt><b></b><dd>${g.linhas.map(([et,t]) => et ? `<span><em>${et}</em> ${t}</span>` : `<span>${t}</span>`).join("")}</dd></div>`; }).join("")
+    + `<div${marca(feriadoHoje)}><dt>${fer.slice(0,i)}${etiqueta(feriadoHoje)}</dt><b></b><dd><span>${fer.slice(i+1).trim()}</span></dd></div>`;
   $("#horarioFecho").textContent = L.fec + ".";
   const nm = $("#horarioMenu"); if(nm){ nm.textContent = MENU_ATE ? fmt(L.menu, {h:hh(MENU_ATE)}) : ""; nm.hidden = !MENU_ATE; }
 }
