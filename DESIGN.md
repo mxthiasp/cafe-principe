@@ -167,7 +167,7 @@ Uma paleta de balcão à noite: carvão em três tons, creme quente para texto e
 - **Display** (Anton 400, clamp(2.7rem, 5.4vw, 4.4rem) no computador; 2.5rem no telemóvel, 2.1rem em ecrãs baixos; 1): título do topo e o nome do prato na página de cada prato (clamp(2.2rem, 6vw, 3.6rem)).
 - **Headline** (Anton 400, clamp(2.1rem, 5.2vw, 3.3rem), 1.02): título de cada secção, sempre com o traço verde por baixo.
 - **Title** (Barlow Condensed 700, 1.4rem, 1.1, maiúsculas): nome do prato nos cartões (1.9rem nos cartões em destaque) e subtítulos.
-- **Price** (Barlow Condensed 700, lima, números tabulares): nos cartões fica logo por baixo do nome, a 1.9rem no computador e 1.55rem no telemóvel, com os cêntimos e o € a meia altura. Na foto da página do prato e no topo continua dentro do chip de preço, em creme.
+- **Price** (Barlow Condensed 700, lima, números tabulares): nos cartões fica logo por baixo do nome, a 1.9rem no computador e 1.55rem no telemóvel, com os cêntimos e o € a meia altura. Na página do prato fica também por baixo do nome (2.4rem; 2rem no telemóvel), logo antes do botão "Ligar para encomendar". Só o topo continua a usar o chip de preço, em creme.
 - **Label** (Barlow Condensed 600–700, 1.05–1.15rem, 0.05–0.06em, maiúsculas): botões, separadores, links do topo, navegação entre pratos.
 - **Body** (Barlow 400, 1.0625rem, 1.5): descrições com 34–48ch; nos cartões desce para 0.92rem em creme apagado.
 
@@ -225,11 +225,17 @@ O preço é a segunda coisa que se lê, logo por baixo do nome: lima, Barlow Con
 **A Regra do Preço Fixo.** Em todos os cartões o preço fica no mesmo sítio: por baixo do nome, na mesma coluna. Não alternar a foto de lado nem mudar a ordem nome → preço → descrição.
 
 ### Chip de preço
-Pílula carvão translúcida (78 %) com desfoque, borda creme a 22 % e o preço em Barlow Condensed 700 creme, pousada no canto inferior da foto. Usa-se só na foto da página do prato e no topo, não nos cartões.
+Pílula carvão translúcida (78 %) com desfoque, borda creme a 22 % e o preço em Barlow Condensed 700 creme, pousada no canto inferior da foto. Usa-se só no topo; os cartões e a página do prato mostram o preço em lima por baixo do nome.
 
 ### Inputs / Fields
 - **Style:** pesquisa com cantos de 4px, carvão de cartão, borda de 1.5px, ícone à esquerda e botão circular de limpar à direita.
 - **Focus:** a borda passa a lima, sem contorno extra.
+
+### Página do prato
+Foto à esquerda (em cima no telemóvel); depois o nome, o preço em lima e logo a seguir "Ligar para encomendar" e "Partilhar este prato", para o botão de ligar caber no primeiro ecrã do telemóvel. Ingredientes, extras (ex.: "Com batata.", em creme, sem lima) e a nota de alergias vêm depois. A categoria aparece só no caminho de navegação.
+
+### Horário (Visita-nos)
+Lista de dias com o horário; a linha que vale hoje fica em lima com uma etiqueta "Hoje" (lima, texto carvão). Num feriado, a etiqueta vai para a linha "Feriados"; nos dias de fecho nenhuma linha fica marcada.
 
 ### Pesquisa sem resultados
 Caixa carvão de cartão (14px) com "Sem resultados para “…”" em Barlow Condensed 700 maiúsculas, a frase "Não encontras o que procuras? Liga-nos." e duas saídas: botão lima "Ligar" com o número e botão secundário "Ver o menu todo", que limpa a pesquisa e volta aos separadores.
