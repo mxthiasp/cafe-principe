@@ -92,7 +92,7 @@ header{position:sticky;top:0;z-index:50;background:rgba(22,17,14,.92);backdrop-f
 section{padding:clamp(3rem,7vw,5rem) 0}
 .tabs{display:flex;gap:.6rem;overflow-x:auto;padding:.6rem 10px 1rem;margin:-.3rem -10px 1rem;scrollbar-width:none}   /* folga à volta para o contorno de foco não ser cortado */
 .tabs::-webkit-scrollbar{display:none}
-.tab{flex:none;background:var(--carvao-2);border:2px solid var(--carvao-3);padding:.5rem 1.3rem;border-radius:999px;font-family:var(--destaque);font-weight:700;font-size:1.15rem;text-transform:uppercase;letter-spacing:.05em;transition:.2s}
+.tab{flex:none;background:var(--carvao-2);border:2px solid var(--carvao-3);padding:.5rem 1.3rem;border-radius:999px;font-family:var(--destaque);font-weight:700;font-size:1.15rem;text-transform:uppercase;letter-spacing:.05em;transition:background-color .2s,border-color .2s,color .2s,opacity .2s}
 .tab:hover{border-color:var(--lima)}
 .tab[aria-selected="true"]{background:var(--lima);border-color:var(--lima);color:var(--carvao)}
 .vazio-cat{grid-column:1/-1;padding:2.5rem 1rem;text-align:center;opacity:.7;font-size:1.1rem}
@@ -788,6 +788,11 @@ body.vista-prato .pagina-prato{animation:paginaEntra .3s ease-out}
   .tabs{gap:.45rem;padding:.6rem 10px .7rem;margin:-.4rem -10px .5rem}
   .tab{font-size:1rem;min-height:44px;padding:.42rem .85rem;border-width:1.5px}
 }
+/* superfícies do browser com as cores da casa: seleção de texto, cursor e quebras de linha sem palavras soltas */
+::selection{background:var(--lima);color:var(--carvao)}
+input,textarea{caret-color:var(--lima)}
+h1,h2,h3{text-wrap:balance}
+p,dd,li{text-wrap:pretty}
 /* preço nos cartões: lima, grande, logo por baixo do nome; cêntimos e € a meia altura */
 .card-preco{font-family:var(--destaque);font-weight:700;font-size:1.9rem;line-height:1;letter-spacing:.01em;color:var(--lima);font-variant-numeric:tabular-nums;margin:.35rem 0 .1rem}
 .card-preco .pd,.card-preco .pe{font-size:.52em;margin-top:.12em}
