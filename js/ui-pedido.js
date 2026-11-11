@@ -43,8 +43,9 @@ function montarPrato(){
   const lista = PRATOS.filter(x => x.cat === cat), i = lista.findIndex(x => x.p === p);
   const ant = lista[i - 1], seg = lista[i + 1];
   const rel = [...lista.filter(x => x.p !== p), ...PRATOS.filter(x => x.cat !== cat)].slice(0, 3);
-  const foto = p.foto ? `<div class="prato-foto"><img src="${p.foto}" alt="${nome}" decoding="async">${chipPreco(p.preco)}</div>` : `<div class="prato-foto prato-foto--vazia">${chipPreco(p.preco)}</div>`;
-  const factos = [[T("Categoria"), nomeCat(cat)], p.porcao && [T("Porção"), T(p.porcao)], p.alergenios && [T("Alergénios"), T(p.alergenios)]].filter(Boolean);
+  /* o preço e o botão de ligar ficam logo por baixo do nome (como nos cartões), para se verem sem descer no telemóvel */
+  const foto = p.foto ? `<div class="prato-foto"><img src="${p.foto}" alt="${nome}" decoding="async"></div>` : `<div class="prato-foto prato-foto--vazia"></div>`;
+  const factos = [p.porcao && [T("Porção"), T(p.porcao)], p.alergenios && [T("Alergénios"), T(p.alergenios)]].filter(Boolean);   // a categoria já está nas migalhas
   const tel = TELEFONES.encomendas;
   $("#paginaPrato").innerHTML = `<div class="wrap">
     <nav class="migalhas" aria-label="${T("Menu")}"><a href="#menu">${T("Menu")}</a><span aria-hidden="true">›</span><button type="button" data-cat="${cat}">${nomeCat(cat)}</button><span aria-hidden="true">›</span><span aria-current="page">${nome}</span></nav>
@@ -52,16 +53,17 @@ function montarPrato(){
       ${foto}
       <div class="prato-info">
         <h1 id="pratoTitulo">${nome}</h1>
-        ${d.texto ? `<p class="prato-texto">${d.texto}.</p>` : ""}
-        ${p.nota ? `<p class="prato-texto">${T(p.nota)}</p>` : ""}
-        ${d.lista.length ? `<h2>${T("Ingredientes")}</h2><div class="chips">${d.lista.map(t => `<span class="chip">${t}</span>`).join("")}</div>` : ""}
-        ${d.extras.map(t => `<span class="prato-extra">${t}.</span>`).join(" ")}
-        <dl class="prato-factos">${factos.map(([k,v]) => `<dt>${k}</dt><dd>${v}</dd>`).join("")}</dl>
-        ${p.alergenios ? "" : `<p class="nota-alergenios">${T("Tens alguma alergia ou intolerância? Fala connosco antes de encomendar:")} <a href="tel:${tel.replace(/\s/g,"")}">${tel}</a></p>`}
+        ${precoCartao(p.preco)}
         <div class="prato-acoes">
           <a class="btn btn--xl" href="tel:${tel.replace(/\s/g,"")}">${T("Ligar para encomendar")}</a>
           <button type="button" class="btn-sec" id="partilharPrato">${T("Partilhar este prato")}</button>
         </div>
+        ${d.texto ? `<p class="prato-texto">${d.texto}.</p>` : ""}
+        ${p.nota ? `<p class="prato-texto">${T(p.nota)}</p>` : ""}
+        ${d.lista.length ? `<h2>${T("Ingredientes")}</h2><div class="chips">${d.lista.map(t => `<span class="chip">${t}</span>`).join("")}</div>` : ""}
+        ${d.extras.map(t => `<span class="prato-extra">${t}.</span>`).join(" ")}
+        ${factos.length ? `<dl class="prato-factos">${factos.map(([k,v]) => `<dt>${k}</dt><dd>${v}</dd>`).join("")}</dl>` : ""}
+        ${p.alergenios ? "" : `<p class="nota-alergenios">${T("Tens alguma alergia ou intolerância? Fala connosco antes de encomendar:")} <a href="tel:${tel.replace(/\s/g,"")}">${tel}</a></p>`}
       </div>
     </div>
     <div class="prato-nav">
