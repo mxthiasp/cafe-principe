@@ -33,7 +33,7 @@
   "nome": "Francesinha na Chapa",
   "desc": "Pão, bife de vitela, fiambre, queijo, ovo e molho de francesinha. Com batata.",
   "preco": 11.75,
-  "img": "/og-image.jpg"
+  "img": "/img/og/francesinha-na-chapa.jpg"
  },
  "francesinha-em-pao": {
   "nome": "Francesinha em Pão",
@@ -111,7 +111,7 @@
   "nome": "Hambúrguer de Picanha em Pão",
   "desc": "Pão, hambúrguer, fiambre, queijo cheddar, alface, tomate, bacon e molho Big Burger. Com batata.",
   "preco": 10.5,
-  "img": "/og-image.jpg"
+  "img": "/img/og/hamburguer-de-picanha-em-pao.jpg"
  },
  "prego-em-baguete-c-ovo": {
   "nome": "Prego em Baguete c/ Ovo",
@@ -249,7 +249,7 @@
   "nome": "Mini Prego de Vitela com Ovo",
   "desc": "Mini prego de vitela com ovo.",
   "preco": 8.75,
-  "img": "/og-image.jpg"
+  "img": "/img/og/mini-prego-de-vitela-com-ovo.jpg"
  },
  "bife-de-frango-com-batata": {
   "nome": "Bife de Frango com Batata",

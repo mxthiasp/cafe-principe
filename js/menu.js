@@ -51,7 +51,10 @@ const FOTOS = {
   cheesecakeFrutos: RAIZ + "img/cheesecake-de-frutos-vermelhos-2.webp",
   asinhas: RAIZ + "img/asinhas-de-frango.webp",
   salsichasOvo: RAIZ + "img/2-salsichas-com-batata-e-ovo.webp",
-  hamburguerOvo: RAIZ + "img/hamburguer-com-ovo-e-batata.webp"
+  hamburguerOvo: RAIZ + "img/hamburguer-com-ovo-e-batata.webp",
+  miniPrego: RAIZ + "img/mini-prego-de-vitela-com-ovo.webp",
+  hamburguerPicanha: RAIZ + "img/hamburguer-de-picanha-em-pao.webp",
+  francesinhaChapa: RAIZ + "img/francesinha-na-chapa.webp"
 };
 
 /* ============ DADOS DO MENU (edita nomes, preços e descrições) ============ */
@@ -63,7 +66,7 @@ const MENU = {
     {nome:"Meia Francesinha Especial", desc:"Pão, bife de vitela, chouriço, fiambre, queijo, ketchup, mostarda, ovo e molho de francesinha. Com batata.", preco:8.75, foto:FOTOS.meiaEspecial},
     {nome:"Francesinha Especial de Frango", desc:"Pão, bife de frango, chouriço, fiambre, queijo, ketchup, mostarda, ovo e molho de francesinha. Com batata.", preco:10.5, foto:FOTOS.especial},
     {nome:"Francesinha Especial de Camarão", desc:"Pão, bife de vitela, camarão, chouriço, fiambre, queijo, ketchup, mostarda, ovo e molho de francesinha. Com batata.", preco:15.5},
-    {nome:"Francesinha na Chapa", desc:"Pão, bife de vitela, fiambre, queijo, ovo e molho de francesinha. Com batata.", preco:11.75},
+    {nome:"Francesinha na Chapa", desc:"Pão, bife de vitela, fiambre, queijo, ovo e molho de francesinha. Com batata.", preco:11.75, foto:FOTOS.francesinhaChapa},
     {nome:"Francesinha em Pão", desc:"Pão barrado com molho de francesinha, chouriço, ketchup, mostarda, queijo e fiambre.", preco:4.75, foto:FOTOS.francesinhaPao}
   ],
   "Pregos": [
@@ -84,7 +87,7 @@ const MENU = {
   "Hambúrgueres": [
     {nome:"Hambúrguer em Pão", desc:"Pão, hambúrguer, alface, tomate, queijo, fiambre, ovo, ketchup e mostarda.", preco:5.75, foto:FOTOS.hamburguerPao},
     {nome:"Hambúrguer Especial", desc:"Pão, hambúrguer, fiambre, queijo, alface, tomate, ovo, ketchup, mostarda e molho de francesinha. Com batata.", preco:11.5, foto:FOTOS.hamburguerEspecial},
-    {nome:"Hambúrguer de Picanha em Pão", desc:"Pão, hambúrguer, fiambre, queijo cheddar, alface, tomate, bacon e molho Big Burger. Com batata.", preco:10.5}
+    {nome:"Hambúrguer de Picanha em Pão", desc:"Pão, hambúrguer, fiambre, queijo cheddar, alface, tomate, bacon e molho Big Burger. Com batata.", preco:10.5, foto:FOTOS.hamburguerPicanha}
   ],
   "Baguetes": [
     {nome:"Prego em Baguete c/ Ovo", desc:"Baguete, bife de vitela, fiambre, queijo e ovo.", preco:9.5},
@@ -121,7 +124,7 @@ const MENU = {
     {nome:"Bolinhos de Bacalhau", desc:"6 bolinhos de bacalhau.", preco:4.8}
   ],
   "Menu Infantil": [
-    {nome:"Mini Prego de Vitela com Ovo", desc:"Mini prego de vitela com ovo.", preco:8.75},
+    {nome:"Mini Prego de Vitela com Ovo", desc:"Mini prego de vitela com ovo.", preco:8.75, foto:FOTOS.miniPrego},
     {nome:"Bife de Frango com Batata", desc:"Bife de frango com batata.", preco:5.5},
     {nome:"2 Salsichas com Batata e Ovo", desc:"Duas salsichas com batata e ovo.", preco:4.5, foto:FOTOS.salsichasOvo},
     {nome:"Hambúrguer com Ovo e Batata", desc:"Hambúrguer com ovo e batata.", preco:4.75, foto:FOTOS.hamburguerOvo}
