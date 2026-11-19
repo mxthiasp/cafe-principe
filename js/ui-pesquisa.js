@@ -76,13 +76,32 @@ $("#pesq").addEventListener("keydown", e => { if(e.key === "Escape"){ e.target.v
 $("#pesqLimpar").addEventListener("click", () => { $("#pesq").value = ""; pesquisar(""); $("#pesq").focus(); });
 /* cartões do menu: abrem a página do prato */
 grelha.addEventListener("click", e => { const c = e.target.closest(".card"); if(c && cliqueSimples(e)){ e.preventDefault(); abrirPrato(c.dataset.nome); } });
+/* ao voltar de um prato, o foco regressa ao cartão (ou botão) de onde se abriu */
+let origemFoco = null, origemTeclado = false;
+function devolverFoco(){
+  const o = origemFoco; origemFoco = null; if(!o) return;
+  const nome = o.dataset && o.dataset.nome;
+  const el = o.isConnected ? o : (nome ? [...grelha.querySelectorAll(".card")].find(c => c.dataset.nome === nome) : null);   // o menu pode ter sido redesenhado (ex.: mudança de idioma)
+  if(!el) return;
+  const r = el.getBoundingClientRect(), topo = cab.getBoundingClientRect().bottom;
+  const vis = Math.min(r.bottom, innerHeight) - Math.max(r.top, topo);
+  if(!r.width || !r.height) return;   // oculto: não se foca
+  if(vis < r.height / 2){
+    if(!origemTeclado) return;   // rato ou toque: nem foco nem scroll inesperados
+    /* teclado: o mínimo de scroll para o cartão ficar à vista (ex.: o idioma mudou e o texto tem outra altura).
+       No frame seguinte, porque com o botão Voltar o navegador repõe depois a posição guardada no histórico */
+    el.focus({preventScroll:true}); requestAnimationFrame(() => { if(document.activeElement === el) el.scrollIntoView({block:"nearest", behavior:"instant"}); });
+    return;
+  }
+  el.focus({preventScroll:true});
+}
 /* o endereço manda: /prato/nome (ou #/prato/nome) mostra o prato; qualquer outro mostra o início */
 function rota(){
   const mp = ROTAS_LIMPAS ? location.pathname.match(/^\/prato\/([a-z0-9-]+)\/?$/) : null, mh = location.hash.match(/^#\/prato\/([a-z0-9-]+)$/);
   const slugPedido = mp ? mp[1] : (mh ? mh[1] : null), vista = document.body.classList.contains("vista-prato");
   if(slugPedido && porSlug[slugPedido]){
     if(ROTAS_LIMPAS && mh && !mp) history.replaceState({}, "", "/prato/" + slugPedido);   // ligações antigas com # passam ao endereço limpo
-    if(!vista) scrollInicio = scrollY;
+    if(!vista){ scrollInicio = scrollY; const a = document.activeElement; origemFoco = a && a !== document.body && a.focus ? a : null; try{ origemTeclado = !!origemFoco && origemFoco.matches(":focus-visible"); }catch(e){ origemTeclado = false; } }
     pratoAtual = porSlug[slugPedido]; montarPrato();
     document.body.classList.add("vista-prato");
     scrollTo({top:0, left:0, behavior:"instant"});
@@ -95,6 +114,7 @@ function rota(){
       document.title = tituloBase; const md = document.querySelector('meta[name="description"]'); if(md) md.content = META_DESC[LANG];
       const h = location.hash, alvo = h.length > 1 && !h.startsWith("#/") ? document.getElementById(h.slice(1)) : null;
       if(alvo) alvo.scrollIntoView({behavior:"instant"}); else scrollTo({top:scrollInicio, left:0, behavior:"instant"});
+      devolverFoco();
     }
   }
 }
