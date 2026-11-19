@@ -4,7 +4,7 @@
    - Código (js e css): tenta a rede primeiro, com a cópia guardada como reserva.
    - Fotos, ícones e letras: usa a cópia guardada e atualiza-a quando houver rede.
    O número em VERSAO é escrito sozinho por scripts/gerar-dados.py (muda sempre que o código muda). */
-const VERSAO = "cafe-principe-207f2906";
+const VERSAO = "cafe-principe-5a822ad4";
 const INICIO = new URL("/", self.location.origin).href;
 const PRE = ["/", "/css/estilo.css", "/js/idiomas.js", "/js/traducoes.js", "/js/menu.js", "/js/cafe.js", "/js/ui-base.js", "/js/ui-menu.js", "/js/ui-pedido.js", "/js/ui-pesquisa.js", "/js/ui-topo.js", "/favicon.svg", "/favicon.ico", "/apple-touch-icon.png", "/img/francesinha-especial.webp"].map(u => new URL(u, INICIO).href);
 

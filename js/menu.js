@@ -54,7 +54,11 @@ const FOTOS = {
   hamburguerOvo: RAIZ + "img/hamburguer-com-ovo-e-batata.webp",
   miniPrego: RAIZ + "img/mini-prego-de-vitela-com-ovo.webp",
   hamburguerPicanha: RAIZ + "img/hamburguer-de-picanha-em-pao.webp",
-  francesinhaChapa: RAIZ + "img/francesinha-na-chapa.webp"
+  francesinhaChapa: RAIZ + "img/francesinha-na-chapa.webp",
+  paoDeAlho: RAIZ + "img/pao-de-alho.webp",
+  paoDeAlhoCBacon: RAIZ + "img/pao-de-alho-c-bacon.webp",
+  torradaEmPaoDeForma: RAIZ + "img/torrada-em-pao-de-forma.webp",
+  bagueteAmericana: RAIZ + "img/baguete-americana.webp"
 };
 
 /* ============ DADOS DO MENU (edita nomes, preços e descrições) ============ */
@@ -92,13 +96,13 @@ const MENU = {
   "Baguetes": [
     {nome:"Prego em Baguete c/ Ovo", desc:"Baguete, bife de vitela, fiambre, queijo e ovo.", preco:9.5},
     {nome:"Baguete de Atum", desc:"Baguete, maionese, alface, tomate, fiambre, queijo, atum e ovo.", preco:5.0, foto:FOTOS.baguetaAtum},
-    {nome:"Baguete Americana", desc:"Baguete, maionese, alface, tomate, fiambre, queijo e ovo.", preco:4.75}
+    {nome:"Baguete Americana", desc:"Baguete, maionese, alface, tomate, fiambre, queijo e ovo.", preco:4.75, foto:FOTOS.bagueteAmericana}
   ],
   "Sandes e Tostas": [
     {nome:"Sandes de Fiambre", desc:"Pão e fiambre.", preco:1.5, foto:FOTOS.sandesFiambre},
     {nome:"Sandes de Queijo", desc:"Pão e queijo.", preco:1.6, foto:FOTOS.sandesQueijo},
     {nome:"Sandes Mista", desc:"Pão, queijo e fiambre.", preco:2.5, foto:FOTOS.sandesMista},
-    {nome:"Torrada em Pão de Forma", desc:"Pão de forma barrado com manteiga.", preco:1.3},
+    {nome:"Torrada em Pão de Forma", desc:"Pão de forma barrado com manteiga.", preco:1.3, foto:FOTOS.torradaEmPaoDeForma},
     {nome:"Tosta Mista", desc:"Pão barrado com manteiga, queijo e fiambre.", preco:3.5, foto:FOTOS.tosta}
   ],
   "Omeletes": [
@@ -117,8 +121,8 @@ const MENU = {
     {nome:"Meio Picadinho de Vitela", desc:"Carne de vitela, salsicha, chouriço, pickles, azeitonas e molho de francesinha. Com batata.", preco:8.75, foto:FOTOS.meioPicadinho}
   ],
   "Entradas": [
-    {nome:"Pão de Alho", desc:"", preco:2.75},
-    {nome:"Pão de Alho c/ Bacon", desc:"Com bacon.", preco:4.5},
+    {nome:"Pão de Alho", desc:"", preco:2.75, foto:FOTOS.paoDeAlho},
+    {nome:"Pão de Alho c/ Bacon", desc:"Com bacon.", preco:4.5, foto:FOTOS.paoDeAlhoCBacon},
     {nome:"Asinhas de Frango", desc:"Asinhas de frango fritas.", preco:4.5, foto:FOTOS.asinhas},
     {nome:"Rissóis de Carne", desc:"6 rissóis de carne.", preco:4.2},
     {nome:"Bolinhos de Bacalhau", desc:"6 bolinhos de bacalhau.", preco:4.8}

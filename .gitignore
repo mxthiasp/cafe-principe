@@ -1,6 +1,10 @@
 .claude/
 .agents/
 .wrangler/
+.venv/
+
+# Fotos originais (têm localização GPS): nunca vão para o git
+/fotos novas/
 
 # .impeccable: só a config partilhada vai para o git
 .impeccable/*

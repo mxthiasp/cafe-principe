@@ -15,3 +15,5 @@ DESIGN.md
 skills-lock.json
 .github
 .gitignore
+.venv
+/fotos novas/
