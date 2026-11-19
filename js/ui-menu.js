@@ -32,7 +32,9 @@ function mostrarCategoria(cat, dir = 0){
   // os cartões entram do lado para onde se desliza (sem direção: de baixo)
   grelha.style.setProperty("--dx", dir * 46 + "px"); grelha.style.setProperty("--dy", dir ? "0px" : "24px");
   // Redesenha os cartões (a classe "novo" dispara a animação)
+  const focado = grelha.contains(document.activeElement) && document.activeElement.dataset.nome;   // cartão com o foco (ex.: as traduções chegam depois de voltar de um prato); data-nome é o nome do menu, igual em todos os idiomas
   grelha.innerHTML = MENU[cat].length ? MENU[cat].map(cartaoHTML).join("") : `<p class="vazio-cat">${T("Em breve.")}</p>`;
+  if(focado){ const c = [...grelha.querySelectorAll(".card")].find(x => x.dataset.nome === focado); if(c) c.focus({preventScroll:true}); }
 }
 
 Object.keys(MENU).forEach(cat => {
