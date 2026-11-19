@@ -205,9 +205,10 @@ listaIdiomas.addEventListener("click", e => { const li = e.target.closest("li");
 listaIdiomas.addEventListener("keydown", e => { if((e.key === "Enter" || e.key === " ") && e.target.dataset.l){ e.preventDefault(); mudarLang(e.target.dataset.l); fecharIdiomas(); btnIdioma.focus(); } });
 document.addEventListener("click", fecharIdiomas);
 addEventListener("keydown", e => { if(e.key === "Escape") fecharIdiomas(); });
-/* idioma inicial: o que a pessoa escolheu da última vez, ou o do telemóvel (se for um dos 5) */
+/* idioma inicial: o que a pessoa escolheu da última vez; sem escolha, português.
+   Não se usa a língua do navegador: o Google renderiza em inglês e indexava as páginas traduzidas. */
 let idiomaInicial = ""; try{ idiomaInicial = localStorage.getItem("idioma") || ""; }catch(e){}
-if(!IDIOMAS[idiomaInicial]){ const n = (navigator.language || "pt").slice(0,2).toLowerCase(); idiomaInicial = IDIOMAS[n] ? n : "pt"; }
+if(!IDIOMAS[idiomaInicial]) idiomaInicial = "pt";
 $("#idiomaBandeira").innerHTML = BANDEIRAS.pt;
 const tradInicial = idiomaInicial !== "pt" ? mudarLang(idiomaInicial, false) : null;
 if(!tradInicial){ montarPriv(); atualizarPausa(); ajustarNav(); }
