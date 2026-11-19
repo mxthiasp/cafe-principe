@@ -60,9 +60,10 @@ medirHeader(); addEventListener("resize", medirHeader);
 atualizarEstado(); setInterval(atualizarEstado, 60000);
 $("#moradaTxt").textContent = CAFE.morada;
 /* Como chegar: cada botão abre a app de mapas do cliente já com o destino preenchido. O Apple Maps só aparece em iPhone, iPad e Mac. */
-const _destino = encodeURIComponent(CAFE.morada);
+/* destino por coordenadas (a morada postal leva os mapas a outro edifício); sem coordenadas, usa a morada */
+const _c = CAFE.coordenadas, _destino = _c ? _c.lat + "," + _c.lng : encodeURIComponent(CAFE.morada);
 $("#gmaps").href = "https://www.google.com/maps/dir/?api=1&destination=" + _destino;
-$("#waze").href = "https://waze.com/ul?navigate=yes&q=" + _destino;
+$("#waze").href = "https://waze.com/ul?navigate=yes&" + (_c ? "ll=" : "q=") + _destino;
 $("#apple").href = "https://maps.apple.com/?daddr=" + _destino + "&dirflg=d";
 const _apple = /iPhone|iPad|iPod/.test(navigator.userAgent) || /Mac/.test(navigator.platform || "") || (navigator.maxTouchPoints > 1 && /Mac/.test(navigator.userAgent));
 if(_apple) $("#apple").hidden = false;
@@ -77,7 +78,7 @@ dlgMapas.addEventListener("click", e => { if(e.target === dlgMapas || e.target.c
     $(".mapa-s", vm).textContent = T("Mapa do Google Maps");
     vm.addEventListener("click", () => {
       const f = document.createElement("iframe");
-      f.src = "https://www.google.com/maps?q=" + encodeURIComponent(CAFE.morada) + "&hl=" + (document.documentElement.lang || "pt") + "&z=18&output=embed";
+      f.src = "https://www.google.com/maps?q=" + _destino + "&hl=" + (document.documentElement.lang || "pt") + "&z=18&output=embed";
       f.title = T("Mapa"); f.loading = "lazy"; f.referrerPolicy = "no-referrer-when-downgrade"; f.allowFullscreen = true;
       $("#chegarMapa").replaceChildren(f);
     });
